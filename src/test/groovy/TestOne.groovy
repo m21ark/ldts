@@ -1,6 +1,6 @@
 import spock.lang.Specification
 
-class FirstSpecification extends Specification {
+class SpockTest1 extends Specification {
 
     def "one plus one should equal two"() {
         expect:
