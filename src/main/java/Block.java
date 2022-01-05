@@ -8,6 +8,7 @@ public class Block extends Element {
     }
 
     public void move(int x, int y) {
-
+        position.setX(position.getX() + x);
+        position.setY(position.getY() + y);
     }
 }
