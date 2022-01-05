@@ -11,51 +11,52 @@ public class Bird extends Element {
     }
 
     public int takeDamage() {
-        return 0;
+        return --hp;
     }
 
     public int getHp() {
-        return 0;
+        return hp;
     }
 
     public void setHp(int newHp) {
-
+        hp = newHp;
     }
 
     public void addHp(int newHp) {
-
+        hp +=newHp;
     }
 
     public boolean isAlive() {
-        return false;
+        return hp>0;
     }
 
     public int pickCoin(int numCoins) {
-        return 0;
+        coinCount += numCoins;
+        return coinCount;
     }
 
     public int getCoinCount() {
-        return 0;
+        return coinCount;
     }
 
     public void setCoinCount(int numCoins) {
-
+        coinCount = numCoins;
     }
 
     public Position moveUp(int delta) {
-        return null;
+        return new Position(position.getX(), position.getY() - delta);
     }
 
     public Position moveDown(int delta) {
-        return null;
+        return new Position(position.getX(), position.getY() + delta);
     }
 
     public Position moveLeft(int delta) {
-        return null;
+        return new Position(position.getX()-delta, position.getY());
     }
 
     public Position moveRight(int delta) {
-        return null;
+        return new Position(position.getX()+delta, position.getY());
     }
 
 }
