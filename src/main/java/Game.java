@@ -41,10 +41,9 @@ public class Game {
         return false;
     }
 
-
     private void draw() throws IOException {
         screen.clear();
-        arena.draw(graphics);
+        arena.getGameScreen().drawGame(graphics, arena.getPlayerScore(), arena.getPlayerHp(),arena.getMatrix());
         screen.refresh();
     }
 
@@ -54,7 +53,7 @@ public class Game {
 
         //Title  Screen
         screen.clear();
-        arena.drawLoadingScreen(graphics);
+        arena.getGameScreen().drawLoadingScreen(graphics);
         screen.refresh();
 
         do {
@@ -85,7 +84,7 @@ public class Game {
 
         //Ending Screen
         screen.clear();
-        arena.drawDeathScreen(graphics);
+        arena.getGameScreen().drawDeathScreen(graphics, arena.getPlayerScore());
         screen.refresh();
 
         do {

@@ -1,7 +1,3 @@
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
@@ -31,12 +27,14 @@ public class Arena {
     private final int height;
     private final Bird bird;
     private Matrix matrix;
+    private final GameDesigner gameDesigner;
 
     Arena(int width, int height) {
         this.width = width;
         this.height = height;
         this.bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         matrix = createMatrix(width, height, ' ');
+        this.gameDesigner = new GameDesigner(width,height,bgColor,textColor);
     }
 
     Arena(int width, int height, Bird bird) {
@@ -44,6 +42,15 @@ public class Arena {
         this.height = height;
         this.bird = bird;
         matrix = createMatrix(width, height, ' ');
+        this.gameDesigner = new GameDesigner(width,height,bgColor,textColor);
+    }
+
+    public GameDesigner getGameScreen(){
+        return this.gameDesigner;
+    }
+
+    public int getPlayerScore(){
+        return bird.getCoinCount();
     }
 
     private int randInt(int min, int max) {
@@ -149,17 +156,6 @@ public class Arena {
     }
 
 
-    private void matrixDraw(TextGraphics graphics) {
-        //matrix.print();
-        for (int y = 0; y < height; y++)
-            for (int x = 0; x < width; x++) {
-                Element e = matrix.getPos(x, y);
-                if (e.getChar() != ' ') e.draw(graphics);
-
-            }
-    }
-
-
     private void matrixUpdate() {
         Matrix newMatrix = new Matrix(width, height, ' ');
 
@@ -202,47 +198,6 @@ public class Arena {
         return isLineFull;
     }
 
-    public void draw(TextGraphics graphics) {
-        //Set screen
-        graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
-
-        //Draw updated matrix
-        matrixDraw(graphics);
-
-        //draw picked up coins
-        graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(width - 12, 1), "Score: " + bird.getCoinCount());
-
-        //draw lifePoints
-        graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(2, 1), "HP: " + bird.getHp());
-    }
-
-
-    public void drawLoadingScreen(TextGraphics graphics) {
-        String sms = "Welcome to Run Bird run! ";
-
-        graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
-
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 1), sms);
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2), "Press q to start...");
-    }
-
-    public void drawDeathScreen(TextGraphics graphics) {
-
-        String sms = "You died!  Your score was " + bird.getCoinCount() + " .";
-
-        graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
-
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 1), sms);
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2), "Press q to exit...");
-    }
-
 
     public boolean processKey(KeyStroke key, Screen screen) throws IOException {
         if (key == null) return true;
@@ -268,4 +223,7 @@ public class Arena {
 
     }
 
+    public int getPlayerHp() {
+        return bird.getHp();
+    }
 }
