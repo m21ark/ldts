@@ -41,10 +41,9 @@ public class Game {
         return false;
     }
 
-
     private void draw() throws IOException {
         screen.clear();
-        arena.draw(graphics);
+        arena.getGameScreen().drawGame(graphics, arena.getPlayerScore(), arena.getPlayerHp(),arena.getMatrix());
         screen.refresh();
     }
 
