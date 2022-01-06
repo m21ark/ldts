@@ -54,7 +54,7 @@ public class Game {
 
         //Title  Screen
         screen.clear();
-        arena.drawLoadingScreen(graphics);
+        arena.getGameScreen().drawLoadingScreen(graphics);
         screen.refresh();
 
         do {
@@ -85,7 +85,7 @@ public class Game {
 
         //Ending Screen
         screen.clear();
-        arena.drawDeathScreen(graphics);
+        arena.getGameScreen().drawDeathScreen(graphics, arena.getPlayerScore());
         screen.refresh();
 
         do {

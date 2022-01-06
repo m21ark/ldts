@@ -1,3 +1,4 @@
+import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -31,12 +32,14 @@ public class Arena {
     private final int height;
     private final Bird bird;
     private Matrix matrix;
+    private final GameScreen gameScreen;
 
     Arena(int width, int height) {
         this.width = width;
         this.height = height;
         this.bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         matrix = createMatrix(width, height, ' ');
+        this.gameScreen  = new GameScreen(width,height,bgColor,textColor);
     }
 
     Arena(int width, int height, Bird bird) {
@@ -44,6 +47,15 @@ public class Arena {
         this.height = height;
         this.bird = bird;
         matrix = createMatrix(width, height, ' ');
+        this.gameScreen  = new GameScreen(width,height,bgColor,textColor);
+    }
+
+    public GameScreen getGameScreen(){
+        return this.gameScreen;
+    }
+
+    public int getPlayerScore(){
+        return bird.getCoinCount();
     }
 
     private int randInt(int min, int max) {
@@ -217,30 +229,6 @@ public class Arena {
         //draw lifePoints
         graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
         graphics.putString(new TerminalPosition(2, 1), "HP: " + bird.getHp());
-    }
-
-
-    public void drawLoadingScreen(TextGraphics graphics) {
-        String sms = "Welcome to Run Bird run! ";
-
-        graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
-
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 1), sms);
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2), "Press q to start...");
-    }
-
-    public void drawDeathScreen(TextGraphics graphics) {
-
-        String sms = "You died!  Your score was " + bird.getCoinCount() + " .";
-
-        graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
-
-        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 1), sms);
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2), "Press q to exit...");
     }
 
 
