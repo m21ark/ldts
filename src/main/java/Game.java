@@ -52,6 +52,18 @@ public class Game {
 
         boolean runGame = true;
 
+        //Title  Screen
+        screen.clear();
+        arena.drawLoadingScreen(graphics);
+        screen.refresh();
+
+        do {
+            key = screen.readInput();
+        } while (validKeyChar('q'));
+
+
+
+
         //Main Game Screen
         int  gameLoopInt = 0;
         do {
@@ -69,6 +81,19 @@ public class Game {
             arena.update();
 
         } while (runGame && arena.playerAlive());
+
+
+
+
+        //Ending Screen
+        screen.clear();
+        arena.drawDeathScreen(graphics);
+        screen.refresh();
+
+        do {
+            key = screen.readInput();
+        } while (validKeyChar('q'));
+
 
     }
 
