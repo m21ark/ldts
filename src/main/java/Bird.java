@@ -1,11 +1,12 @@
 public class Bird extends Element {
 
-    private  int hp = 3;
+    private int hp = 3;
     private int coinCount = 0;
 
     public Bird(int x, int y, Character character, String color) {
         super(x, y, character, color);
     }
+
     public Bird(Position pos, Character character, String color) {
         super(pos, character, color);
     }
@@ -23,11 +24,11 @@ public class Bird extends Element {
     }
 
     public void addHp(int newHp) {
-        hp +=newHp;
+        hp += newHp;
     }
 
     public boolean isAlive() {
-        return hp>0;
+        return hp > 0;
     }
 
     public int pickCoin(int numCoins) {
@@ -52,11 +53,11 @@ public class Bird extends Element {
     }
 
     public Position moveLeft(int delta) {
-        return new Position(position.getX()-delta, position.getY());
+        return new Position(position.getX() - delta, position.getY());
     }
 
     public Position moveRight(int delta) {
-        return new Position(position.getX()+delta, position.getY());
+        return new Position(position.getX() + delta, position.getY());
     }
 
 }

@@ -7,7 +7,7 @@ class Test_Bird extends Specification {
     def setup() throws Exception {
         x0 = 7
         y0 = 10
-        bird = new  Bird(x0,y0, 'B' as Character,"#00FF00")
+        bird = new Bird(x0, y0, 'B' as Character, "#00FF00")
     }
 
     def "Test takeDamage"() {
@@ -18,12 +18,12 @@ class Test_Bird extends Specification {
         when:
         bird.takeDamage()
         then:
-        hp-1 == bird.getHp()
+        hp - 1 == bird.getHp()
     }
 
-    def "Test equality"(){
+    def "Test equality"() {
         when:
-        Bird bird2 = new Bird(new Position(x0,y0), 'B' as Character, "#00FF00")
+        Bird bird2 = new Bird(new Position(x0, y0), 'B' as Character, "#00FF00")
         then:
         bird2 == bird
 
@@ -54,10 +54,10 @@ class Test_Bird extends Specification {
         when:
         bird.addHp(deltaHp)
         then:
-        bird.getHp() == initialHp+deltaHp
+        bird.getHp() == initialHp + deltaHp
     }
 
-    def "Test isAlive"(){
+    def "Test isAlive"() {
         given:
         bird.setHp(5)
         int hp = bird.getHp()
@@ -65,15 +65,12 @@ class Test_Bird extends Specification {
         boolean alive = bird.isAlive()
         then:
 
-        if(!alive)
-            hp>0
-        else
-            hp==0
+        if (!alive) hp > 0 else hp == 0
 
 
     }
 
-    def "Test pickCoin"(){
+    def "Test pickCoin"() {
         given:
         int numCoins = 3
         int coinCount = bird.getCoinCount()
@@ -83,7 +80,7 @@ class Test_Bird extends Specification {
         bird.getCoinCount() == coinCount + numCoins
     }
 
-    def "Test moveUp"(){
+    def "Test moveUp"() {
         given:
         Position pos = bird.getPosition()
         int delta = 2
@@ -95,32 +92,32 @@ class Test_Bird extends Specification {
 
     }
 
-    def "Test moveDown"(){
+    def "Test moveDown"() {
         given:
         Position pos = bird.getPosition()
         int delta = 2
         when:
-        Position newPos =bird.moveDown(delta)
+        Position newPos = bird.moveDown(delta)
         then:
         newPos.getY() == pos.getY() + delta
     }
 
-    def "Test moveLeft"(){
+    def "Test moveLeft"() {
         given:
         Position pos = bird.getPosition()
         int delta = 2
         when:
-        Position newPos =bird.moveLeft(delta)
+        Position newPos = bird.moveLeft(delta)
         then:
         newPos.getX() == pos.getX() - delta
     }
 
-    def "Test moveRight"(){
+    def "Test moveRight"() {
         given:
         Position pos = bird.getPosition()
         int delta = 2
         when:
-        Position newPos =bird.moveRight(delta)
+        Position newPos = bird.moveRight(delta)
         then:
         newPos.getX() == pos.getX() + delta
     }

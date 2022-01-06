@@ -245,7 +245,7 @@ public class Arena {
 
 
     public boolean processKey(KeyStroke key, Screen screen) throws IOException {
-        if(key == null) return true;
+        if (key == null) return true;
         if (key.getKeyType() == KeyType.ArrowLeft) {
             moveBird(bird.moveLeft(1));
         } else if (key.getKeyType() == KeyType.ArrowRight) {

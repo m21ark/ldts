@@ -38,8 +38,7 @@ public class Matrix {
     }
 
     public Element getPos(int x, int y) {
-        if (x < 0 || y < 0 || x >= width || y >= height)
-            return new Element(-1, -1, 'N', "#FFFFFF"); // null Elem
+        if (x < 0 || y < 0 || x >= width || y >= height) return new Element(-1, -1, 'N', "#FFFFFF"); // null Elem
         return matrix.get(y).get(x);
     }
 

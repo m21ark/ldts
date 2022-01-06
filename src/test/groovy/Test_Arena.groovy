@@ -16,10 +16,10 @@ class Test_Arena extends Specification {
         when:
         Matrix matrix = arena.createMatrix(width, height, ' ' as Character)
         then:
-        matrix.getPos(0,0).getChar() == arena.borderChar
-        matrix.getPos(width-1,0).getChar() == arena.borderChar
-        matrix.getPos(0,height-1).getChar() == arena.borderChar
-        matrix.getPos(width-1,height-1).getChar() == arena.borderChar
+        matrix.getPos(0, 0).getChar() == arena.borderChar
+        matrix.getPos(width - 1, 0).getChar() == arena.borderChar
+        matrix.getPos(0, height - 1).getChar() == arena.borderChar
+        matrix.getPos(width - 1, height - 1).getChar() == arena.borderChar
     }
 
     def "Test canBirdMove"() {

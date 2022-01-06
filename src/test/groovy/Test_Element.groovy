@@ -42,7 +42,7 @@ class Test_Element extends Specification {
 
     def "Test fixedPos"() {
         given:
-        Element el3 = new Element(new Position(4,5), ch2, "#12FF9A")
+        Element el3 = new Element(new Position(4, 5), ch2, "#12FF9A")
         when:
         el1.setFixedPos(true)
         then:

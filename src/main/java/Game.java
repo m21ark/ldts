@@ -62,27 +62,25 @@ public class Game {
         } while (validKeyChar('q'));
 
 
-
-
         //Main Game Screen
-        int  gameLoopInt = 0;
+        int gameLoopInt = 0;
         do {
             draw();
             key = screen.pollInput();
             runGame = arena.processKey(key, screen);
-            if(gameLoopInt%50 ==0){
+            if (gameLoopInt % 50 == 0) {
                 arena.addRandomElem(1, Arena.blockChar);
                 arena.applyGravity();
-            }if(gameLoopInt == 400){
+            }
+            if (gameLoopInt == 400) {
                 arena.addRandomElem(1, Arena.coinChar);
                 gameLoopInt = 0;
-            } gameLoopInt++;
+            }
+            gameLoopInt++;
 
             arena.update();
 
         } while (runGame && arena.playerAlive());
-
-
 
 
         //Ending Screen
