@@ -18,26 +18,46 @@ public class Element {
     }
 
     public Element(Position pos, Character character, String color) {
-        this.position.set(pos );
+        this.position.set(pos);
         this.character = character;
         this.color = color;
     }
 
-    public void gravityMoveDown() {position.setY(position.getY()+1);}
+    public void gravityMoveDown() {
+        position.setY(position.getY() + 1);
+    }
 
-    public Position getPosition() {return position;}
-    public int getPositionX() {return position.getX();}
-    public int getPositionY() {return position.getY();}
-    public Character getChar(){return character;}
-    public  boolean isFixedPos(){return fixedPos;}
+    public Position getPosition() {
+        return position;
+    }
 
-    public Element setFixedPos(boolean newFixedPos) {this.fixedPos = newFixedPos;
+    public int getPositionX() {
+        return position.getX();
+    }
+
+    public int getPositionY() {
+        return position.getY();
+    }
+
+    public Character getChar() {
+        return character;
+    }
+
+    public void setChar(Character newChar) {
+        this.character = newChar;
+    }
+
+    public boolean isFixedPos() {
+        return fixedPos;
+    }
+
+    public Element setFixedPos(boolean newFixedPos) {
+        this.fixedPos = newFixedPos;
         return this;
     }
-    public void setChar(Character newChar) {this.character = newChar;}
 
-    public void setPos(Position newPos){
-        position  = newPos;
+    public void setPos(Position newPos) {
+        position = newPos;
     }
 
     @Override
@@ -46,7 +66,7 @@ public class Element {
         if (o == null) return false;
         if (getClass() != o.getClass()) return false;
         Element p = (Element) o;
-        return character == p.getChar() &&  p.getPosition().equals(position) && fixedPos == p.isFixedPos();
+        return character == p.getChar() && p.getPosition().equals(position) && fixedPos == p.isFixedPos();
     }
 
     public void draw(TextGraphics graphics) {

@@ -23,9 +23,9 @@ public class Position {
         this.x = x;
     }
 
-    public void set(Position pos){
-       setX(pos.getX());
-       setY(pos.getY());
+    public void set(Position pos) {
+        setX(pos.getX());
+        setY(pos.getY());
     }
 
     @Override

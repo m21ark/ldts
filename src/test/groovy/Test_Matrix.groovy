@@ -15,7 +15,7 @@ class Test_Matrix extends Specification {
 
         width = 20
         height = 20
-         matrix = new Matrix(width, height, '.' as Character)
+        matrix = new Matrix(width, height, '.' as Character)
 
     }
 
@@ -25,7 +25,7 @@ class Test_Matrix extends Specification {
 
         then:
         Element elem = matrix.getPos(4, 9)
-        int x =  elem.getPosition().getX()
+        int x = elem.getPosition().getX()
         int y = elem.getPosition().getY()
 
         x == el1.getPosition().getX()
