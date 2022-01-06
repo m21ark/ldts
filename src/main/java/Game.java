@@ -1,6 +1,7 @@
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -33,6 +34,14 @@ public class Game {
 
     }
 
+    private boolean validKeyChar(Character ch) {
+        if (key != null) {
+            return key.getKeyType() != KeyType.Character && key.getCharacter() != ch;
+        }
+        return false;
+    }
+
+
     private void draw() throws IOException {
         screen.clear();
         arena.draw(graphics);
@@ -44,14 +53,18 @@ public class Game {
         boolean runGame = true;
 
         //Main Game Screen
+        int  gameLoopInt = 0;
         do {
             draw();
-            key = screen.readInput();
+            key = screen.pollInput();
             runGame = arena.processKey(key, screen);
-
-            arena.addRandomElem(1, Arena.blockChar);
-            arena.addRandomElem(1, Arena.coinChar);
-            arena.applyGravity();
+            if(gameLoopInt%50 ==0){
+                arena.addRandomElem(1, Arena.blockChar);
+                arena.applyGravity();
+            }if(gameLoopInt == 400){
+                arena.addRandomElem(1, Arena.coinChar);
+                gameLoopInt = 0;
+            } gameLoopInt++;
 
             arena.update();
 
@@ -59,4 +72,8 @@ public class Game {
 
     }
 
+
 }
+
+/*
+ */
