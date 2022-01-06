@@ -67,7 +67,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\Projeto-1.0-SNAPSHOT.jar;%APP_HOME%\lib\lanterna-3.1.1.jar
+set CLASSPATH=%APP_HOME%\lib\Projeto-1.0.jar;%APP_HOME%\lib\lanterna-3.1.1.jar
 
 
 @rem Execute Projeto
