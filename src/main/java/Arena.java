@@ -99,9 +99,12 @@ public class Arena {
         boolean notInBorder = pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5;
         Character NewPos = matrix.getPos(pos).getChar();
         boolean isNewPosFree = NewPos!= blockChar;
-        if(NewPos == coinChar)
-            if(matrix.getPos(new Position(pos.getX(), pos.getY()+1)).getChar() != ' ' )
-            bird.pickCoin(1);
+        if(NewPos == coinChar) {
+            if(pos.getX()!=bird.getPositionX())
+                bird.pickCoin(1);
+            else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ')
+                bird.pickCoin(1);
+        }
         return notInBorder && isNewPosFree;
     }
 
