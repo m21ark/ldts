@@ -96,8 +96,12 @@ public class Arena {
     }
 
     public boolean canBirdMove(Position pos) {
-        boolean notInBorder = pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 0;
-        return notInBorder;
+        boolean notInBorder = pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5;
+        Character NewPos = matrix.getPos(pos).getChar();
+        boolean isNewPosFree = NewPos!= blockChar;
+        if(NewPos == coinChar)
+            bird.pickCoin(1);
+        return notInBorder && isNewPosFree;
     }
 
     public boolean moveBird(Position pos) {
@@ -116,8 +120,13 @@ public class Arena {
         for (int y = height - 1; y > 1; y--)
             for (int x = width - 1; x >= 1; x--) {
                 Element e = matrix.getPos(x, y);
-                if (e.getChar() != borderChar) if (canApplyGravity(e)) e.gravityMoveDown();
+                Character ch = e.getChar();
+                if (ch != borderChar && ch != birdChar)
+                    if (canApplyGravity(e))
+                        e.gravityMoveDown();
             }
+
+        moveBird(bird.moveDown(1));
 
     }
 
@@ -150,14 +159,14 @@ public class Arena {
         //End of Situations
 
 
-        if (!canApply && e.getChar() != birdChar) e.setFixedPos(true);
+        //if (!canApply && e.getChar() != birdChar) e.setFixedPos(true);
 
         return canApply;
     }
 
 
     private void matrixUpdate() {
-        Matrix newMatrix = new Matrix(width, height, ' ');
+        Matrix newMatrix = createMatrix(width, height, ' ');
 
         Element b = null;
 
