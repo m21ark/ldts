@@ -27,14 +27,14 @@ public class Arena {
     private final int height;
     private final Bird bird;
     private Matrix matrix;
-    private final GameDesigner gameDesigner;
+    private final ArenaViewer arenaViewer;
 
     Arena(int width, int height) {
         this.width = width;
         this.height = height;
         this.bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         matrix = createMatrix(width, height, ' ');
-        this.gameDesigner = new GameDesigner(width,height,bgColor,textColor);
+        this.arenaViewer = new ArenaViewer(width,height,bgColor,textColor);
     }
 
     Arena(int width, int height, Bird bird) {
@@ -42,11 +42,11 @@ public class Arena {
         this.height = height;
         this.bird = bird;
         matrix = createMatrix(width, height, ' ');
-        this.gameDesigner = new GameDesigner(width,height,bgColor,textColor);
+        this.arenaViewer = new ArenaViewer(width,height,bgColor,textColor);
     }
 
-    public GameDesigner getGameScreen(){
-        return this.gameDesigner;
+    public ArenaViewer getGameScreen(){
+        return this.arenaViewer;
     }
 
     public int getPlayerScore(){
@@ -100,6 +100,7 @@ public class Arena {
         Character NewPos = matrix.getPos(pos).getChar();
         boolean isNewPosFree = NewPos!= blockChar;
         if(NewPos == coinChar)
+            if(matrix.getPos(new Position(pos.getX(), pos.getY()+1)).getChar() != ' ' )
             bird.pickCoin(1);
         return notInBorder && isNewPosFree;
     }
@@ -149,11 +150,12 @@ public class Arena {
             bird.takeDamage();
         } else if (e.getChar() == coinChar && belowElem == birdChar) {
             canApply = true;
-            bird.pickCoin(1);
+            if(matrix.getPos(new Position(bird.getPositionX(),bird.getPositionY()+1)).getChar() != ' ')
+                bird.pickCoin(1);
+
         } else if (e.getChar() == birdChar && belowElem == coinChar) {
             canApply = true;
             e.setPos(new Position(x, y));
-            bird.setCoinCount(bird.getCoinCount());
             matrix.setPos(e);
         }
         //End of Situations
