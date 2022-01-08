@@ -1,4 +1,3 @@
-import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -18,34 +17,11 @@ public class ArenaViewer {
         this.textColor = textColor;
     }
 
-    public void drawLoadingScreen(TextGraphics graphics) {
-        graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
-        graphics.enableModifiers(SGR.BOLD);
-
-        String sms = "Welcome to Run Bird run! ";
-        graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 1), sms);
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2), "Press q to start...");
-    }
-
-    public void drawDeathScreen(TextGraphics graphics, int playerCoinCount) {
-        graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
-        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
-        graphics.enableModifiers(SGR.BOLD);
-
-        String sms = "You died!  Your score was " + playerCoinCount + " .";
-        graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 1), sms);
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2), "Press q to exit...");
-    }
-
-    private void drawMatrix(TextGraphics graphics,  Matrix matrix) {
+    private void drawMatrix(TextGraphics graphics, Matrix matrix) {
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++) {
                 Element e = matrix.getPos(x, y);
                 if (e.getChar() != ' ') e.draw(graphics);
-
             }
     }
 
@@ -64,7 +40,7 @@ public class ArenaViewer {
 
         //draw lifePoints
         graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(2, 1), "HP: " +playerHP);
+        graphics.putString(new TerminalPosition(2, 1), "HP: " + playerHP);
     }
 
 
