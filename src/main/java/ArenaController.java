@@ -37,7 +37,7 @@ public class ArenaController {
         matrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
         matrix.setPos(this.bird);
         this.arenaViewer = new ArenaViewer(width,height,bgColor,textColor);
-        this.arenaModel = new ArenaModel(width,height);
+        this.arenaModel = new ArenaModel(width,height, matrix, birdColor);
     }
 
 
@@ -102,10 +102,6 @@ public class ArenaController {
         } else return false;
     }
 
-    private boolean detectCollision(Matrix newM, Element b) {
-        return false;
-    }
-
     public void applyGravity() {
 
         for (int y = height - 1; y > 1; y--)
@@ -155,7 +151,6 @@ public class ArenaController {
 
         return canApply;
     }
-
 
     private void matrixUpdate() {
         Matrix newMatrix =  new MatrixFactory().getMatrix(width, height, borderChar, borderColor);

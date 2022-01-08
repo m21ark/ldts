@@ -22,34 +22,10 @@ public class Game {
     private KeyStroke key;
     private MenuViewer menuViewer;
 
-    private Font loadFont(int fontSize) throws IOException, FontFormatException, URISyntaxException {
-        URL resource = getClass().getClassLoader().getResource("square.ttf");
-        File fontFile = new File(resource.toURI());
-        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
-
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
-
-        Font loadedFont = font.deriveFont(Font.BOLD, fontSize);
-
-        return loadedFont;
-    }
-
 
     public Game(int width, int height) throws IOException, URISyntaxException, FontFormatException {
 
-        TerminalSize terminalSize = new TerminalSize(width, height);
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
-
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadFont(20));
-        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
-        terminalFactory.setForceAWTOverSwing(true);
-
-        Terminal terminal = terminalFactory.createTerminal();
-        screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null); // we don't need a cursor
-        screen.startScreen(); // screens must be started
-        screen.doResizeIfNecessary(); // resize screen if necessary
+        this.screen = new ScreenFactory().getScreen(width, height, 20);
 
         this.graphics = screen.newTextGraphics();
 
