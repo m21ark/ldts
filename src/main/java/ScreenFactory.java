@@ -1,5 +1,4 @@
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -14,19 +13,15 @@ import java.net.URL;
 
 public class ScreenFactory {
 
-
-
     private Font loadFont(int fontSize) throws IOException, FontFormatException, URISyntaxException {
         URL resource = getClass().getClassLoader().getResource("square.ttf");
         File fontFile = new File(resource.toURI());
-        Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
+        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
-        Font loadedFont = font.deriveFont(Font.BOLD, fontSize);
-
-        return loadedFont;
+        return font.deriveFont(Font.BOLD, fontSize);
     }
 
 
@@ -48,17 +43,6 @@ public class ScreenFactory {
         return screen;
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

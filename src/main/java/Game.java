@@ -1,18 +1,11 @@
-import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.net.URL;
 
 public class Game {
 
@@ -20,19 +13,16 @@ public class Game {
     private final TextGraphics graphics;
     private final ArenaController arena;
     private KeyStroke key;
-    private MenuViewer menuViewer;
+    private final MenuViewer menuViewer;
+    private final GameViewer gameViewer;
 
 
     public Game(int width, int height) throws IOException, URISyntaxException, FontFormatException {
-
         this.screen = new ScreenFactory().getScreen(width, height, 20);
-
         this.graphics = screen.newTextGraphics();
-
         this.arena = new ArenaController(width, height);
-
-        menuViewer = new  MenuViewer(width,height, "#3A656C","#000000");
-
+        this.menuViewer = new  MenuViewer(width,height, "#3A656C","#000000");
+        this.gameViewer = new GameViewer();
     }
 
     private boolean validKeyChar(Character ch) {
@@ -40,12 +30,6 @@ public class Game {
             return key.getKeyType() != KeyType.Character && key.getCharacter() != ch;
         }
         return false;
-    }
-
-    private void draw() throws IOException {
-        screen.clear();
-        arena.getArenaViewer().drawGame(graphics, arena.getPlayerScore(), arena.getPlayerHp(),arena.getMatrix());
-        screen.refresh();
     }
 
     public void run() throws IOException {
@@ -65,7 +49,7 @@ public class Game {
         //Main Game Screen
         int gameLoopInt = 0;
         do {
-            draw();
+            gameViewer.draw(screen,graphics,arena);
             key = screen.pollInput();
             runGame = arena.processKey(key, screen);
             if (gameLoopInt % 50 == 0) {
@@ -97,6 +81,3 @@ public class Game {
 
 
 }
-
-/*
- */
