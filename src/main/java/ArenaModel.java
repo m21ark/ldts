@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.Random;
 
 
-public class Arena {
+public class ArenaModel {
 
     //Characters
     public final static Character birdChar = 'B';
@@ -29,18 +29,10 @@ public class Arena {
     private Matrix matrix;
     private final ArenaViewer arenaViewer;
 
-    Arena(int width, int height) {
+    ArenaModel(int width, int height) {
         this.width = width;
         this.height = height;
         this.bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
-        matrix = createMatrix(width, height, ' ');
-        this.arenaViewer = new ArenaViewer(width,height,bgColor,textColor);
-    }
-
-    Arena(int width, int height, Bird bird) {
-        this.width = width;
-        this.height = height;
-        this.bird = bird;
         matrix = createMatrix(width, height, ' ');
         this.arenaViewer = new ArenaViewer(width,height,bgColor,textColor);
     }

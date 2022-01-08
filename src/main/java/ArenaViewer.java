@@ -18,13 +18,11 @@ public class ArenaViewer {
         this.textColor = textColor;
     }
 
-
     private void drawMatrix(TextGraphics graphics,  Matrix matrix) {
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++) {
                 Element e = matrix.getPos(x, y);
                 if (e.getChar() != ' ') e.draw(graphics);
-
             }
     }
 

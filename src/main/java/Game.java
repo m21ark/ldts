@@ -18,7 +18,7 @@ public class Game {
 
     private final Screen screen;
     private final TextGraphics graphics;
-    private final Arena arena;
+    private final ArenaController arena;
     private KeyStroke key;
     private MenuViewer menuViewer;
 
@@ -53,7 +53,7 @@ public class Game {
 
         this.graphics = screen.newTextGraphics();
 
-        this.arena = new Arena(width, height);
+        this.arena = new ArenaController(width, height);
 
         menuViewer = new  MenuViewer(width,height, "#3A656C","#000000");
 

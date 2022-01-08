@@ -6,12 +6,8 @@ public class EmptyElement extends Element {
     }
 
     @Override
-    public void gravityMove() {
-
-    }
+    public void gravityMove() {}
 
     @Override
-    public void draw(TextGraphics graphics) {
-
-    }
+    public void draw(TextGraphics graphics) {}
 }

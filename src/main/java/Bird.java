@@ -1,3 +1,6 @@
+import com.googlecode.lanterna.SGR;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Bird extends Element {
@@ -15,12 +18,15 @@ public class Bird extends Element {
 
     @Override
     public void gravityMove() {
-
+       moveDown(1);
     }
 
     @Override
     public void draw(TextGraphics graphics) {
+        graphics.setForegroundColor(TextColor.Factory.fromString(this.color));
+        graphics.enableModifiers(SGR.BOLD);
 
+        graphics.putString(new TerminalPosition(this.position.getX(), this.position.getY()), this.character.toString());
     }
 
     public int takeDamage() {

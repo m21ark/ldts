@@ -28,6 +28,7 @@ public class Matrix {
     }
 
     public boolean setPos(Element c) {
+        if(c==null ) return false;
         int x = c.getPosition().getX();
         int y = c.getPosition().getY();
 
