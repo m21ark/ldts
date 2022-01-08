@@ -1,6 +1,5 @@
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.awt.*;
@@ -27,7 +26,7 @@ public class Game {
 
     private boolean validKeyChar(Character ch) {
         if (key != null) {
-            return key.getKeyType() != KeyType.Character && key.getCharacter() != ch;
+            return key.getCharacter() != ch;
         }
         return false;
     }

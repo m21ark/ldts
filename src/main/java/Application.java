@@ -9,8 +9,6 @@ public class Application {
         try {
             Game game = new Game(50, 35);
             game.run();
-            System.exit(0);
-
         } catch (IOException | URISyntaxException | FontFormatException e) {
             e.printStackTrace();
         }

@@ -21,13 +21,12 @@ public class ArenaModel {
         return matrix;
     }
 
-    public int getPlayerHp() {
-        return bird.getHp();
-    }
-
-
     public void setMatrix(Matrix matrix) {
         this.matrix = matrix;
+    }
+
+    public int getPlayerHp() {
+        return bird.getHp();
     }
 
     public Bird getBird() {

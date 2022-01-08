@@ -19,14 +19,6 @@ public class Matrix {
         }
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
     public boolean setPos(Element c) {
         if (c == null) return false;
         int x = c.getPosition().getX();
@@ -47,11 +39,6 @@ public class Matrix {
         if (pos.getX() < 0 || pos.getY() < 0 || pos.getX() >= width || pos.getY() >= height) return null;
         return matrix.get(pos.getY()).get(pos.getX());
     }
-
-    public List<List<Element>> getMatrix() {
-        return matrix;
-    }
-
 
     public void print() {
         for (int i = 0; i < height; i++) {

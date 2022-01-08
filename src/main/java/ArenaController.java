@@ -43,6 +43,7 @@ public class ArenaController {
     public ArenaViewer getArenaViewer() {
         return this.arenaViewer;
     }
+
     public ArenaModel getArenaModel() {
         return arenaModel;
     }
@@ -189,7 +190,7 @@ public class ArenaController {
     }
 
     public boolean playerAlive() {
-        return arenaModel.getPlayerHp()>0;
+        return arenaModel.getPlayerHp() > 0;
     }
 
     public void update() {
