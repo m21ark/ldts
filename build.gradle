@@ -2,11 +2,16 @@ plugins {
     id 'java'
     id 'groovy'
     id 'application'
+    id 'info.solidsoft.pitest' version '1.6.0'
     //id "org.kordamp.gradle.errorprone" version "0.47.0"
 }
 
 application {
     mainClass.set("Application")
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
 }
 
 group 'ldts-project-assignment-G0900'
