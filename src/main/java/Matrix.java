@@ -48,7 +48,15 @@ public class Matrix {
         }
     }
 
-    public int getWidth() {return width;}
-    public int getHeight() {return height;}
-    public List<List<Element>> getMatrix() {return matrix;}
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public List<List<Element>> getMatrix() {
+        return matrix;
+    }
 }

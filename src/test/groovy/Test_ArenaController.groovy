@@ -1,16 +1,16 @@
-/*import spock.lang.Specification
+import spock.lang.Specification
 
 
-class Test_Arena extends Specification {
+class Test_ArenaController extends Specification {
     int width, height
     Bird bird
-    Arena arena
+    ArenaController arena
 
     def setup() throws Exception {
         width = 50
         height = 30
         bird = new Bird(new Position(width / 2 as int, height / 2 as int), 'B' as Character, "#000000")
-        arena = new Arena(width, height, bird)
+        arena = new ArenaController(width, height)
     }
 
     def "Test canBirdMove"() {
@@ -18,7 +18,7 @@ class Test_Arena extends Specification {
         Position newPos = new Position(5, 7)
         when:
         boolean canMove = arena.canBirdMove(newPos)
-        Matrix matrix = arena.getMatrix()
+        Matrix matrix = arena.getArenaModel().getMatrix()
         Character newPosChar = matrix.getPos(newPos).getChar()
         then:
         if (newPosChar == arena.coinChar || newPosChar == ' ') canMove else !canMove
@@ -30,8 +30,7 @@ class Test_Arena extends Specification {
         when:
         arena.moveBird(pos)
         then:
-        if(arena.canBirdMove(pos))
-            bird.getPosition() == pos
+        if (arena.canBirdMove(pos)) bird.getPosition() == pos
 
     }
 
@@ -44,22 +43,6 @@ class Test_Arena extends Specification {
         birdStatus == alive
     }
 
-    def "Test detectCollision"() {
-        //TODO
-    }
-
-    def "Test applyGravity"() {
-        //TODO
-    }
-
-    def "Test matrixUpdate"() {
-        //TODO
-    }
-
-    def "Test addRandomElem"() {
-        //TODO
-    }
 
 }
 
- */
