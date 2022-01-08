@@ -11,16 +11,16 @@ class Test_MatrixFactory extends Specification {
         def arena = Mock(ArenaController)
 
         when:
-        Matrix matrix = new MatrixFactory().getMatrix(width, height, arena.borderChar , "#000000")
+        Matrix matrix = new MatrixFactory().getMatrix(width, height, arena.borderChar, "#000000")
 
         then:
         matrix.getWidth() == width
         matrix.getHeight() == height
-       matrix.getPos(0, 0).getChar() == arena.borderChar
+        matrix.getPos(0, 0).getChar() == arena.borderChar
         matrix.getPos(width - 1, 0).getChar() == arena.borderChar
         matrix.getPos(0, height - 1).getChar() == arena.borderChar
         matrix.getPos(width - 1, height - 1).getChar() == arena.borderChar
-        matrix.getPos(width /2 as int, height/2 as int).getChar() == ' '
+        matrix.getPos(width / 2 as int, height / 2 as int).getChar() == ' '
 
     }
 

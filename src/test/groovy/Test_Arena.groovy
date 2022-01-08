@@ -1,6 +1,6 @@
-import spock.lang.Specification
+/*import spock.lang.Specification
 
-/*
+
 class Test_Arena extends Specification {
     int width, height
     Bird bird

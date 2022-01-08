@@ -15,15 +15,15 @@ class Test_GameViewer extends Specification {
 
         when:
 
-      gameViewer.draw(screen ,  graphics, arenaModel,arenaViewer )
+        gameViewer.draw(screen, graphics, arenaModel, arenaViewer)
 
         then:
-        1* screen.clear()
-        1*screen.refresh()
-        1*arenaViewer.drawGame(graphics,_,_,_)
-        1*arenaModel.getMatrix()
-        1*arenaModel.getPlayerHp()
-        1*arenaModel.getPlayerScore()
+        1 * screen.clear()
+        1 * screen.refresh()
+        1 * arenaViewer.drawGame(graphics, _, _, _)
+        1 * arenaModel.getMatrix()
+        1 * arenaModel.getPlayerHp()
+        1 * arenaModel.getPlayerScore()
 
     }
 

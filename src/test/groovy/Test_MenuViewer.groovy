@@ -13,14 +13,14 @@ class Test_MenuViewer extends Specification {
 
         when:
 
-        def  screen= menuViewer.drawLoadingScreen(graphics)
+        def screen = menuViewer.drawLoadingScreen(graphics)
 
         then:
-        1* graphics.setBackgroundColor(_)
-        1* graphics.fillRectangle(_,_,_)
-        1*graphics.enableModifiers(_)
-        1*graphics.setForegroundColor(_)
-        2*graphics.putString(_,_)
+        1 * graphics.setBackgroundColor(_)
+        1 * graphics.fillRectangle(_, _, _)
+        1 * graphics.enableModifiers(_)
+        1 * graphics.setForegroundColor(_)
+        2 * graphics.putString(_, _)
 
     }
 
@@ -33,14 +33,14 @@ class Test_MenuViewer extends Specification {
 
         when:
 
-        def  screen= menuViewer.drawDeathScreen(graphics, 0)
+        def screen = menuViewer.drawDeathScreen(graphics, 0)
 
         then:
-        1* graphics.setBackgroundColor(_)
-        1* graphics.fillRectangle(_,_,_)
-        1*graphics.enableModifiers(_)
-        1*graphics.setForegroundColor(_)
-        2*graphics.putString(_,_)
+        1 * graphics.setBackgroundColor(_)
+        1 * graphics.fillRectangle(_, _, _)
+        1 * graphics.enableModifiers(_)
+        1 * graphics.setForegroundColor(_)
+        2 * graphics.putString(_, _)
 
     }
 
