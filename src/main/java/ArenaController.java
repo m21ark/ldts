@@ -25,17 +25,16 @@ public class ArenaController {
     //Attributes
     private final int width;
     private final int height;
-    private final Bird bird;
     private final ArenaViewer arenaViewer;
     private final ArenaModel arenaModel;
-    private Matrix matrix;
+
 
     ArenaController(int width, int height) {
         this.width = width;
         this.height = height;
-        this.bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
-        matrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
-        matrix.setPos(this.bird);
+        Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
+        Matrix matrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
+        matrix.setPos(bird);
         this.arenaViewer = new ArenaViewer(width, height, bgColor, textColor);
         this.arenaModel = new ArenaModel(width, height, matrix, birdColor);
     }
@@ -44,9 +43,8 @@ public class ArenaController {
     public ArenaViewer getArenaViewer() {
         return this.arenaViewer;
     }
-
-    public int getPlayerScore() {
-        return bird.getCoinCount();
+    public ArenaModel getArenaModel() {
+        return arenaModel;
     }
 
     private int randInt(int min, int max) {
@@ -54,13 +52,9 @@ public class ArenaController {
         return random.nextInt((max - (min)) + 1) + (min);
     }
 
-    public Matrix getMatrix() {
-        return matrix;
-    }
-
-
     public void addRandomCoin(int numberOfCoin) {
         int x, y;
+        Matrix matrix = arenaModel.getMatrix();
 
         for (int i = 0; i < numberOfCoin; i++) {
             x = randInt(1, width - 2);
@@ -68,10 +62,13 @@ public class ArenaController {
             matrix.setPos(new Coin(x, y, coinChar, coinColor));
             matrix.setPos(new Coin(x, y, coinChar, coinColor));
         }
+
+        arenaModel.setMatrix(matrix);
     }
 
     public void addRandomBlock(int numberOfBlock) {
         int x, y;
+        Matrix matrix = arenaModel.getMatrix();
 
         for (int i = 0; i < numberOfBlock; i++) {
             x = randInt(1, width - 2);
@@ -79,9 +76,14 @@ public class ArenaController {
             matrix.setPos(new Block(x, y, blockChar, blockColor));
             matrix.setPos(new Block(x, y, blockChar, blockColor));
         }
+        arenaModel.setMatrix(matrix);
     }
 
     public boolean canBirdMove(Position pos) {
+
+        Matrix matrix = arenaModel.getMatrix();
+        Bird bird = arenaModel.getBird();
+
         boolean notInBorder = pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5;
         Character NewPos = matrix.getPos(pos).getChar();
         boolean isNewPosFree = NewPos != blockChar;
@@ -89,17 +91,26 @@ public class ArenaController {
             if (pos.getX() != bird.getPositionX()) bird.pickCoin(1);
             else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') bird.pickCoin(1);
         }
+
+        arenaModel.setBird(bird);
+
         return notInBorder && isNewPosFree;
     }
 
     public boolean moveBird(Position pos) {
+        Bird bird = arenaModel.getBird();
+
         if (canBirdMove(pos)) {
             bird.setPos(pos);
+            arenaModel.setBird(bird);
             return true;
         } else return false;
     }
 
     public void applyGravity() {
+
+        Matrix matrix = arenaModel.getMatrix();
+        Bird bird = arenaModel.getBird();
 
         for (int y = height - 1; y > 1; y--)
             for (int x = width - 1; x >= 1; x--) {
@@ -109,12 +120,16 @@ public class ArenaController {
             }
 
         moveBird(bird.moveDown(1));
+        arenaModel.setBird(bird);
 
     }
 
     private boolean canApplyGravity(Element e) {
         int x = e.getPositionX();
         int y = e.getPositionY();
+
+        Matrix matrix = arenaModel.getMatrix();
+        Bird bird = arenaModel.getBird();
 
 
         Element tempPos = matrix.getPos(x, y + 1);
@@ -143,29 +158,38 @@ public class ArenaController {
             matrix.setPos(e);
         }
 
+        arenaModel.setBird(bird);
+        arenaModel.setMatrix(matrix);
 
         return canApply;
     }
 
     private void matrixUpdate() {
+
+        Matrix matrix = arenaModel.getMatrix();
+        Bird bird = arenaModel.getBird();
+
         Matrix newMatrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
-        newMatrix.setPos(this.bird);
+        newMatrix.setPos(bird);
 
         Element b = null;
 
         for (int x = 0; x < width; x++)
             for (int y = 0; y < height; y++) {
-                Element e = this.matrix.getPos(x, y);
+                Element e = matrix.getPos(x, y);
                 if (e.getChar() == birdChar) b = e;
                 else if (e.getChar() != ' ') newMatrix.setPos(e);
             }
 
         newMatrix.setPos(b);
-        this.matrix = newMatrix;
+
+        arenaModel.setBird(bird);
+        arenaModel.setMatrix(newMatrix);
+
     }
 
     public boolean playerAlive() {
-        return bird.isAlive();
+        return arenaModel.getPlayerHp()>0;
     }
 
     public void update() {
@@ -174,13 +198,18 @@ public class ArenaController {
     }
 
     private void removeMatrixBottomRow() {
+        Matrix matrix = arenaModel.getMatrix();
+
         for (int y = height - 2; y > 1; y--)
             for (int x = width - 1; x > 1; x--)
                 matrix.getPos(x, y).gravityMove();
+
+        arenaModel.setMatrix(matrix);
     }
 
     private boolean isMatrixBottomRowFull() {
         boolean isLineFull = true;
+        Matrix matrix = arenaModel.getMatrix();
 
         for (int x = 0; x < width; x++) {
             Character c = matrix.getPos(x, height - 2).getChar();
@@ -191,6 +220,8 @@ public class ArenaController {
 
 
     public boolean processKey(KeyStroke key, Screen screen) throws IOException {
+        Bird bird = arenaModel.getBird();
+
         if (key == null) return true;
         if (key.getKeyType() == KeyType.ArrowLeft) {
             moveBird(bird.moveLeft(1));
@@ -210,15 +241,11 @@ public class ArenaController {
             System.exit(0);
         }
 
+        arenaModel.setBird(bird);
+
         return true;
 
     }
 
-    public int getPlayerHp() {
-        return bird.getHp();
-    }
 
-    public ArenaModel getArenaModel() {
-        return arenaModel;
-    }
 }

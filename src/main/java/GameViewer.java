@@ -5,9 +5,9 @@ import java.io.IOException;
 
 public class GameViewer {
 
-    public void draw(Screen screen, TextGraphics graphics, ArenaController arena) throws IOException {
+    public void draw(Screen screen, TextGraphics graphics, ArenaModel arenaModel, ArenaViewer arenaViewer) throws IOException {
         screen.clear();
-        arena.getArenaViewer().drawGame(graphics, arena.getPlayerScore(), arena.getPlayerHp(), arena.getMatrix());
+        arenaViewer.drawGame(graphics, arenaModel.getPlayerScore(), arenaModel.getPlayerHp(), arenaModel.getMatrix());
         screen.refresh();
     }
 

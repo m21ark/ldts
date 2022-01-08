@@ -49,7 +49,7 @@ public class Game {
         //Main Game Screen
         int gameLoopInt = 0;
         do {
-            gameViewer.draw(screen, graphics, arena);
+            gameViewer.draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
             key = screen.pollInput();
             runGame = arena.processKey(key, screen);
             if (gameLoopInt % 50 == 0) {
@@ -69,7 +69,7 @@ public class Game {
 
         //Ending Screen
         screen.clear();
-        menuViewer.drawDeathScreen(graphics, arena.getPlayerScore());
+        menuViewer.drawDeathScreen(graphics, arena.getArenaModel().getPlayerScore());
         screen.refresh();
 
         do {

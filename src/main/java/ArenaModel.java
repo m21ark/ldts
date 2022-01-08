@@ -2,8 +2,8 @@ public class ArenaModel {
 
     private final int width;
     private final int height;
-    private final Bird bird;
-    private final Matrix matrix;
+    private Bird bird;
+    private Matrix matrix;
 
     ArenaModel(int width, int height, Matrix matrix, String birdColor) {
         this.width = width;
@@ -26,4 +26,15 @@ public class ArenaModel {
     }
 
 
+    public void setMatrix(Matrix matrix) {
+        this.matrix = matrix;
+    }
+
+    public Bird getBird() {
+        return this.bird;
+    }
+
+    public void setBird(Bird bird) {
+        this.bird = bird;
+    }
 }
