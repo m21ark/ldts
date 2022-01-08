@@ -20,6 +20,7 @@ public class Game {
     private final TextGraphics graphics;
     private final Arena arena;
     private KeyStroke key;
+    private MenuViewer menuViewer;
 
     private Font loadFont(int fontSize) throws IOException, FontFormatException, URISyntaxException {
         URL resource = getClass().getClassLoader().getResource("square.ttf");
@@ -54,6 +55,8 @@ public class Game {
 
         this.arena = new Arena(width, height);
 
+        menuViewer = new  MenuViewer(width,height, "#3A656C","#000000");
+
     }
 
     private boolean validKeyChar(Character ch) {
@@ -65,7 +68,7 @@ public class Game {
 
     private void draw() throws IOException {
         screen.clear();
-        arena.getGameScreen().drawGame(graphics, arena.getPlayerScore(), arena.getPlayerHp(),arena.getMatrix());
+        arena.getArenaViewer().drawGame(graphics, arena.getPlayerScore(), arena.getPlayerHp(),arena.getMatrix());
         screen.refresh();
     }
 
@@ -75,7 +78,7 @@ public class Game {
 
         //Title  Screen
         screen.clear();
-        arena.getGameScreen().drawLoadingScreen(graphics);
+        menuViewer.drawLoadingScreen(graphics);
         screen.refresh();
 
         do {
@@ -90,11 +93,11 @@ public class Game {
             key = screen.pollInput();
             runGame = arena.processKey(key, screen);
             if (gameLoopInt % 50 == 0) {
-                arena.addRandomElem(1, Arena.blockChar);
+                arena.addRandomBlock(1);
                 arena.applyGravity();
             }
             if (gameLoopInt == 400) {
-                arena.addRandomElem(1, Arena.coinChar);
+                arena.addRandomCoin(1);
                 gameLoopInt = 0;
             }
             gameLoopInt++;
@@ -106,7 +109,7 @@ public class Game {
 
         //Ending Screen
         screen.clear();
-        arena.getGameScreen().drawDeathScreen(graphics, arena.getPlayerScore());
+        menuViewer.drawDeathScreen(graphics, arena.getPlayerScore());
         screen.refresh();
 
         do {

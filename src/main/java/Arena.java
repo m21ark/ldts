@@ -45,7 +45,7 @@ public class Arena {
         this.arenaViewer = new ArenaViewer(width,height,bgColor,textColor);
     }
 
-    public ArenaViewer getGameScreen(){
+    public ArenaViewer getArenaViewer(){
         return this.arenaViewer;
     }
 
@@ -66,13 +66,13 @@ public class Arena {
         Matrix temp = new Matrix(width, height, defaultChar);
 
         for (int c = 0; c < width; c++) {
-            temp.setPos(new Element(c, 0, borderChar, borderColor).setFixedPos(true));
-            temp.setPos(new Element(c, height - 1, borderChar, borderColor).setFixedPos(true));
+            temp.setPos(new Block(c, 0, borderChar, borderColor));
+            temp.setPos(new Block(c, height - 1, borderChar, borderColor));
         }
 
         for (int r = 1; r < height - 1; r++) {
-            temp.setPos(new Element(0, r, borderChar, borderColor).setFixedPos(true));
-            temp.setPos(new Element(width - 1, r, borderChar, borderColor).setFixedPos(true));
+            temp.setPos(new Block(0, r, borderChar, borderColor));
+            temp.setPos(new Block(width - 1, r, borderChar, borderColor));
         }
 
         temp.setPos(this.bird);
@@ -80,18 +80,25 @@ public class Arena {
         return temp;
     }
 
-    public void addRandomElem(int numberOfElem, Character Char) {
-        String color;
+    public void addRandomCoin(int numberOfCoin) {
         int x, y;
 
-        if (Char == blockChar) color = blockColor;
-        else color = coinColor;
-
-        for (int i = 0; i < numberOfElem; i++) {
+        for (int i = 0; i < numberOfCoin; i++) {
             x = randInt(1, width - 2);
             y = 2;
-            matrix.setPos(new Element(x, y, Char, color));
-            matrix.setPos(new Element(x, y, Char, color));
+            matrix.setPos(new Coin(x, y, coinChar, coinColor));
+            matrix.setPos(new Coin(x, y, coinChar, coinColor));
+        }
+    }
+
+    public void addRandomBlock(int numberOfBlock) {
+        int x, y;
+
+        for (int i = 0; i < numberOfBlock; i++) {
+            x = randInt(1, width - 2);
+            y = 2;
+            matrix.setPos(new Block(x, y, blockChar, blockColor));
+            matrix.setPos(new Block(x, y, blockChar, blockColor));
         }
     }
 
@@ -127,7 +134,7 @@ public class Arena {
                 Character ch = e.getChar();
                 if (ch != borderChar && ch != birdChar)
                     if (canApplyGravity(e))
-                        e.gravityMoveDown();
+                        e.gravityMove();
             }
 
         moveBird(bird.moveDown(1));
@@ -138,16 +145,19 @@ public class Arena {
         int x = e.getPositionX();
         int y = e.getPositionY();
 
-        if (e.fixedPos) return false;
 
-        Character belowElem = matrix.getPos(x, y + 1).getChar();
+        Element tempPos = matrix.getPos(x, y + 1);
+
+        if(tempPos==null) return false;
+
+        Character belowElem =tempPos.getChar();
 
         boolean canApply = belowElem == ' ';
 
         //Situations
         if (e.getChar() == blockChar && belowElem == coinChar) {
             canApply = true;
-            matrix.setPos(new Element(x, y + 1, blockChar, blockColor));
+            matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
         } else if (e.getChar() == blockChar && belowElem == birdChar) {
             canApply = true;
             bird.takeDamage();
@@ -161,10 +171,7 @@ public class Arena {
             e.setPos(new Position(x, y));
             matrix.setPos(e);
         }
-        //End of Situations
 
-
-        //if (!canApply && e.getChar() != birdChar) e.setFixedPos(true);
 
         return canApply;
     }
@@ -199,7 +206,7 @@ public class Arena {
     private void removeMatrixBottomRow() {
         for (int y = height - 2; y > 1; y--)
             for (int x = width - 1; x > 1; x--)
-                matrix.getPos(x, y).gravityMoveDown();
+                matrix.getPos(x, y).gravityMove();
     }
 
     private boolean isMatrixBottomRowFull() {

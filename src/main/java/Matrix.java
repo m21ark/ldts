@@ -14,7 +14,7 @@ public class Matrix {
         for (int i = 0; i < height; i++) {
             List<Element> aux = new ArrayList<>();
             for (int j = 0; j < width; j++)
-                aux.add(new Element(i, j, defaultChar, "#000000"));
+                aux.add(new EmptyElement(i, j, defaultChar, "#000000"));
             matrix.add(aux);
         }
     }
@@ -38,13 +38,13 @@ public class Matrix {
     }
 
     public Element getPos(int x, int y) {
-        if (x < 0 || y < 0 || x >= width || y >= height) return new Element(-1, -1, 'N', "#FFFFFF"); // null Elem
+        if (x < 0 || y < 0 || x >= width || y >= height) return null;
         return matrix.get(y).get(x);
     }
 
     public Element getPos(Position pos) {
         if (pos.getX() < 0 || pos.getY() < 0 || pos.getX() >= width || pos.getY() >= height)
-            return new Element(-1, -1, 'N', "#FFFFFF"); // null Elem
+            return  null;
         return matrix.get(pos.getY()).get(pos.getX());
     }
 

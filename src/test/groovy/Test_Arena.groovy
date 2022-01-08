@@ -39,7 +39,8 @@ class Test_Arena extends Specification {
         when:
         arena.moveBird(pos)
         then:
-        bird.getPosition() == pos
+        if(arena.canBirdMove(pos))
+            bird.getPosition() == pos
 
     }
 

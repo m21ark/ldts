@@ -1,3 +1,5 @@
+import com.googlecode.lanterna.graphics.TextGraphics;
+
 public class Block extends Element {
 
     public Block(int x, int y, Character character, String color) {
@@ -6,6 +8,16 @@ public class Block extends Element {
 
     public Block(Position pos, Character character, String color) {
         super(pos, character, color);
+    }
+
+    @Override
+    public void gravityMove() {
+
+    }
+
+    @Override
+    public void draw(TextGraphics graphics) {
+
     }
 
     public void move(int x, int y) {

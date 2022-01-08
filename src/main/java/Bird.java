@@ -1,3 +1,5 @@
+import com.googlecode.lanterna.graphics.TextGraphics;
+
 public class Bird extends Element {
 
     private int hp = 3;
@@ -9,6 +11,16 @@ public class Bird extends Element {
 
     public Bird(Position pos, Character character, String color) {
         super(pos, character, color);
+    }
+
+    @Override
+    public void gravityMove() {
+
+    }
+
+    @Override
+    public void draw(TextGraphics graphics) {
+
     }
 
     public int takeDamage() {
