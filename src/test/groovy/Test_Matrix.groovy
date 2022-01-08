@@ -1,17 +1,20 @@
 import spock.lang.Specification
 
 class Test_Matrix extends Specification {
-    Element el1, el2
+    Coin coin1, coin2
+    Block block1, block2, block3
+    Bird bird
     int width, height
     Matrix matrix
 
     def setup() throws Exception {
 
-        Character ch1 = 'a'
-        Character ch2 = 'b'
-
-        el1 = new Element(4, 9, ch1, "#000000")
-        el2 = new Element(8, 3, ch2, "#12FF9A")
+        coin1 = new Coin(1, 2, 'C' as Character, "#00FF11")
+        coin2 = new Coin(6, 20, 'C' as Character, "#00FF11")
+        block1 = new Block(7, 10, 'X' as Character, "#11FF00")
+        block2 = new Block(19, 8, 'X' as Character, "#11FF00")
+        block3 = new Block(-1, 17, 'X' as Character, "#11FF00")
+        bird = new Bird(5, 5, 'B' as Character, "#10AF20")
 
         width = 20
         height = 20
@@ -21,18 +24,27 @@ class Test_Matrix extends Specification {
 
     def "Test set/get Pos"() {
         when:
-        matrix.setPos(el1)
+        boolean b1 = matrix.setPos(coin1)
+        boolean b2 = matrix.setPos(coin2)
+        boolean b3 = matrix.setPos(block1)
+        boolean b4 = matrix.setPos(block2)
+        boolean b5 = matrix.setPos(block3)
+        boolean b6 = matrix.setPos(bird)
+
 
         then:
-        Element elem = matrix.getPos(4, 9)
-        int x = elem.getPosition().getX()
-        int y = elem.getPosition().getY()
+        false == (b2 || b5)
+        true == (b1 && b3 && b4 && b6)
 
-        x == el1.getPosition().getX()
-        y == el1.getPosition().getY()
+        Element elem1 = matrix.getPos(1, 2)
+        Element elem3 = matrix.getPos(7, 10)
+        Element elem4 = matrix.getPos(19, 8)
+        Element elem6 = matrix.getPos(5, 5)
 
-        elem.getChar() == el1.getChar()
-
+        elem1.getChar() == 'C'
+        elem3.getChar() == 'X'
+        elem4.getChar() == 'X'
+        elem6.getChar() == 'B'
     }
 
     def "Test getDimensions"() {
@@ -58,3 +70,4 @@ class Test_Matrix extends Specification {
 
 
 }
+

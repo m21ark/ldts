@@ -10,6 +10,14 @@ class Test_Bird extends Specification {
         bird = new Bird(x0, y0, 'B' as Character, "#00FF00")
     }
 
+    def "Test get char"() {
+        when:
+        Character c1 = bird.getChar()
+
+        then:
+        c1 == 'B'
+    }
+
     def "Test takeDamage"() {
         given:
         bird.setHp(20)
