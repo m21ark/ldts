@@ -21,8 +21,7 @@ public class ArenaViewer {
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++) {
                 Element e = matrix.getPos(x, y);
-               if(e!=null)
-                   if (e.getChar() != ' ') e.draw(graphics);
+                if (e != null) if (e.getChar() != ' ') e.draw(graphics);
             }
     }
 
