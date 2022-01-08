@@ -26,9 +26,9 @@ public class ArenaController {
     private final int width;
     private final int height;
     private final Bird bird;
-    private Matrix matrix;
     private final ArenaViewer arenaViewer;
     private final ArenaModel arenaModel;
+    private Matrix matrix;
 
     ArenaController(int width, int height) {
         this.width = width;
@@ -36,17 +36,16 @@ public class ArenaController {
         this.bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         matrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
         matrix.setPos(this.bird);
-        this.arenaViewer = new ArenaViewer(width,height,bgColor,textColor);
-        this.arenaModel = new ArenaModel(width,height, matrix, birdColor);
+        this.arenaViewer = new ArenaViewer(width, height, bgColor, textColor);
+        this.arenaModel = new ArenaModel(width, height, matrix, birdColor);
     }
 
 
-
-    public ArenaViewer getArenaViewer(){
+    public ArenaViewer getArenaViewer() {
         return this.arenaViewer;
     }
 
-    public int getPlayerScore(){
+    public int getPlayerScore() {
         return bird.getCoinCount();
     }
 
@@ -85,12 +84,10 @@ public class ArenaController {
     public boolean canBirdMove(Position pos) {
         boolean notInBorder = pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5;
         Character NewPos = matrix.getPos(pos).getChar();
-        boolean isNewPosFree = NewPos!= blockChar;
-        if(NewPos == coinChar) {
-            if(pos.getX()!=bird.getPositionX())
-                bird.pickCoin(1);
-            else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ')
-                bird.pickCoin(1);
+        boolean isNewPosFree = NewPos != blockChar;
+        if (NewPos == coinChar) {
+            if (pos.getX() != bird.getPositionX()) bird.pickCoin(1);
+            else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') bird.pickCoin(1);
         }
         return notInBorder && isNewPosFree;
     }
@@ -108,9 +105,7 @@ public class ArenaController {
             for (int x = width - 1; x >= 1; x--) {
                 Element e = matrix.getPos(x, y);
                 Character ch = e.getChar();
-                if (ch != borderChar && ch != birdChar)
-                    if (canApplyGravity(e))
-                        e.gravityMove();
+                if (ch != borderChar && ch != birdChar) if (canApplyGravity(e)) e.gravityMove();
             }
 
         moveBird(bird.moveDown(1));
@@ -124,9 +119,9 @@ public class ArenaController {
 
         Element tempPos = matrix.getPos(x, y + 1);
 
-        if(tempPos==null) return false;
+        if (tempPos == null) return false;
 
-        Character belowElem =tempPos.getChar();
+        Character belowElem = tempPos.getChar();
 
         boolean canApply = belowElem == ' ';
 
@@ -139,7 +134,7 @@ public class ArenaController {
             bird.takeDamage();
         } else if (e.getChar() == coinChar && belowElem == birdChar) {
             canApply = true;
-            if(matrix.getPos(new Position(bird.getPositionX(),bird.getPositionY()+1)).getChar() != ' ')
+            if (matrix.getPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ')
                 bird.pickCoin(1);
 
         } else if (e.getChar() == birdChar && belowElem == coinChar) {
@@ -153,7 +148,7 @@ public class ArenaController {
     }
 
     private void matrixUpdate() {
-        Matrix newMatrix =  new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
+        Matrix newMatrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
         newMatrix.setPos(this.bird);
 
         Element b = null;
@@ -221,5 +216,9 @@ public class ArenaController {
 
     public int getPlayerHp() {
         return bird.getHp();
+    }
+
+    public ArenaModel getArenaModel() {
+        return arenaModel;
     }
 }

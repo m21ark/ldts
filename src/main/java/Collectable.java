@@ -1,4 +1,4 @@
-public  abstract class Collectable extends Element {
+public abstract class Collectable extends Element {
 
 
     public Collectable(int x, int y, Character character, String color) {
@@ -6,9 +6,8 @@ public  abstract class Collectable extends Element {
     }
 
     public Collectable(Position pos, Character character, String color) {
-        super(pos , character, color);
+        super(pos, character, color);
     }
-
 
 
 }

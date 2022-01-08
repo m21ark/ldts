@@ -1,4 +1,3 @@
-import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
@@ -18,7 +17,7 @@ public class ArenaViewer {
         this.textColor = textColor;
     }
 
-    private void drawMatrix(TextGraphics graphics,  Matrix matrix) {
+    private void drawMatrix(TextGraphics graphics, Matrix matrix) {
         for (int y = 0; y < height; y++)
             for (int x = 0; x < width; x++) {
                 Element e = matrix.getPos(x, y);
@@ -41,7 +40,7 @@ public class ArenaViewer {
 
         //draw lifePoints
         graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(2, 1), "HP: " +playerHP);
+        graphics.putString(new TerminalPosition(2, 1), "HP: " + playerHP);
     }
 
 

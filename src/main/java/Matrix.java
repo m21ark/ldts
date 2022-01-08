@@ -28,7 +28,7 @@ public class Matrix {
     }
 
     public boolean setPos(Element c) {
-        if(c==null ) return false;
+        if (c == null) return false;
         int x = c.getPosition().getX();
         int y = c.getPosition().getY();
 
@@ -44,8 +44,7 @@ public class Matrix {
     }
 
     public Element getPos(Position pos) {
-        if (pos.getX() < 0 || pos.getY() < 0 || pos.getX() >= width || pos.getY() >= height)
-            return  null;
+        if (pos.getX() < 0 || pos.getY() < 0 || pos.getX() >= width || pos.getY() >= height) return null;
         return matrix.get(pos.getY()).get(pos.getX());
     }
 

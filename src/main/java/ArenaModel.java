@@ -1,11 +1,3 @@
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
-
-import java.io.IOException;
-import java.util.Random;
-
-
 public class ArenaModel {
 
     private final int width;
@@ -21,7 +13,7 @@ public class ArenaModel {
     }
 
 
-    public int getPlayerScore(){
+    public int getPlayerScore() {
         return bird.getCoinCount();
     }
 
@@ -32,7 +24,6 @@ public class ArenaModel {
     public int getPlayerHp() {
         return bird.getHp();
     }
-
 
 
 }

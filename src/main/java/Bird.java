@@ -18,7 +18,7 @@ public class Bird extends Element {
 
     @Override
     public void gravityMove() {
-       moveDown(1);
+        moveDown(1);
     }
 
     @Override

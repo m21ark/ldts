@@ -12,16 +12,16 @@ public class Game {
     private final Screen screen;
     private final TextGraphics graphics;
     private final ArenaController arena;
-    private KeyStroke key;
     private final MenuViewer menuViewer;
     private final GameViewer gameViewer;
+    private KeyStroke key;
 
 
     public Game(int width, int height) throws IOException, URISyntaxException, FontFormatException {
         this.screen = new ScreenFactory().getScreen(width, height, 20);
         this.graphics = screen.newTextGraphics();
         this.arena = new ArenaController(width, height);
-        this.menuViewer = new  MenuViewer(width,height, "#3A656C","#000000");
+        this.menuViewer = new MenuViewer(width, height, "#3A656C", "#000000");
         this.gameViewer = new GameViewer();
     }
 
@@ -49,7 +49,7 @@ public class Game {
         //Main Game Screen
         int gameLoopInt = 0;
         do {
-            gameViewer.draw(screen,graphics,arena);
+            gameViewer.draw(screen, graphics, arena);
             key = screen.pollInput();
             runGame = arena.processKey(key, screen);
             if (gameLoopInt % 50 == 0) {
