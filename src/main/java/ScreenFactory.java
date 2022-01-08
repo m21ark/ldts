@@ -13,7 +13,7 @@ import java.net.URL;
 
 public class ScreenFactory {
 
-    private Font loadFont(int fontSize) throws IOException, FontFormatException, URISyntaxException {
+    public Font loadFont(int fontSize) throws IOException, FontFormatException, URISyntaxException {
         URL resource = getClass().getClassLoader().getResource("square.ttf");
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -30,7 +30,7 @@ public class ScreenFactory {
         TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
 
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadFont(fontSize));
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(this.loadFont(fontSize));
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         terminalFactory.setForceAWTOverSwing(true);
 

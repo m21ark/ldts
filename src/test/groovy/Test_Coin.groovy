@@ -14,6 +14,28 @@ class Test_Coin extends Specification {
         coin2 = new Coin(new Position(x2, y2), 'C' as Character, "#00FF00")
     }
 
+    def "Test gravity"() {
+        when:
+        int newY1 = y1 + 1
+        int newY2 = y2 + 1
+        coin1.gravityMove()
+        coin2.gravityMove()
+
+        then:
+        newY1 == coin1.getPositionY()
+        newY2 == coin2.getPositionY()
+    }
+
+    def "Test get char"() {
+        when:
+        Character c1 = coin1.getChar()
+        Character c2 = coin2.getChar()
+
+        then:
+        c1 == 'C'
+        c2 == 'C'
+    }
+
     def "Test equality"() {
         when:
         Position pos1 = coin1.getPosition()

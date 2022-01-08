@@ -1,4 +1,5 @@
-import spock.lang.Specification
+/*import spock.lang.Specification
+
 
 class Test_Arena extends Specification {
     int width, height
@@ -10,16 +11,6 @@ class Test_Arena extends Specification {
         height = 30
         bird = new Bird(new Position(width / 2 as int, height / 2 as int), 'B' as Character, "#000000")
         arena = new Arena(width, height, bird)
-    }
-
-    def "Test createMatrix"() {
-        when:
-        Matrix matrix = arena.createMatrix(width, height, ' ' as Character)
-        then:
-        matrix.getPos(0, 0).getChar() == arena.borderChar
-        matrix.getPos(width - 1, 0).getChar() == arena.borderChar
-        matrix.getPos(0, height - 1).getChar() == arena.borderChar
-        matrix.getPos(width - 1, height - 1).getChar() == arena.borderChar
     }
 
     def "Test canBirdMove"() {
@@ -70,3 +61,5 @@ class Test_Arena extends Specification {
     }
 
 }
+
+ */
