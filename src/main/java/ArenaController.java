@@ -35,6 +35,7 @@ public class ArenaController {
         this.height = height;
         this.bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         matrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
+        matrix.setPos(this.bird);
         this.arenaViewer = new ArenaViewer(width,height,bgColor,textColor);
         this.arenaModel = new ArenaModel(width,height);
     }
@@ -158,6 +159,7 @@ public class ArenaController {
 
     private void matrixUpdate() {
         Matrix newMatrix =  new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
+        newMatrix.setPos(this.bird);
 
         Element b = null;
 
