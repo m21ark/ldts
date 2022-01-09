@@ -25,6 +25,7 @@ public class ArenaController {
     //Attributes
     private final int width;
     private final int height;
+    private  MusicPlayer musicPlayer = null;
     private ArenaViewer arenaViewer;
     private ArenaModel arenaModel;
 
@@ -40,6 +41,12 @@ public class ArenaController {
         matrix.setPos(bird);
         this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
         this.arenaModel = new ArenaModel(new Dimensions(width, height), matrix, birdColor);
+
+    }
+
+    public void arenaStartMusic(){
+        this.musicPlayer = new MusicPlayer();
+        musicPlayer.starBackGroundMusic();
     }
 
 
@@ -52,6 +59,7 @@ public class ArenaController {
     }
 
     public void reloadArena() {
+        musicPlayer.starBackGroundMusic();
         Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         matrix.setPos(bird);
@@ -98,13 +106,19 @@ public class ArenaController {
 
         boolean notInBorder = pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5;
 
-        if( matrix.getPos(pos) == null) return false;
+        if (matrix.getPos(pos) == null) return false;
 
         Character NewPos = matrix.getPos(pos).getChar();
         boolean isNewPosFree = NewPos != blockChar;
+
         if (NewPos == coinChar) {
-            if (pos.getX() != bird.getPositionX()) bird.pickCoin(1);
-            else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') bird.pickCoin(1);
+            if (pos.getX() != bird.getPositionX()) {
+                musicPlayer.playCoinSound();
+                bird.pickCoin(1);
+            } else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') {
+                musicPlayer.playCoinSound();
+                bird.pickCoin(1);
+            }
         }
 
         arenaModel.setBird(bird);
@@ -161,11 +175,15 @@ public class ArenaController {
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
         } else if (e.getChar() == blockChar && belowElem == birdChar) {
             canApply = true;
+            musicPlayer.playDamageSound();
             bird.takeDamage();
         } else if (e.getChar() == coinChar && belowElem == birdChar) {
             canApply = true;
-            if (matrix.getPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ')
+            if (matrix.getPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ') {
+                musicPlayer.playCoinSound();
                 bird.pickCoin(1);
+            }
+
 
         } else if (e.getChar() == birdChar && belowElem == coinChar) {
             canApply = true;
@@ -210,6 +228,11 @@ public class ArenaController {
     public void update() {
         matrixUpdate();
         if (isMatrixBottomRowFull()) removeMatrixBottomRow();
+
+        if (!playerAlive()) {
+            musicPlayer.stopBackGroundMusic();
+            musicPlayer.playDeadSound();
+        }
     }
 
     private void removeMatrixBottomRow() {

@@ -23,10 +23,13 @@ public class GameController {
         this.arena = new ArenaController(dimensions);
         this.menuViewer = new MenuViewer(dimensions, "#3A656C", "#000000");
         this.gameViewer = new GameViewer();
+
+
     }
 
 
     public void run() throws IOException {
+
 
         //Title  Screen
         screen.clear();
@@ -54,6 +57,8 @@ public class GameController {
         //Main Game Screen
         int gameLoopInt = 0;
         boolean validInput = true;
+
+        arena.arenaStartMusic();
 
         while (true) {
             do {
