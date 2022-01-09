@@ -97,6 +97,9 @@ public class ArenaController {
         Bird bird = arenaModel.getBird();
 
         boolean notInBorder = pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5;
+
+        if( matrix.getPos(pos) == null) return false;
+
         Character NewPos = matrix.getPos(pos).getChar();
         boolean isNewPosFree = NewPos != blockChar;
         if (NewPos == coinChar) {

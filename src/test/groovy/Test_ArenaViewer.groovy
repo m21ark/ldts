@@ -10,7 +10,7 @@ class Test_ArenaViewer extends Specification {
         int width = 15
         int height = 10
 
-        def arenaViewer = new ArenaViewer(width, height, "#00FF00", "#00FF00")
+        def arenaViewer = new ArenaViewer(new Dimensions(width, height), "#00FF00", "#00FF00")
         def graphics = Mock(TextGraphics)
         def matrix = Mock(Matrix)
 
@@ -32,7 +32,7 @@ class Test_ArenaViewer extends Specification {
         int width = 15
         int height = 10
 
-        def arenaViewer = new ArenaViewer(width, height, "#00FF00", "#00FF00")
+        def arenaViewer = new ArenaViewer(new Dimensions(width, height), "#00FF00", "#00FF00")
         def graphics = Mock(TextGraphics)
         def matrix = Mock(Matrix)
 

@@ -8,7 +8,7 @@ class Test_MenuViewer extends Specification {
 
         given:
 
-        def menuViewer = new MenuViewer(30, 20, "#00FF00", "#FF00FF")
+        def menuViewer = new MenuViewer(new Dimensions(30, 20), "#00FF00", "#FF00FF")
         def graphics = Mock(TextGraphics)
 
         when:
@@ -19,8 +19,8 @@ class Test_MenuViewer extends Specification {
         1 * graphics.setBackgroundColor(_)
         1 * graphics.fillRectangle(_, _, _)
         1 * graphics.enableModifiers(_)
-        1 * graphics.setForegroundColor(_)
-        2 * graphics.putString(_, _)
+        2 * graphics.setForegroundColor(_)
+        3 * graphics.putString(_, _)
 
     }
 
@@ -28,7 +28,7 @@ class Test_MenuViewer extends Specification {
 
         given:
 
-        def menuViewer = new MenuViewer(30, 20, "#00FF00", "#FF00FF")
+        def menuViewer = new MenuViewer(new Dimensions(30, 20), "#00FF00", "#FF00FF")
         def graphics = Mock(TextGraphics)
 
         when:
@@ -39,8 +39,8 @@ class Test_MenuViewer extends Specification {
         1 * graphics.setBackgroundColor(_)
         1 * graphics.fillRectangle(_, _, _)
         1 * graphics.enableModifiers(_)
-        1 * graphics.setForegroundColor(_)
-        2 * graphics.putString(_, _)
+        2* graphics.setForegroundColor(_)
+        4 * graphics.putString(_, _)
 
     }
 

@@ -18,7 +18,7 @@ class Test_Matrix extends Specification {
 
         width = 20
         height = 20
-        matrix = new Matrix(width, height, '.' as Character)
+        matrix = new Matrix(new Dimensions(width, height), '.' as Character)
 
     }
 

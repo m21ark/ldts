@@ -1,20 +1,14 @@
 import spock.lang.Specification
 
 class Test_Block extends Specification {
-    Block block
-    int x0, y0
 
-    def setup() throws Exception {
-        x0 = 7
-        y0 = 10
-        block = new Block(x0, y0, 'X' as Character, "#00FF00")
-    }
 
-    def "Test move1"() {
-        //TODO test more initial positions and deltas
+    def "Test move"() {
+        given:
+
+        def block = new Block(x0, y0, 'X' as Character, "#00FF00")
+
         when:
-        int deltaX = 4
-        int deltaY = -3
         block.move(deltaX, deltaY)
 
         int newX = block.getPositionX()
@@ -23,44 +17,61 @@ class Test_Block extends Specification {
         then:
         newX == x0 + deltaX
         newY == y0 + deltaY
+
+        where:
+        x0 << [-10, 0, -1, 0, 1, 2, 4, -46, 7, 78, -15, 9999]
+        y0 << [10, 9, 1, -2, 3, 6, 8, 0, 123, 34, -15, 8]
+
+        deltaX << [-6, 0, -1, -2, 3, 6, 8, 0, -123, 4, 15, 8]
+        deltaY << [4, 46, 7, 78, -15, -9999, 8, 0, 26, 34, 21, 14]
+
     }
 
-    def "Test move2"() {
-        when:
-        int deltaX = -6
-        int deltaY = 5
-        block.move(deltaX, deltaY)
-
-        int newX = block.getPositionX()
-        int newY = block.getPositionY()
-
-        then:
-        newX == x0 + deltaX
-        newY == y0 + deltaY
-    }
 
     def "Test get char"() {
+        given:
+
+        def block = new Block(x0, y0, 'X' as Character, "#00FF00")
+
         when:
         Character c1 = block.getChar()
 
         then:
         c1 == 'X'
+
+        where:
+        x0 << [-10, 0, -1, 0, 1, 2, 4, -46, 7, 78, -15, 9999]
+        y0 << [10, 9, 1, -2, 3, 6, 8, 0, 123, 34, -15, 8]
     }
 
     def "Test equality"() {
+        given:
+
+        def block = new Block(x0, y0, 'X' as Character, "#00FF00")
         when:
         Block block2 = new Block(new Position(x0, y0), 'X' as Character, "#00FF00")
         then:
         block == block2
+
+        where:
+        x0 << [-10, 0, -1, 0, 1, 2, 4, -46, 7, 78, -15, 9999]
+        y0 << [10, 9, 1, -2, 3, 6, 8, 0, 123, 34, -15, 8]
     }
 
     def "Test gravityMoveDown"() {
+        given:
+        def block = new Block(x0, y0, 'X' as Character, "#00FF00")
+
         when:
         block.gravityMove()
 
         then:
-        Position pos1 = new Position(7, 11)
-        block.getPosition() == pos1
+        block.getPosition().getX() == x0
+        block.getPosition().getY() == y0 + 1
+
+        where:
+        x0 << [-10, 0, -1, 0, 1, 2, 4, -46, 7, 78, -15, 9999]
+        y0 << [10, 9, 1, -2, 3, 6, 8, 0, 123, 34, -15, 8]
     }
 
 }

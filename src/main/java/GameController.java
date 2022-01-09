@@ -6,7 +6,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-public class Game {
+public class GameController {
 
     private final Screen screen;
     private final TextGraphics graphics;
@@ -16,7 +16,7 @@ public class Game {
     private KeyStroke key;
 
 
-    public Game(Dimensions dimensions) throws IOException, URISyntaxException, FontFormatException {
+    public GameController(Dimensions dimensions) throws IOException, URISyntaxException, FontFormatException {
 
         this.screen = new ScreenFactory().getScreen(dimensions, 26);
         this.graphics = screen.newTextGraphics();
@@ -84,17 +84,20 @@ public class Game {
 
             while (true) {
                 key = screen.readInput();
-                String input = key.getCharacter().toString().toUpperCase();
-
                 if (key.getCharacter() != null) {
-                    if (input.equals("R")) {
-                        arena.reloadArena();
-                        break;
-                    }
-                    if (input.equals("Q")) {
-                        System.exit(0);
+                    String input = key.getCharacter().toString().toUpperCase();
+
+                    if (key.getCharacter() != null) {
+                        if (input.equals("R")) {
+                            arena.reloadArena();
+                            break;
+                        }
+                        if (input.equals("Q")) {
+                            System.exit(0);
+                        }
                     }
                 }
+
 
             }
 

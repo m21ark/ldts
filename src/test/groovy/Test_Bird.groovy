@@ -18,15 +18,18 @@ class Test_Bird extends Specification {
         c1 == 'B'
     }
 
-    def "Test takeDamage"() {
+    def "Test takeDamage"(int givenHp) {
         given:
-        bird.setHp(20)
+        bird.setHp(givenHp)
         int hp = bird.getHp()
 
         when:
         bird.takeDamage()
         then:
         hp - 1 == bird.getHp()
+
+        where:
+        givenHp << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
     def "Test equality"() {
@@ -37,37 +40,45 @@ class Test_Bird extends Specification {
 
     }
 
-    def "Test get/set Hp"() {
+    def "Test get/set Hp"(int givenHp) {
         given:
-        int hp = 10
+        int hp = givenHp
         when:
         bird.setHp(hp)
         then:
-        hp == bird.getHp()
+        givenHp == bird.getHp()
+
+        where:
+        givenHp << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
-    def "Test setCoinCount"() {
-        given:
-        int num = 7
+    def "Test setCoinCount"(int givenCoinCount) {
+
         when:
-        bird.setCoinCount(num)
+        bird.setCoinCount(givenCoinCount)
         then:
-        num == bird.getCoinCount()
+        givenCoinCount == bird.getCoinCount()
+
+        where:
+        givenCoinCount << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
-    def "Test addHp"() {
+    def "Test addHp"(int deltaHp) {
         given:
         int initialHp = bird.getHp()
-        int deltaHp = 4
         when:
         bird.addHp(deltaHp)
         then:
         bird.getHp() == initialHp + deltaHp
+
+        where:
+        deltaHp << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
+
     }
 
-    def "Test isAlive"() {
+    def "Test isAlive"(int givenHp) {
         given:
-        bird.setHp(5)
+        bird.setHp(givenHp)
         int hp = bird.getHp()
         when:
         boolean alive = bird.isAlive()
@@ -75,59 +86,68 @@ class Test_Bird extends Specification {
 
         if (!alive) hp > 0 else hp == 0
 
+        where:
+        givenHp << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
 
     }
 
-    def "Test pickCoin"() {
+    def "Test pickCoin"(int numCoins) {
         given:
-        int numCoins = 3
         int coinCount = bird.getCoinCount()
         when:
         bird.pickCoin(numCoins)
         then:
         bird.getCoinCount() == coinCount + numCoins
+
+        where:
+        numCoins << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
-    def "Test moveUp"() {
+    def "Test moveUp"(int delta) {
         given:
         Position pos = bird.getPosition()
-        int delta = 2
         when:
         Position newPos = bird.moveUp(delta)
         then:
         newPos.getY() == pos.getY() - delta
 
-
+        where:
+        delta << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
-    def "Test moveDown"() {
+    def "Test moveDown"(int delta) {
         given:
         Position pos = bird.getPosition()
-        int delta = 2
+
         when:
         Position newPos = bird.moveDown(delta)
         then:
         newPos.getY() == pos.getY() + delta
+
+        where:
+        delta << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
-    def "Test moveLeft"() {
+    def "Test moveLeft"(int delta) {
         given:
         Position pos = bird.getPosition()
-        int delta = 2
         when:
         Position newPos = bird.moveLeft(delta)
         then:
         newPos.getX() == pos.getX() - delta
+        where:
+        delta << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
-    def "Test moveRight"() {
+    def "Test moveRight"(int delta) {
         given:
         Position pos = bird.getPosition()
-        int delta = 2
         when:
         Position newPos = bird.moveRight(delta)
         then:
         newPos.getX() == pos.getX() + delta
+        where:
+        delta << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
 }

@@ -10,10 +10,10 @@ class Test_ScreenFactory extends Specification {
 
         when:
 
-        def screen = screenF.getScreen(20, 30, 10)
+        def screen = screenF.getScreen(new Dimensions(20, 30), 10)
 
         then:
-        1 * screenF.getScreen(_, _, _)
+        1 * screenF.getScreen(_,  _)
 
     }
 
