@@ -16,64 +16,90 @@ public class Game {
     private KeyStroke key;
 
 
-    public Game(int width, int height) throws IOException, URISyntaxException, FontFormatException {
-        this.screen = new ScreenFactory().getScreen(width, height, 20);
+    public Game(Dimensions dimensions) throws IOException, URISyntaxException, FontFormatException {
+
+        this.screen = new ScreenFactory().getScreen(dimensions, 26);
         this.graphics = screen.newTextGraphics();
-        this.arena = new ArenaController(width, height);
-        this.menuViewer = new MenuViewer(width, height, "#3A656C", "#000000");
+        this.arena = new ArenaController(dimensions);
+        this.menuViewer = new MenuViewer(dimensions, "#3A656C", "#000000");
         this.gameViewer = new GameViewer();
     }
 
-    private boolean validKeyChar(Character ch) {
-        if (key != null) {
-            return key.getCharacter() != ch;
-        }
-        return false;
-    }
 
     public void run() throws IOException {
-
-        boolean runGame = true;
 
         //Title  Screen
         screen.clear();
         menuViewer.drawLoadingScreen(graphics);
         screen.refresh();
 
-        do {
+        while (true) {
             key = screen.readInput();
-        } while (validKeyChar('q'));
+
+            if (key.getCharacter() != null) {
+                String input = key.getCharacter().toString().toUpperCase();
+
+                if (input.equals("S")) {
+                    break;
+                }
+
+                if (input.equals("Q")) {
+                    System.exit(0);
+                }
+            }
+
+        }
 
 
         //Main Game Screen
         int gameLoopInt = 0;
-        do {
-            gameViewer.draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
-            key = screen.pollInput();
-            runGame = arena.processKey(key, screen);
-            if (gameLoopInt % 50 == 0) {
-                arena.addRandomBlock(1);
-                arena.applyGravity();
+        boolean validInput = true;
+
+        while (true) {
+            do {
+                gameViewer.draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
+                key = screen.pollInput();
+
+                validInput = arena.processKey(key, screen);
+
+                if (gameLoopInt % 50 == 0) {
+                    arena.addRandomBlock(1);
+                    arena.applyGravity();
+                }
+                if (gameLoopInt == 450) {
+                    arena.addRandomCoin(1);
+                    gameLoopInt = 0;
+                }
+                gameLoopInt++;
+
+                arena.update();
+
+            } while (validInput && arena.playerAlive());
+
+
+            //Ending Screen
+            screen.clear();
+            menuViewer.drawDeathScreen(graphics, arena.getArenaModel().getPlayerScore());
+            screen.refresh();
+
+            while (true) {
+                key = screen.readInput();
+                String input = key.getCharacter().toString().toUpperCase();
+
+                if (key.getCharacter() != null) {
+                    if (input.equals("R")) {
+                        arena.reloadArena();
+                        break;
+                    }
+                    if (input.equals("Q")) {
+                        System.exit(0);
+                    }
+                }
+
             }
-            if (gameLoopInt == 400) {
-                arena.addRandomCoin(1);
-                gameLoopInt = 0;
-            }
-            gameLoopInt++;
-
-            arena.update();
-
-        } while (runGame && arena.playerAlive());
 
 
-        //Ending Screen
-        screen.clear();
-        menuViewer.drawDeathScreen(graphics, arena.getArenaModel().getPlayerScore());
-        screen.refresh();
-
-        do {
-            key = screen.readInput();
-        } while (validKeyChar('q'));
+        }
 
 
     }

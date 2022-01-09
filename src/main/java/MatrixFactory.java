@@ -2,8 +2,12 @@ public class MatrixFactory {
 
     private Matrix matrix;
 
-    public Matrix getMatrix(int width, int height, Character borderChar, String borderColor) {
-        Matrix temp = new Matrix(width, height, ' ');
+    public Matrix getMatrix(Dimensions dimensions, Character borderChar, String borderColor) {
+
+        int width = dimensions.getWidth();
+        int height = dimensions.getHeight();
+
+        Matrix temp = new Matrix(dimensions, ' ');
 
         for (int c = 0; c < width; c++) {
             temp.setPos(new Block(c, 0, borderChar, borderColor));

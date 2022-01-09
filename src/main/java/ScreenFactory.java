@@ -25,7 +25,11 @@ public class ScreenFactory {
     }
 
 
-    public Screen getScreen(int width, int height, int fontSize) throws IOException, URISyntaxException, FontFormatException {
+    public Screen getScreen(Dimensions dimensions, int fontSize) throws IOException, URISyntaxException, FontFormatException {
+
+        int width = dimensions.getWidth();
+        int height = dimensions.getHeight();
+
 
         TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);

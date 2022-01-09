@@ -25,18 +25,21 @@ public class ArenaController {
     //Attributes
     private final int width;
     private final int height;
-    private final ArenaViewer arenaViewer;
-    private final ArenaModel arenaModel;
+    private ArenaViewer arenaViewer;
+    private ArenaModel arenaModel;
 
 
-    ArenaController(int width, int height) {
-        this.width = width;
-        this.height = height;
+    ArenaController(Dimensions dimensions) {
+
+        this.width = dimensions.getWidth();
+        this.height = dimensions.getHeight();
+
+
         Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
-        Matrix matrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
+        Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         matrix.setPos(bird);
-        this.arenaViewer = new ArenaViewer(width, height, bgColor, textColor);
-        this.arenaModel = new ArenaModel(width, height, matrix, birdColor);
+        this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
+        this.arenaModel = new ArenaModel(new Dimensions(width, height), matrix, birdColor);
     }
 
 
@@ -46,6 +49,14 @@ public class ArenaController {
 
     public ArenaModel getArenaModel() {
         return arenaModel;
+    }
+
+    public void reloadArena() {
+        Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
+        Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
+        matrix.setPos(bird);
+        this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
+        this.arenaModel = new ArenaModel(new Dimensions(width, height), matrix, birdColor);
     }
 
     private int randInt(int min, int max) {
@@ -170,7 +181,7 @@ public class ArenaController {
         Matrix matrix = arenaModel.getMatrix();
         Bird bird = arenaModel.getBird();
 
-        Matrix newMatrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
+        Matrix newMatrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         newMatrix.setPos(bird);
 
         Element b = null;
@@ -233,7 +244,8 @@ public class ArenaController {
         } else if (key.getKeyType() == KeyType.ArrowDown) {
             moveBird(bird.moveDown(1));
         } else if (key.getKeyType() == KeyType.EOF) {
-            return false;
+            screen.close();
+            System.exit(0);
         }
 
 
