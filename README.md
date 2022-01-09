@@ -1,11 +1,149 @@
-# ldts-project-assignment-G0900
+## LDTS_G0900 - Run Bird Run!
+
+Run Bird Run is a platformer game and a mock version of the mobile phone game with the same name (https://play.google.com/store/apps/details?id=com.ketchapp.runbirdrun&hl=en_US&gl=US). The main objective is to stay alive for as long as you can, while collecting the occasional falling coins. You must avoid the neverending boxes that fall from the sky, otherwise you lose!
+
+>This project was developed by Marco André (up202004891@fe.up.pt), João Silva (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
 
 
-Game Name: Bye Bye Birdy
 
-![gamePrint](https://user-images.githubusercontent.com/72521279/148536911-b868826c-eb85-4d5a-99ff-9d2e1cad2d74.png)
+### IMPLEMENTED FEATURES
 
-Developers: 
-- João Alves
-- Marco André
-- José Sousa
+- **Start Screen** - When the game starts a simple initial screen is presented
+- **End Screen** - When the player dies, a screen is shown with their score
+- **Movement** - The game character can move left, right and fly using the Arrow Keys
+- **Gravity** - All in-game entities are affected by gravity, thus they fall a small amount per second
+- **Catch Coins** - When the bird touches a coin or vice-versa, the player wins a point
+- **Take Damage** - When a bird is hit on the head by a block, it takes damage, loosing one of its 3 initial lives
+- **Full Bottom Row** - Like in tetriz, when the last row is fully occupied by blocks, it vanishes, preventing the window from filling up
+- **Collisions** - Right now, the bird can move through blocks and coins laterally without a probleam. Therefore, more collision detection needs to be implemmented
+ 
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/mainMenu.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 1. Main Menu </i></b>
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/gameScreenshot.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 2. Game </i></b>  
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/gameOver.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 3. Game Over  </i></b>
+</p>  
+
+### PLANNED FEATURES
+
+- **Shop** - With the coins collected in-game, the user can then buy different power-ups, to help him better perform at the game.
+- **Power-Ups** - These would be special powers, that the user does not have initially. They could vary from "Box Destruction" to "Super Coin Addition".
+- **Pausing Game** - A keybind should be added to allow the player to pause the game when needed
+- **Better Start/End Screen** - These screens are temporary. Better ones with more information and design should be added
+- **Play again Option** - In the end screen, the player should have the option to play again
+- **Hard Level Meter** - Players should have an option to choose if they want a harder level (with more and faster blocks for example)
+
+
+# Design pattens
+
+## Factory method
+> **Problem in Context**
+>
+>  In the arena Class, we need to be able to create a matrix with specific contents each game loop.
+>
+>  **The Pattern**
+>
+>  We have applied the **Fatory Method** pattern. This pattern allows us to get the exact matrix we need each game loop.
+>
+>  **Implementation**
+>
+>  Creation of MatrixFactory() class with getMatrix() method to gives us the desired matrix.
+>
+>  **Consequences**
+>
+> We can always have a matrix that fits our needs.
+
+## Game Loop
+> **Problem in Context**
+>
+>  Each second we need the game to take user input, update all Elements positions and draw them all.
+>
+>  **The Pattern**
+>
+>  We have applied the **Game Loop** pattern. This pattern allows us to have a loop that calls the right methods to do the above mencioned action.
+>
+>  **Implementation**
+>
+>  Added a while(gameRun) in the game class. 
+>
+>  **Consequences**
+>
+> We achieve a game that updates whenever we want.
+
+## MVC - Model View Controller (Architectural Pattern)
+> **Problem in Context**
+>
+>  With the increasing code size, classes should be organized to facilitate their communication and usage.
+>
+>  **The Pattern**
+>
+>  Classes should be divided into 3 types : Model (Simply exists), Controller (manages the interactions) and Viewer (draws the model)
+>
+>  **Implementation**
+>
+>  We are still developing this design pattern but some classes already have this structure complete (Arena)
+>
+>  **Consequences**
+>
+> This code structure is more versatile and every class is organized based on the actions they perform. 
+
+### Simplified UML
+
+<p align="center" justify="center">
+  <img src="docs/images/UML/UML.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 3. UML </i></b>  
+</p>  
+
+<br>
+<br />
+
+This is a simplified version of the project's diagram.
+
+These classes can be found in the following folder:
+
+- [Java Classes](src/main/java)
+
+
+
+### TESTING
+
+<p align="center" justify="center">
+  <img src="docs/images/test/tests.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 4. Coverage Report </i></b>  
+</p>  
+
+<br>
+<br />
+
+- **We ran into some trouble when trying to execute Pitest**
+
+### SELF-EVALUATION
+
+- Marco André 40%
+- João Silva 30%
+- José Sousa 30%
