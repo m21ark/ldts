@@ -71,7 +71,7 @@ set CLASSPATH=%APP_HOME%\lib\Projeto-1.0.jar;%APP_HOME%\lib\lanterna-3.1.1.jar
 
 
 @rem Execute Projeto
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %PROJETO_OPTS%  -classpath "%CLASSPATH%" Application %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %PROJETO_OPTS%  -classpath "%CLASSPATH%" birdrun.Application %*
 
 :end
 @rem End local scope for the variables with windows NT shell
