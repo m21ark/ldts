@@ -25,18 +25,28 @@ public class ArenaController {
     //Attributes
     private final int width;
     private final int height;
-    private final ArenaViewer arenaViewer;
-    private final ArenaModel arenaModel;
+    private  MusicPlayer musicPlayer = null;
+    private ArenaViewer arenaViewer;
+    private ArenaModel arenaModel;
 
 
-    ArenaController(int width, int height) {
-        this.width = width;
-        this.height = height;
+    ArenaController(Dimensions dimensions) {
+
+        this.width = dimensions.getWidth();
+        this.height = dimensions.getHeight();
+
+
         Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
-        Matrix matrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
+        Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         matrix.setPos(bird);
-        this.arenaViewer = new ArenaViewer(width, height, bgColor, textColor);
-        this.arenaModel = new ArenaModel(width, height, matrix, birdColor);
+        this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
+        this.arenaModel = new ArenaModel(new Dimensions(width, height), matrix, birdColor);
+
+    }
+
+    public void arenaStartMusic(){
+        this.musicPlayer = new MusicPlayer();
+        musicPlayer.starBackGroundMusic();
     }
 
 
@@ -46,6 +56,15 @@ public class ArenaController {
 
     public ArenaModel getArenaModel() {
         return arenaModel;
+    }
+
+    public void reloadArena() {
+        musicPlayer.starBackGroundMusic();
+        Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
+        Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
+        matrix.setPos(bird);
+        this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
+        this.arenaModel = new ArenaModel(new Dimensions(width, height), matrix, birdColor);
     }
 
     private int randInt(int min, int max) {
@@ -86,11 +105,20 @@ public class ArenaController {
         Bird bird = arenaModel.getBird();
 
         boolean notInBorder = pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5;
+
+        if (matrix.getPos(pos) == null) return false;
+
         Character NewPos = matrix.getPos(pos).getChar();
         boolean isNewPosFree = NewPos != blockChar;
+
         if (NewPos == coinChar) {
-            if (pos.getX() != bird.getPositionX()) bird.pickCoin(1);
-            else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') bird.pickCoin(1);
+            if (pos.getX() != bird.getPositionX()) {
+                musicPlayer.playCoinSound();
+                bird.pickCoin(1);
+            } else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') {
+                musicPlayer.playCoinSound();
+                bird.pickCoin(1);
+            }
         }
 
         arenaModel.setBird(bird);
@@ -147,11 +175,15 @@ public class ArenaController {
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
         } else if (e.getChar() == blockChar && belowElem == birdChar) {
             canApply = true;
+            musicPlayer.playDamageSound();
             bird.takeDamage();
         } else if (e.getChar() == coinChar && belowElem == birdChar) {
             canApply = true;
-            if (matrix.getPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ')
+            if (matrix.getPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ') {
+                musicPlayer.playCoinSound();
                 bird.pickCoin(1);
+            }
+
 
         } else if (e.getChar() == birdChar && belowElem == coinChar) {
             canApply = true;
@@ -170,7 +202,7 @@ public class ArenaController {
         Matrix matrix = arenaModel.getMatrix();
         Bird bird = arenaModel.getBird();
 
-        Matrix newMatrix = new MatrixFactory().getMatrix(width, height, borderChar, borderColor);
+        Matrix newMatrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         newMatrix.setPos(bird);
 
         Element b = null;
@@ -196,6 +228,11 @@ public class ArenaController {
     public void update() {
         matrixUpdate();
         if (isMatrixBottomRowFull()) removeMatrixBottomRow();
+
+        if (!playerAlive()) {
+            musicPlayer.stopBackGroundMusic();
+            musicPlayer.playDeadSound();
+        }
     }
 
     private void removeMatrixBottomRow() {
@@ -233,7 +270,8 @@ public class ArenaController {
         } else if (key.getKeyType() == KeyType.ArrowDown) {
             moveBird(bird.moveDown(1));
         } else if (key.getKeyType() == KeyType.EOF) {
-            return false;
+            screen.close();
+            System.exit(0);
         }
 
 

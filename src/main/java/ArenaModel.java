@@ -5,9 +5,9 @@ public class ArenaModel {
     private Bird bird;
     private Matrix matrix;
 
-    ArenaModel(int width, int height, Matrix matrix, String birdColor) {
-        this.width = width;
-        this.height = height;
+    ArenaModel(Dimensions dimensions, Matrix matrix, String birdColor) {
+        this.width = dimensions.getWidth();
+        this.height = dimensions.getHeight();
         this.bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         this.matrix = matrix;
     }

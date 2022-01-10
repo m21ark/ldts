@@ -7,9 +7,9 @@ public class Matrix {
     private final int width;
     private final int height;
 
-    Matrix(int width, int height, Character defaultChar) {
-        this.width = width;
-        this.height = height;
+    Matrix(Dimensions dimensions, Character defaultChar) {
+        this.width = dimensions.getWidth();
+        this.height = dimensions.getHeight();
 
         for (int i = 0; i < height; i++) {
             List<Element> aux = new ArrayList<>();

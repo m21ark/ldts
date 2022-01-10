@@ -10,9 +10,9 @@ public class ArenaViewer {
     private final String bgColor;
     private final String textColor;
 
-    public ArenaViewer(int width, int height, String bgColor, String textColor) {
-        this.width = width;
-        this.height = height;
+    public ArenaViewer(Dimensions dimensions, String bgColor, String textColor) {
+        this.width = dimensions.getWidth();
+        this.height = dimensions.getHeight();
         this.bgColor = bgColor;
         this.textColor = textColor;
     }

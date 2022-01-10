@@ -11,7 +11,7 @@ class Test_MatrixFactory extends Specification {
         def arena = Mock(ArenaController)
 
         when:
-        Matrix matrix = new MatrixFactory().getMatrix(width, height, arena.borderChar, "#000000")
+        Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), arena.borderChar, "#000000")
 
         then:
         matrix.getWidth() == width
