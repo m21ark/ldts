@@ -1,6 +1,6 @@
-## LDTS_G0900 - Run Bird Run!
+## LDTS_G0900 - Run birdrun.model.Bird Run!
 
-Run Bird Run is a platformer game and a mock version of the mobile phone game with the same name (https://play.google.com/store/apps/details?id=com.ketchapp.runbirdrun&hl=en_US&gl=US). The main objective is to stay alive for as long as you can, while collecting the occasional falling coins. You must avoid the neverending boxes that fall from the sky, otherwise you lose!
+Run birdrun.model.Bird Run is a platformer game and a mock version of the mobile phone game with the same name (https://play.google.com/store/apps/details?id=com.ketchapp.runbirdrun&hl=en_US&gl=US). The main objective is to stay alive for as long as you can, while collecting the occasional falling coins. You must avoid the neverending boxes that fall from the sky, otherwise you lose!
 
 >This project was developed by Marco André (up202004891@fe.up.pt), João Silva (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
 
@@ -48,7 +48,7 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 ### PLANNED FEATURES
 
 - **Shop** - With the coins collected in-game, the user can then buy different power-ups, to help him better perform at the game.
-- **Power-Ups** - These would be special powers, that the user does not have initially. They could vary from "Box Destruction" to "Super Coin Addition".
+- **Power-Ups** - These would be special powers, that the user does not have initially. They could vary from "Box Destruction" to "Super birdrun.model.Coin Addition".
 - **Pausing Game** - A keybind should be added to allow the player to pause the game when needed
 - **Better Start/End Screen** - These screens are temporary. Better ones with more information and design should be added
 - **Play again Option** - In the end screen, the player should have the option to play again
@@ -68,7 +68,7 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 >
 >  **Implementation**
 >
->  Creation of MatrixFactory() class with getMatrix() method to gives us the desired matrix.
+>  Creation of birdrun.controller.MatrixFactory() class with getMatrix() method to gives us the desired matrix.
 >
 >  **Consequences**
 >

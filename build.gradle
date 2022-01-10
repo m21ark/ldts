@@ -7,14 +7,14 @@ plugins {
 }
 
 application {
-    mainClass.set("Application")
+    mainClass.set("birdrun.Application")
 }
 
 pitest {
     junit5PluginVersion = '0.12'
 }
 
-group 'ldts-project-assignment-G0900'
+group 'birdrun'
 version '1.0'
 
 repositories {
