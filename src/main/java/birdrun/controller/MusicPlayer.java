@@ -120,4 +120,9 @@ public class MusicPlayer {
         damageSound.setMicrosecondPosition(0);
         damageSound.start();
     }
+
+    public void resumeBackGroundMusic() {
+        backgroundMusic.start();
+
+    }
 }

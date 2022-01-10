@@ -41,6 +41,9 @@ public class GameController {
         menuViewer.drawLoadingScreen(graphics);
         screen.refresh();
 
+
+
+
         while (true) {
             key = screen.readInput();
 
@@ -62,16 +65,46 @@ public class GameController {
         //Main Game Screen
         int gameLoopInt = 0;
         int resetCountGameLoop = 1;
-        boolean validInput = true;
+        boolean runGame = true;
 
-        arena.arenaStartMusic();
+        arena.startBgMusic();
+
 
         while (true) {
             do {
                 gameViewer.draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
                 key = screen.pollInput();
 
-                validInput = arena.processKey(key, screen);
+                runGame = arena.processKey(key, screen);
+
+                if(!runGame ){
+                    //Pause game
+                    arena.pauseBgMusic();
+
+                    screen.clear();
+                    menuViewer.drawPausingScreen(graphics);
+                    screen.refresh();
+
+
+                    while (true) {
+                        key = screen.readInput();
+
+                        if (key.getCharacter() != null) {
+                            String input = key.getCharacter().toString().toUpperCase();
+
+                            if (input.equals("P")) {
+                                arena .resumeBgMusic();
+                                runGame = true;
+                                break;
+                            }
+
+                            if (input.equals("Q")) {
+                                System.exit(0);
+                            }
+                        }
+
+                    }
+                }
 
                 if (gameLoopInt % 50 == 0) {
                     arena.addRandomBlock(1);
@@ -90,11 +123,13 @@ public class GameController {
                 }
 
 
+
+
                 gameLoopInt++;
 
                 arena.update();
 
-            } while (validInput && arena.playerAlive());
+            } while (runGame && arena.playerAlive());
 
 
             //Ending Screen

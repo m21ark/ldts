@@ -49,7 +49,7 @@ public class ArenaController {
 
     }
 
-    public void arenaStartMusic() {
+    public void startBgMusic() {
         this.musicPlayer = new MusicPlayer();
         musicPlayer.starBackGroundMusic();
     }
@@ -310,7 +310,17 @@ public class ArenaController {
     }
 
 
-    public boolean processKey(KeyStroke key, Screen screen) throws IOException {
+    public void pauseBgMusic(){
+        musicPlayer.stopBackGroundMusic();
+    }
+
+    public void resumeBgMusic() {
+
+    musicPlayer.resumeBackGroundMusic();
+    }
+
+
+    public boolean  processKey(KeyStroke key, Screen screen) throws IOException {
         Bird bird = arenaModel.getBird();
 
         if (key == null) return true;
@@ -332,6 +342,10 @@ public class ArenaController {
             System.exit(0);
         }
 
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'p') {
+            return false;
+        }
+
         arenaModel.setBird(bird);
 
         return true;
@@ -351,6 +365,7 @@ public class ArenaController {
         }
 
     }
+
 
 
 }

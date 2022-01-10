@@ -35,6 +35,21 @@ public class MenuViewer {
         graphics.putString(new TerminalPosition(width / 2 - "Press Q to exit".length() / 2, height / 2 + 2), "Press Q to exit");
     }
 
+    public void drawPausingScreen(TextGraphics graphics) {
+        graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
+        graphics.enableModifiers(SGR.BOLD);
+
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        String sms = "Paused ";
+        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 3), sms);
+
+        graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
+        graphics.putString(new TerminalPosition(width / 2 - "Press P to continue".length() / 2, height / 2), "Press P to continue");
+        graphics.putString(new TerminalPosition(width / 2 - "Press Q to exit".length() / 2, height / 2 + 2), "Press Q to exit");
+    }
+
+
     public void drawDeathScreen(TextGraphics graphics, int playerCoinCount) {
         graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
