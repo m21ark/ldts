@@ -7,6 +7,7 @@ public class Bird extends Element {
 
     private int hp = 3;
     private int coinCount = 0;
+    private int stamina = 200;
 
     public Bird(int x, int y, Character character, String color) {
         super(x, y, character, color);
@@ -76,6 +77,20 @@ public class Bird extends Element {
 
     public Position moveRight(int delta) {
         return new Position(position.getX() + delta, position.getY());
+    }
+
+    public int getStamina() {
+        return stamina;
+    }
+
+    public void updateColor(String newColor){
+        this.color =  newColor;
+    }
+
+    public void setStamina(int newStamina) {
+        if(newStamina>200)
+            this.stamina = 200;
+        else this.stamina = Math.max(newStamina, 0);
     }
 
 }

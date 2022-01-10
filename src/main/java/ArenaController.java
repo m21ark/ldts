@@ -17,7 +17,7 @@ public class ArenaController {
 
     //Colors
     private final static String textColor = "#000000";
-    private final static String birdColor = "#FFFFFF";
+    private static String birdColor = "#FFFFFF";
     private final static String bgColor = "#3A656C";
     private final static String coinColor = "#FFAA11";
     private final static String blockColor = "#4B351C";
@@ -27,7 +27,7 @@ public class ArenaController {
     //Attributes
     private final int width;
     private final int height;
-    private  MusicPlayer musicPlayer = null;
+    private MusicPlayer musicPlayer = null;
     private ArenaViewer arenaViewer;
     private ArenaModel arenaModel;
 
@@ -46,7 +46,7 @@ public class ArenaController {
 
     }
 
-    public void arenaStartMusic(){
+    public void arenaStartMusic() {
         this.musicPlayer = new MusicPlayer();
         musicPlayer.starBackGroundMusic();
     }
@@ -61,6 +61,7 @@ public class ArenaController {
     }
 
     public void reloadArena() {
+        birdColor = "#FFFFFF";
         musicPlayer.starBackGroundMusic();
         Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
@@ -173,6 +174,7 @@ public class ArenaController {
             }
 
         moveBird(bird.moveDown(1));
+        bird.setStamina(bird.getStamina()+6);
         arenaModel.setBird(bird);
 
     }
@@ -198,12 +200,10 @@ public class ArenaController {
             canApply = true;
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
 
-        }else  if (e.getChar() == blockChar && belowElem == lifeChar) {
+        } else if (e.getChar() == blockChar && belowElem == lifeChar) {
             canApply = true;
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
-        }
-
-        else if (e.getChar() == blockChar && belowElem == birdChar) {
+        } else if (e.getChar() == blockChar && belowElem == birdChar) {
             canApply = true;
             musicPlayer.playDamageSound();
             bird.takeDamage();
@@ -225,7 +225,6 @@ public class ArenaController {
             e.setPos(new Position(x, y));
             matrix.setPos(e);
         }
-
 
 
         arenaModel.setBird(bird);
@@ -263,6 +262,18 @@ public class ArenaController {
     }
 
     public void update() {
+
+        Bird bird = arenaModel.getBird();
+
+        if(bird.getStamina()<50){
+            birdColor = "#C51663";
+        }else if(bird.getStamina()<100){
+            birdColor = "#BEC516";
+        } else{
+            birdColor = "#FFFFFF";
+        }
+        bird.updateColor(birdColor);
+
         matrixUpdate();
         if (isMatrixBottomRowFull()) removeMatrixBottomRow();
 
@@ -270,6 +281,8 @@ public class ArenaController {
             musicPlayer.stopBackGroundMusic();
             musicPlayer.playDeadSound();
         }
+
+        arenaModel.setBird(bird);
     }
 
     private void removeMatrixBottomRow() {
@@ -303,14 +316,13 @@ public class ArenaController {
         } else if (key.getKeyType() == KeyType.ArrowRight) {
             moveBird(bird.moveRight(1));
         } else if (key.getKeyType() == KeyType.ArrowUp) {
-            moveBird(bird.moveUp(1));
+            birdFly(bird);
         } else if (key.getKeyType() == KeyType.ArrowDown) {
             moveBird(bird.moveDown(1));
         } else if (key.getKeyType() == KeyType.EOF) {
             screen.close();
             System.exit(0);
         }
-
 
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') {
             screen.close();
@@ -320,6 +332,20 @@ public class ArenaController {
         arenaModel.setBird(bird);
 
         return true;
+
+    }
+
+    private void birdFly(Bird bird) {
+
+        int stamina = bird.getStamina();
+
+        if (stamina > 0) {
+            moveBird(bird.moveUp(1));
+            arenaModel.setBird(bird);
+            stamina-=10;
+            bird.setStamina(stamina);
+            arenaModel.setBird(bird);
+        }
 
     }
 

@@ -76,6 +76,19 @@ class Test_Bird extends Specification {
 
     }
 
+    def "Test stamina"() {
+        when:
+        bird.setStamina(stamina)
+        then:
+        if (stamina < 0) 0 == bird.getStamina()
+        else if (stamina > 200) 200 == bird.getStamina()
+        else stamina == bird.getStamina()
+
+        where:
+        stamina << [-10, -67, 0, -1, -2, 3, 0, 123, 503, 199, 200, 201, 8]
+
+    }
+
     def "Test isAlive"(int givenHp) {
         given:
         bird.setHp(givenHp)
