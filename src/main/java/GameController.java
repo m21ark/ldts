@@ -56,6 +56,7 @@ public class GameController {
 
         //Main Game Screen
         int gameLoopInt = 0;
+        int resetCountGameLoop = 1;
         boolean validInput = true;
 
         arena.arenaStartMusic();
@@ -74,7 +75,16 @@ public class GameController {
                 if (gameLoopInt == 450) {
                     arena.addRandomCoin(1);
                     gameLoopInt = 0;
+                    resetCountGameLoop++;
                 }
+
+                if(resetCountGameLoop%25== 0){
+                    arena.addRandomLife();
+                    gameLoopInt = 0;
+                    resetCountGameLoop++;
+                }
+
+
                 gameLoopInt++;
 
                 arena.update();

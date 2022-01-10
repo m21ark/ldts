@@ -13,6 +13,7 @@ public class ArenaController {
     public final static Character blockChar = 'X';
     public final static Character borderChar = '#';
     public final static Character coinChar = 'C';
+    public final static Character lifeChar = 'L';
 
     //Colors
     private final static String textColor = "#000000";
@@ -21,6 +22,7 @@ public class ArenaController {
     private final static String coinColor = "#FFAA11";
     private final static String blockColor = "#4B351C";
     private final static String borderColor = "#653A6C";
+    private final static String lifeColor = "#16C527";
 
     //Attributes
     private final int width;
@@ -86,6 +88,18 @@ public class ArenaController {
         arenaModel.setMatrix(matrix);
     }
 
+    public void addRandomLife() {
+        int x, y;
+        Matrix matrix = arenaModel.getMatrix();
+
+        x = randInt(1, width - 2);
+        y = 2;
+        matrix.setPos(new Coin(x, y, lifeChar, lifeColor));
+
+
+        arenaModel.setMatrix(matrix);
+    }
+
     public void addRandomBlock(int numberOfBlock) {
         int x, y;
         Matrix matrix = arenaModel.getMatrix();
@@ -118,6 +132,16 @@ public class ArenaController {
             } else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') {
                 musicPlayer.playCoinSound();
                 bird.pickCoin(1);
+            }
+        }
+
+        if (NewPos == lifeChar) {
+            if (pos.getX() != bird.getPositionX()) {
+                musicPlayer.playCoinSound();
+                bird.addHp(1);
+            } else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') {
+                musicPlayer.playCoinSound();
+                bird.addHp(1);
             }
         }
 
@@ -173,10 +197,17 @@ public class ArenaController {
         if (e.getChar() == blockChar && belowElem == coinChar) {
             canApply = true;
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
-        } else if (e.getChar() == blockChar && belowElem == birdChar) {
+
+        }else  if (e.getChar() == blockChar && belowElem == lifeChar) {
+            canApply = true;
+            matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
+        }
+
+        else if (e.getChar() == blockChar && belowElem == birdChar) {
             canApply = true;
             musicPlayer.playDamageSound();
             bird.takeDamage();
+
         } else if (e.getChar() == coinChar && belowElem == birdChar) {
             canApply = true;
             if (matrix.getPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ') {
@@ -184,12 +215,18 @@ public class ArenaController {
                 bird.pickCoin(1);
             }
 
-
         } else if (e.getChar() == birdChar && belowElem == coinChar) {
             canApply = true;
             e.setPos(new Position(x, y));
             matrix.setPos(e);
+
+        } else if (e.getChar() == birdChar && belowElem == lifeChar) {
+            canApply = true;
+            e.setPos(new Position(x, y));
+            matrix.setPos(e);
         }
+
+
 
         arenaModel.setBird(bird);
         arenaModel.setMatrix(matrix);
