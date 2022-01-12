@@ -83,4 +83,9 @@ public class MusicPlayer {
         backgroundMusic.start();
 
     }
+
+    public void resetBackGroundMusic() {
+        backgroundMusic.setMicrosecondPosition(0);
+
+    }
 }

@@ -39,11 +39,8 @@ public class DeathMenuState {
 
             if (command == Command.COMMAND.QUIT) System.exit(0);
             else if (command == Command.COMMAND.SELECT) {
-                return GameController.STATE.GAME;
-            } else if (command == Command.COMMAND.UP) {
                 return GameController.STATE.START;
             }
-
         }
 
     }

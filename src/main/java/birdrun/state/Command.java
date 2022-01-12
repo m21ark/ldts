@@ -9,14 +9,6 @@ public class Command {
         this.command = COMMAND.NONE;
     }
 
-    public Character getKey() {
-        return key;
-    }
-
-    public COMMAND getCommandEnum() {
-        return command;
-    }
-
     public enum COMMAND {UP, RIGHT, DOWN, LEFT, PAUSE, QUIT, SELECT, NONE}
 
 }

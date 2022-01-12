@@ -27,6 +27,7 @@ public class ArenaController {
     private final static String borderColor = "#653A6C";
     private final static String lifeColor = "#16C527";
     private static String birdColor = "#FFFFFF";
+
     //Attributes
     private final int width;
     private final int height;
@@ -356,10 +357,10 @@ public class ArenaController {
 
         int stamina = bird.getStamina();
 
-        if (stamina > 0) {
+        if (stamina > 30) {
             moveBird(bird.moveUp(1));
             arenaModel.setBird(bird);
-            stamina -= 10;
+            stamina -= 15;
             bird.setStamina(stamina);
             arenaModel.setBird(bird);
         }
@@ -367,4 +368,11 @@ public class ArenaController {
     }
 
 
+    public void resetBgMusic() {
+        musicPlayer.resetBackGroundMusic();
+    }
+
+    public int getPlayerScore() {
+        return arenaModel.getPlayerScore();
+    }
 }

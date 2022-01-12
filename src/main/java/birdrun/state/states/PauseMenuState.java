@@ -40,7 +40,7 @@ public class PauseMenuState {
 
             if (command == Command.COMMAND.QUIT) System.exit(0);
             else if (command == Command.COMMAND.SELECT) {
-                return GameController.STATE.START;
+                return GameController.STATE.GAME;
             }
 
         }
