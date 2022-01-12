@@ -31,7 +31,7 @@ public class ArenaController {
     //Attributes
     private final int width;
     private final int height;
-    private MusicPlayer musicPlayer = null;
+    private MusicController musicController = null;
     private ArenaViewer arenaViewer;
     private ArenaModel arenaModel;
 
@@ -48,12 +48,12 @@ public class ArenaController {
         this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
         this.arenaModel = new ArenaModel(new Dimensions(width, height), matrix, birdColor);
 
-        this.musicPlayer = new MusicPlayer();
+        this.musicController = new MusicController();
 
     }
 
     public void startBgMusic() {
-        musicPlayer.starBackGroundMusic();
+        musicController.starBackGroundMusic();
     }
 
 
@@ -132,20 +132,20 @@ public class ArenaController {
 
         if (NewPos.equals(coinChar)) {
             if (pos.getX() != bird.getPositionX()) {
-                musicPlayer.playCoinSound();
+                musicController.playCoinSound();
                 bird.pickCoin(1);
             } else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') {
-                musicPlayer.playCoinSound();
+                musicController.playCoinSound();
                 bird.pickCoin(1);
             }
         }
 
         if (NewPos.equals(lifeChar)) {
             if (pos.getX() != bird.getPositionX()) {
-                musicPlayer.playCoinSound();
+                musicController.playCoinSound();
                 bird.addHp(1);
             } else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') {
-                musicPlayer.playCoinSound();
+                musicController.playCoinSound();
                 bird.addHp(1);
             }
         }
@@ -209,13 +209,13 @@ public class ArenaController {
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
         } else if (e.getChar().equals(blockChar) && belowElem.equals(birdChar)) {
             canApply = true;
-            musicPlayer.playDamageSound();
+            musicController.playDamageSound();
             bird.takeDamage();
 
         } else if (e.getChar().equals(coinChar) && belowElem.equals(birdChar)) {
             canApply = true;
             if (matrix.getPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ') {
-                musicPlayer.playCoinSound();
+                musicController.playCoinSound();
                 bird.pickCoin(1);
             }
 
@@ -282,8 +282,8 @@ public class ArenaController {
         if (isMatrixBottomRowFull()) removeMatrixBottomRow();
 
         if (!playerAlive()) {
-            musicPlayer.stopBackGroundMusic();
-            musicPlayer.playDeadSound();
+            musicController.stopBackGroundMusic();
+            musicController.playDeadSound();
         }
 
         arenaModel.setBird(bird);
@@ -312,16 +312,16 @@ public class ArenaController {
 
 
     public void pauseBgMusic() {
-        musicPlayer.stopBackGroundMusic();
+        musicController.stopBackGroundMusic();
     }
 
     public void resumeBgMusic() {
 
-        musicPlayer.resumeBackGroundMusic();
+        musicController.resumeBackGroundMusic();
     }
 
 
-    public boolean processKey(KeyStroke key, Screen screen) throws IOException {
+    public boolean processKey(KeyStroke key) throws IOException {
         Bird bird = arenaModel.getBird();
 
         if (key == null) return true;
@@ -334,12 +334,10 @@ public class ArenaController {
         } else if (key.getKeyType() == KeyType.ArrowDown) {
             moveBird(bird.moveDown(1));
         } else if (key.getKeyType() == KeyType.EOF) {
-            screen.close();
             System.exit(0);
         }
 
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') {
-            screen.close();
             System.exit(0);
         }
 
@@ -360,7 +358,7 @@ public class ArenaController {
         if (stamina > 30) {
             moveBird(bird.moveUp(1));
             arenaModel.setBird(bird);
-            stamina -= 15;
+            stamina -= 12;
             bird.setStamina(stamina);
             arenaModel.setBird(bird);
         }
@@ -369,7 +367,7 @@ public class ArenaController {
 
 
     public void resetBgMusic() {
-        musicPlayer.resetBackGroundMusic();
+        musicController.resetBackGroundMusic();
     }
 
     public int getPlayerScore() {

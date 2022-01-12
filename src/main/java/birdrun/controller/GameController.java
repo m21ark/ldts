@@ -1,7 +1,10 @@
 package birdrun.controller;
 
 import birdrun.model.Dimensions;
-import birdrun.state.states.*;
+import birdrun.state.states.DeathMenuState;
+import birdrun.state.states.InstructionsMenuState;
+import birdrun.state.states.PauseMenuState;
+import birdrun.state.states.StartMenuState;
 import birdrun.viewer.GameViewer;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -24,7 +27,6 @@ public class GameController {
     private int gameLoopInt = 0;
     private int resetCountGameLoop = 1;
     private boolean runGame = true;
-    private int score;
 
     private boolean isMusicPlaying = false;
 
@@ -34,13 +36,13 @@ public class GameController {
         this.screen = new ScreenFactory().getScreen(dimensions, 26);
         this.graphics = screen.newTextGraphics();
         this.arena = new ArenaController(dimensions);
-        MenuState menuState = new MenuState(dimensions, graphics, "#3A656C", "#FFFFFF");
+        MenuController menuController = new MenuController(dimensions, graphics, "#3A656C", "#FFFFFF");
 
 
-        this.pauseMenuState = new PauseMenuState(screen, menuState);
-        this.startMenuState = new StartMenuState(screen, menuState);
-        this.deathMenuState = new DeathMenuState(screen, menuState);
-        this.instructionsMenuState = new InstructionsMenuState(screen, menuState);
+        this.pauseMenuState = new PauseMenuState(screen, menuController);
+        this.startMenuState = new StartMenuState(screen, menuController);
+        this.deathMenuState = new DeathMenuState(screen, menuController);
+        this.instructionsMenuState = new InstructionsMenuState(screen, menuController);
     }
 
 
@@ -63,7 +65,7 @@ public class GameController {
 
                 KeyStroke key = screen.pollInput();
 
-                runGame = arena.processKey(key, screen);
+                runGame = arena.processKey(key);
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -116,20 +118,32 @@ public class GameController {
 
         while (true) {
 
-            score = arena.getPlayerScore();
+            int score = arena.getPlayerScore();
 
             if (this.state == STATE.DEATH) {
                 arena.reloadArena();
                 arena.resetBgMusic();
             }
 
+
             switch (this.state) {
-                case START -> this.state = startMenuState.start();
-                case PAUSE -> this.state = pauseMenuState.start();
-                case GAME -> this.state = gameState();
-                case INSTRUCTIONS -> this.state = instructionsMenuState.start();
-                case DEATH -> this.state = deathMenuState.start(score);
-                case NONE -> System.exit(0);
+                case START:
+                    this.state = startMenuState.start();
+                    break;
+                case PAUSE:
+                    this.state = pauseMenuState.start();
+                    break;
+                case GAME:
+                    this.state = gameState();
+                    break;
+                case INSTRUCTIONS:
+                    this.state = instructionsMenuState.start();
+                    break;
+                case DEATH:
+                    this.state = deathMenuState.start(score);
+                    break;
+                case NONE:
+                    System.exit(0);
             }
         }
     }

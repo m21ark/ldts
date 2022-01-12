@@ -7,18 +7,10 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class Death_MenuViewer {
-
-    private final int width;
-    private final int height;
-    private final String bgColor;
-    private final String textColor;
+public class Death_MenuViewer extends MenuViewer {
 
     public Death_MenuViewer(Dimensions dimensions, String bgColor, String textColor) {
-        this.width = dimensions.getWidth();
-        this.height = dimensions.getHeight();
-        this.bgColor = bgColor;
-        this.textColor = textColor;
+        super(dimensions, bgColor, textColor);
     }
 
     public void draw(TextGraphics graphics, int playerCoinCount) {
