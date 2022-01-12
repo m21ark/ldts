@@ -47,10 +47,11 @@ public class ArenaController {
         this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
         this.arenaModel = new ArenaModel(new Dimensions(width, height), matrix, birdColor);
 
+        this.musicPlayer = new MusicPlayer();
+
     }
 
     public void startBgMusic() {
-        this.musicPlayer = new MusicPlayer();
         musicPlayer.starBackGroundMusic();
     }
 
@@ -65,7 +66,6 @@ public class ArenaController {
 
     public void reloadArena() {
         birdColor = "#FFFFFF";
-        musicPlayer.starBackGroundMusic();
         Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         matrix.setPos(bird);
@@ -310,17 +310,17 @@ public class ArenaController {
     }
 
 
-    public void pauseBgMusic(){
+    public void pauseBgMusic() {
         musicPlayer.stopBackGroundMusic();
     }
 
     public void resumeBgMusic() {
 
-    musicPlayer.resumeBackGroundMusic();
+        musicPlayer.resumeBackGroundMusic();
     }
 
 
-    public boolean  processKey(KeyStroke key, Screen screen) throws IOException {
+    public boolean processKey(KeyStroke key, Screen screen) throws IOException {
         Bird bird = arenaModel.getBird();
 
         if (key == null) return true;
@@ -365,7 +365,6 @@ public class ArenaController {
         }
 
     }
-
 
 
 }

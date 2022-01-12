@@ -21,63 +21,21 @@ public class MusicPlayer {
 
     private void loadMusicFiles() {
         try {
-            this.backgroundMusic = loadBackgroundMusic();
-            this.coinSound = loadCoinSound();
-            this.deadSound = loadDeadSound();
-            this.damageSound = loadDamageSound();
+            this.backgroundMusic = loadSound("/sounds/bg_music.wav");
+            this.coinSound = loadSound("/sounds/coin_sound.wav");
+            this.deadSound = loadSound("/sounds/dead_sound.wav");
+            this.damageSound = loadSound("/sounds/damage_sound.wav");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private Clip loadDamageSound() {
-        try {
-            File musicFile = new File(Objects.requireNonNull(MusicPlayer.class.getResource("/sounds/damage_sound.wav")).getFile());
-            AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
-            Clip musicClip = AudioSystem.getClip();
-            musicClip.open(audioInput);
-            FloatControl gainControl = (FloatControl) musicClip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-25.0f);
-            return musicClip;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
-    private Clip loadDeadSound() {
-        try {
-            File musicFile = new File(Objects.requireNonNull(MusicPlayer.class.getResource("/sounds/dead_sound.wav")).getFile());
-            AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
-            Clip musicClip = AudioSystem.getClip();
-            musicClip.open(audioInput);
-            FloatControl gainControl = (FloatControl) musicClip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-25.0f);
-            return musicClip;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
-    private Clip loadBackgroundMusic() {
+    private Clip loadSound(String soundPath) {
         try {
-            File musicFile = new File(Objects.requireNonNull(MusicPlayer.class.getResource("/sounds/bg_music.wav")).getFile());
-            AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
-            Clip musicClip = AudioSystem.getClip();
-            musicClip.open(audioInput);
-            FloatControl gainControl = (FloatControl) musicClip.getControl(FloatControl.Type.MASTER_GAIN);
-            gainControl.setValue(-25.0f);
-            return musicClip;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private Clip loadCoinSound() {
-        try {
-            File musicFile = new File(Objects.requireNonNull(MusicPlayer.class.getResource("/sounds/coin_sound.wav")).getFile());
+            File musicFile = new File(Objects.requireNonNull(MusicPlayer.class.getResource(soundPath)).getFile());
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
             Clip musicClip = AudioSystem.getClip();
             musicClip.open(audioInput);

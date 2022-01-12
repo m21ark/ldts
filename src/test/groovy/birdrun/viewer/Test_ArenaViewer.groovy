@@ -2,7 +2,6 @@ package birdrun.viewer
 
 import birdrun.model.Dimensions
 import birdrun.model.Matrix
-import birdrun.viewer.ArenaViewer
 import com.googlecode.lanterna.graphics.TextGraphics
 import spock.lang.Specification
 
@@ -43,7 +42,7 @@ class Test_ArenaViewer extends Specification {
 
         when:
 
-        arenaViewer.drawGame(graphics, 1, 1, matrix)
+        arenaViewer.draw(graphics, 1, 1, matrix)
 
         then:
 

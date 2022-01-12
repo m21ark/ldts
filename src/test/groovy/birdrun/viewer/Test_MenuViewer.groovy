@@ -1,7 +1,7 @@
 package birdrun.viewer
 
 import birdrun.model.Dimensions
-import birdrun.viewer.MenuViewer
+import birdrun.viewer.menu.MenuViewer
 import com.googlecode.lanterna.graphics.TextGraphics
 import spock.lang.Specification
 
