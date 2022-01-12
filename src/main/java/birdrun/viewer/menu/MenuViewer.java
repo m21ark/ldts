@@ -2,7 +2,7 @@ package birdrun.viewer.menu;
 
 import birdrun.model.Dimensions;
 
-public class MenuViewer {
+public abstract class MenuViewer {
 
     protected final int width;
     protected final int height;

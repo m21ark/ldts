@@ -9,13 +9,13 @@ import java.util.Objects;
 
 @SuppressWarnings("CatchAndPrintStackTrace")
 
-public class MusicPlayer {
+public class MusicController {
     private Clip backgroundMusic;
     private Clip coinSound;
     private Clip deadSound;
     private Clip damageSound;
 
-    public MusicPlayer() {
+    public MusicController() {
         loadMusicFiles();
     }
 
@@ -32,10 +32,9 @@ public class MusicPlayer {
     }
 
 
-
     private Clip loadSound(String soundPath) {
         try {
-            File musicFile = new File(Objects.requireNonNull(MusicPlayer.class.getResource(soundPath)).getFile());
+            File musicFile = new File(Objects.requireNonNull(MusicController.class.getResource(soundPath)).getFile());
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
             Clip musicClip = AudioSystem.getClip();
             musicClip.open(audioInput);
