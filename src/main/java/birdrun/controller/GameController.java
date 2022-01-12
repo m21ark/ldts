@@ -1,8 +1,8 @@
 package birdrun.controller;
 
 import birdrun.model.Dimensions;
+import birdrun.state.states.*;
 import birdrun.viewer.GameViewer;
-import birdrun.viewer.MenuViewer;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
@@ -13,12 +13,20 @@ import java.net.URISyntaxException;
 
 public class GameController {
 
+    private final ArenaController arena;
+    private final PauseMenuState pauseMenuState;
+    private final StartMenuState startMenuState;
+    private final DeathMenuState deathMenuState;
+    private final InstructionsMenuState instructionsMenuState;
     private final Screen screen;
     private final TextGraphics graphics;
-    private final ArenaController arena;
-    private final MenuViewer menuViewer;
-    private final GameViewer gameViewer;
-    private KeyStroke key;
+    private STATE state = STATE.START;
+    private int gameLoopInt = 0;
+    private int resetCountGameLoop = 1;
+    private boolean runGame = true;
+    private int score;
+
+    private boolean isMusicPlaying = false;
 
 
     public GameController(Dimensions dimensions) throws IOException, URISyntaxException, FontFormatException {
@@ -26,141 +34,111 @@ public class GameController {
         this.screen = new ScreenFactory().getScreen(dimensions, 26);
         this.graphics = screen.newTextGraphics();
         this.arena = new ArenaController(dimensions);
-        this.menuViewer = new MenuViewer(dimensions, "#3A656C", "#000000");
-        this.gameViewer = new GameViewer();
+        MenuState menuState = new MenuState(dimensions, graphics, "#3A656C", "#FFFFFF");
 
 
+        this.pauseMenuState = new PauseMenuState(screen, menuState);
+        this.startMenuState = new StartMenuState(screen, menuState);
+        this.deathMenuState = new DeathMenuState(screen, menuState);
+        this.instructionsMenuState = new InstructionsMenuState(screen, menuState);
     }
 
+
+    public GameController.STATE gameState() {
+
+        if (!isMusicPlaying) {
+            arena.startBgMusic();
+            isMusicPlaying = true;
+        } else {
+            arena.resumeBgMusic();
+        }
+
+        while (arena.playerAlive()) {
+
+            try {
+
+                screen.clear();
+                new GameViewer().draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
+                screen.refresh();
+
+                KeyStroke key = screen.pollInput();
+
+                runGame = arena.processKey(key, screen);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (!runGame) {
+                //Pause game
+                arena.pauseBgMusic();
+
+                return GameController.STATE.PAUSE;
+
+            }
+
+            if (gameLoopInt % 25 == 0) {
+                arena.addRandomBlock(1);
+                arena.applyGravity();
+            }
+            if (gameLoopInt == 250) {
+                arena.addRandomCoin(1);
+                gameLoopInt = 0;
+                resetCountGameLoop++;
+            }
+
+            if (resetCountGameLoop % 25 == 0) {
+                arena.addRandomLife();
+                gameLoopInt = 0;
+                resetCountGameLoop++;
+            }
+
+
+            gameLoopInt++;
+
+            arena.update();
+
+            try {
+                Thread.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            if (!arena.playerAlive()) return GameController.STATE.DEATH;
+        }
+
+
+        return null;
+    }
 
     public void run() throws IOException {
 
 
-        //Title  Screen
-        screen.clear();
-        menuViewer.drawLoadingScreen(graphics);
-        screen.refresh();
-
-
-
-
         while (true) {
-            key = screen.readInput();
 
-            if (key.getCharacter() != null) {
-                String input = key.getCharacter().toString().toUpperCase();
+            score = arena.getPlayerScore();
 
-                if (input.equals("S")) {
-                    break;
-                }
-
-                if (input.equals("Q")) {
-                    System.exit(0);
-                }
+            if (this.state == STATE.DEATH) {
+                arena.reloadArena();
+                arena.resetBgMusic();
             }
 
-        }
-
-
-        //Main Game Screen
-        int gameLoopInt = 0;
-        int resetCountGameLoop = 1;
-        boolean runGame = true;
-
-        arena.startBgMusic();
-
-
-        while (true) {
-            do {
-                gameViewer.draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
-                key = screen.pollInput();
-
-                runGame = arena.processKey(key, screen);
-
-                if(!runGame ){
-                    //Pause game
-                    arena.pauseBgMusic();
-
-                    screen.clear();
-                    menuViewer.drawPausingScreen(graphics);
-                    screen.refresh();
-
-
-                    while (true) {
-                        key = screen.readInput();
-
-                        if (key.getCharacter() != null) {
-                            String input = key.getCharacter().toString().toUpperCase();
-
-                            if (input.equals("P")) {
-                                arena .resumeBgMusic();
-                                runGame = true;
-                                break;
-                            }
-
-                            if (input.equals("Q")) {
-                                System.exit(0);
-                            }
-                        }
-
-                    }
-                }
-
-                if (gameLoopInt % 50 == 0) {
-                    arena.addRandomBlock(1);
-                    arena.applyGravity();
-                }
-                if (gameLoopInt == 450) {
-                    arena.addRandomCoin(1);
-                    gameLoopInt = 0;
-                    resetCountGameLoop++;
-                }
-
-                if (resetCountGameLoop % 25 == 0) {
-                    arena.addRandomLife();
-                    gameLoopInt = 0;
-                    resetCountGameLoop++;
-                }
-
-
-
-
-                gameLoopInt++;
-
-                arena.update();
-
-            } while (runGame && arena.playerAlive());
-
-
-            //Ending Screen
-            screen.clear();
-            menuViewer.drawDeathScreen(graphics, arena.getArenaModel().getPlayerScore());
-            screen.refresh();
-
-            while (true) {
-                key = screen.readInput();
-                if (key.getCharacter() != null) {
-                    String input = key.getCharacter().toString().toUpperCase();
-
-                    if (key.getCharacter() != null) {
-                        if (input.equals("R")) {
-                            arena.reloadArena();
-                            break;
-                        }
-                        if (input.equals("Q")) {
-                            System.exit(0);
-                        }
-                    }
-                }
-
-
+            switch (this.state) {
+                case START -> this.state = startMenuState.start();
+                case PAUSE -> this.state = pauseMenuState.start();
+                case GAME -> this.state = gameState();
+                case INSTRUCTIONS -> this.state = instructionsMenuState.start();
+                case DEATH -> this.state = deathMenuState.start(score);
+                case NONE -> System.exit(0);
             }
-
-
         }
-
-
     }
 
 
+    public enum STATE {START, INSTRUCTIONS, GAME, DEATH, PAUSE, NONE}
+
+
 }
+
+
+

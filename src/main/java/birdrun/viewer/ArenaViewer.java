@@ -31,7 +31,7 @@ public class ArenaViewer {
     }
 
 
-    public void drawGame(TextGraphics graphics, int playerCoinCount, int playerHP, Matrix matrix) {
+    public void draw(TextGraphics graphics, int playerCoinCount, int playerHP, Matrix matrix) {
         //Set screen
         graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');

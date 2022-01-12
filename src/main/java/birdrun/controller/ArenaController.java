@@ -27,6 +27,7 @@ public class ArenaController {
     private final static String borderColor = "#653A6C";
     private final static String lifeColor = "#16C527";
     private static String birdColor = "#FFFFFF";
+
     //Attributes
     private final int width;
     private final int height;
@@ -47,10 +48,11 @@ public class ArenaController {
         this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
         this.arenaModel = new ArenaModel(new Dimensions(width, height), matrix, birdColor);
 
+        this.musicPlayer = new MusicPlayer();
+
     }
 
     public void startBgMusic() {
-        this.musicPlayer = new MusicPlayer();
         musicPlayer.starBackGroundMusic();
     }
 
@@ -65,7 +67,6 @@ public class ArenaController {
 
     public void reloadArena() {
         birdColor = "#FFFFFF";
-        musicPlayer.starBackGroundMusic();
         Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
         Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         matrix.setPos(bird);
@@ -310,17 +311,17 @@ public class ArenaController {
     }
 
 
-    public void pauseBgMusic(){
+    public void pauseBgMusic() {
         musicPlayer.stopBackGroundMusic();
     }
 
     public void resumeBgMusic() {
 
-    musicPlayer.resumeBackGroundMusic();
+        musicPlayer.resumeBackGroundMusic();
     }
 
 
-    public boolean  processKey(KeyStroke key, Screen screen) throws IOException {
+    public boolean processKey(KeyStroke key, Screen screen) throws IOException {
         Bird bird = arenaModel.getBird();
 
         if (key == null) return true;
@@ -356,10 +357,10 @@ public class ArenaController {
 
         int stamina = bird.getStamina();
 
-        if (stamina > 0) {
+        if (stamina > 30) {
             moveBird(bird.moveUp(1));
             arenaModel.setBird(bird);
-            stamina -= 10;
+            stamina -= 15;
             bird.setStamina(stamina);
             arenaModel.setBird(bird);
         }
@@ -367,5 +368,11 @@ public class ArenaController {
     }
 
 
+    public void resetBgMusic() {
+        musicPlayer.resetBackGroundMusic();
+    }
 
+    public int getPlayerScore() {
+        return arenaModel.getPlayerScore();
+    }
 }

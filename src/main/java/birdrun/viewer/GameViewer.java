@@ -10,9 +10,8 @@ public class GameViewer {
 
     public void draw(Screen screen, TextGraphics graphics, ArenaModel arenaModel, ArenaViewer arenaViewer) throws IOException {
         screen.clear();
-        arenaViewer.drawGame(graphics, arenaModel.getPlayerScore(), arenaModel.getPlayerHp(), arenaModel.getMatrix());
+        arenaViewer.draw(graphics, arenaModel.getPlayerScore(), arenaModel.getPlayerHp(), arenaModel.getMatrix());
         screen.refresh();
     }
-
 
 }
