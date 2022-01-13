@@ -10,7 +10,7 @@ public class ArenaModel {
     public ArenaModel(Dimensions dimensions, Matrix matrix, String birdColor) {
         this.width = dimensions.getWidth();
         this.height = dimensions.getHeight();
-        this.bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
+        this.bird = new Bird(new Position(width / 2, height / 2), '&', birdColor);
         this.matrix = matrix;
     }
 
