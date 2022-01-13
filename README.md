@@ -1,6 +1,6 @@
 ## LDTS_G0900 - Run birdrun.model.Bird Run!
 
-Run birdrun.model.Bird Run is a platformer game and a mock version of the mobile phone game with the same name (https://play.google.com/store/apps/details?id=com.ketchapp.runbirdrun&hl=en_US&gl=US). The main objective is to stay alive for as long as you can, while collecting the occasional falling coins. You must avoid the neverending boxes that fall from the sky, otherwise you lose!
+Run Bird Run is a platformer game and a mock version of the mobile phone game with the same name (https://play.google.com/store/apps/details?id=com.ketchapp.runbirdrun&hl=en_US&gl=US). The player controlls a lazy bird that can't fly much without getting tired. The main objective is to stay alive for as long as you can, while collecting the occasional falling coins. You must avoid the neverending boxes that fall from the sky, otherwise you lose!
 
 >This project was developed by Marco André (up202004891@fe.up.pt), João Silva (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
 
@@ -10,26 +10,32 @@ Run birdrun.model.Bird Run is a platformer game and a mock version of the mobile
 
 - **Start Screen** - When the game starts a simple initial screen is presented
 - **End Screen** - When the player dies, a screen is shown with their score
+- **Instructions Screen** - Instruction screens explaining the game and the key inputs
 - **Movement** - The game character can move left, right and fly using the Arrow Keys
 - **Gravity** - All in-game entities are affected by gravity, thus they fall a small amount per second
 - **Catch Coins** - When the bird touches a coin or vice-versa, the player wins a point
 - **Take Damage** - When a bird is hit on the head by a block, it takes damage, loosing one of its 3 initial lives
 - **Full Bottom Row** - Like in tetriz, when the last row is fully occupied by blocks, it vanishes, preventing the window from filling up
 - **Collisions** - Right now, the bird can move through blocks and coins laterally without a probleam. Therefore, more collision detection needs to be implemmented
+- **Bg Music & Sound Effects** - The game has background music and sound effects when player catches something, dies, takes damage...
+- **Pausing Game** - Pressing P mid game pauses the game when needed
+- **Play again Option** - In the end screen, the player has the option to play again
+- **Bird Stamina** - The player controlled bird now changes color to reflect its stamina. Without stamina, the bird can't fly
+- **Extra Lives** - Randomly through out the game, collectable lives drop from the sky. If the player gets them, it gains a hp point back.
  
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/mainMenu.png"/>
+  <img src="docs/images/screenshots/initMenu.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 1. Main Menu </i></b>
+  <b><i>Fig 1. Starting Menu </i></b>
 </p>  
 
 <br>
 <br />
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/gameScreenshot.png"/>
+  <img src="docs/images/screenshots/game.png"/>
 </p>
 <p align="center">
   <b><i>Fig 2. Game </i></b>  
@@ -39,7 +45,7 @@ Run birdrun.model.Bird Run is a platformer game and a mock version of the mobile
 <br />
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/gameOver.png"/>
+  <img src="docs/images/screenshots/endMenu.png"/>
 </p>
 <p align="center">
   <b><i>Fig 3. Game Over  </i></b>
@@ -49,9 +55,6 @@ Run birdrun.model.Bird Run is a platformer game and a mock version of the mobile
 
 - **Shop** - With the coins collected in-game, the user can then buy different power-ups, to help him better perform at the game.
 - **Power-Ups** - These would be special powers, that the user does not have initially. They could vary from "Box Destruction" to "Super birdrun.model.Coin Addition".
-- **Pausing Game** - A keybind should be added to allow the player to pause the game when needed
-- **Better Start/End Screen** - These screens are temporary. Better ones with more information and design should be added
-- **Play again Option** - In the end screen, the player should have the option to play again
 - **Hard Level Meter** - Players should have an option to choose if they want a harder level (with more and faster blocks for example)
 
 
@@ -124,14 +127,14 @@ This is a simplified version of the project's diagram.
 
 These classes can be found in the following folder:
 
-- [Java Classes](src/main/java)
+- [Java Classes](src/main/java/birdrun)
 
 
 
 ### TESTING
 
 <p align="center" justify="center">
-  <img src="docs/images/test/tests.png"/>
+  <img src="docs/images/test/coverage.png"/>
 </p>
 <p align="center">
   <b><i>Fig 4. Coverage Report </i></b>  
@@ -140,7 +143,18 @@ These classes can be found in the following folder:
 <br>
 <br />
 
-- **We ran into some trouble when trying to execute Pitest**
+
+<p align="center" justify="center">
+  <img src="docs/images/test/pitest.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 5. Pitest Report </i></b>  
+</p>  
+
+<br>
+<br />
+
+
 
 ### SELF-EVALUATION
 
