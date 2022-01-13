@@ -13,11 +13,11 @@ import java.util.Random;
 public class ArenaController {
 
     //Characters
-    public final static Character birdChar = 'B';
+    public final static Character birdChar = '&';
     public final static Character blockChar = 'X';
     public final static Character borderChar = '#';
-    public final static Character coinChar = 'C';
-    public final static Character lifeChar = 'L';
+    public final static Character coinChar = '^';
+    public final static Character lifeChar = '*';
 
     //Colors
     private final static String textColor = "#000000";
@@ -42,7 +42,7 @@ public class ArenaController {
         this.height = dimensions.getHeight();
 
 
-        Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
+        Bird bird = new Bird(new Position(width / 2, height / 2), '&', birdColor);
         Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         matrix.setPos(bird);
         this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
@@ -67,7 +67,7 @@ public class ArenaController {
 
     public void reloadArena() {
         birdColor = "#FFFFFF";
-        Bird bird = new Bird(new Position(width / 2, height / 2), 'B', birdColor);
+        Bird bird = new Bird(new Position(width / 2, height / 2), '&', birdColor);
         Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         matrix.setPos(bird);
         this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
