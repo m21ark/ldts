@@ -62,4 +62,16 @@ public class ArenaModel {
     public void setBirdPos(Position pos) {
         this.bird.setPos(pos);
     }
+
+    public void birdPickCoins(int n){
+        this.bird.pickCoin(n);
+    }
+
+    public Element matrixGetPos(Position pos){
+        return  matrix.getPos(pos);
+    }
+
+    public void addPlayerHp(int hp){
+        this.bird.addHp(hp);
+    }
 }

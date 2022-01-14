@@ -21,7 +21,7 @@ public class ArenaController {
 
     //Colors
     public final static String textColor = "#000000";
-    public final static String bgColor = "#3A656C";
+    public final static String bgColor = "#3871A3";
     public final static String coinColor = "#FFAA11";
     public final static String blockColor = "#4B351C";
     public final static String borderColor = "#653A6C";
@@ -141,114 +141,34 @@ public class ArenaController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public boolean canBirdMove(Position pos) {
 
-        Matrix matrix = arenaModel.getMatrix();
-        Bird bird = arenaModel.getBird();
+        boolean InBorder = !(pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5);
+        if(InBorder) return false;
+        Element newElem = arenaModel.matrixGetPos(pos);
+        if (newElem == null) return false;
+        Character NewPos = newElem.getChar();
+        if(NewPos.equals(blockChar)) return false;
 
-        boolean notInBorder = pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5;
+        boolean lateralMove = pos.getX() != arenaModel.getBird().getPositionX();
 
-        if (matrix.getPos(pos) == null) return false;
+        boolean notMidAir = arenaModel.matrixGetPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ';
 
-        Character NewPos = matrix.getPos(pos).getChar();
-        boolean isNewPosFree = !NewPos.equals(blockChar);
+        if(newElem.getClass().getSuperclass() == Collectable.class){
+            musicController.playCoinSound();
 
-        if (NewPos.equals(coinChar)) {
-            if (pos.getX() != bird.getPositionX()) {
-                musicController.playCoinSound();
-                bird.pickCoin(1);
-            } else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') {
-                musicController.playCoinSound();
-                bird.pickCoin(1);
+            if(lateralMove || notMidAir){
+                if(NewPos.equals(coinChar))
+                    arenaModel.birdPickCoins(1);
+
+                else if(NewPos.equals(lifeChar))
+                    arenaModel.addPlayerHp(1);
             }
         }
 
-        if (NewPos.equals(lifeChar)) {
-            if (pos.getX() != bird.getPositionX()) {
-                musicController.playCoinSound();
-                bird.addHp(1);
-            } else if (matrix.getPos(new Position(pos.getX(), pos.getY() + 1)).getChar() != ' ') {
-                musicController.playCoinSound();
-                bird.addHp(1);
-            }
-        }
-
-        arenaModel.setBird(bird);
-
-        return notInBorder && isNewPosFree;
+    return true;
     }
+
 
     public boolean moveBird(Position pos) {
 
@@ -335,10 +255,11 @@ public class ArenaController {
         int x = e.getPositionX();
         int y = e.getPositionY();
 
+        Character elem = e.getChar();
+
         Matrix matrix = arenaModel.getMatrix();
         Bird bird = arenaModel.getBird();
-
-
+        
         Element tempPos = matrix.getPos(x, y + 1);
 
         if (tempPos == null) return false;
@@ -347,33 +268,38 @@ public class ArenaController {
 
         boolean canApply = belowElem == ' ';
 
+
+
+
+
+
         //Situations
-        if (e.getChar().equals(blockChar) && belowElem.equals(coinChar)) {
+        if (elem.equals(blockChar) && belowElem.equals(coinChar)) {
             canApply = true;
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
 
-        } else if (e.getChar().equals(blockChar) && belowElem.equals(lifeChar)) {
+        } else if (elem.equals(blockChar) && belowElem.equals(lifeChar)) {
             canApply = true;
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
-        } else if (e.getChar().equals(blockChar) && belowElem.equals(birdChar)) {
+        } else if (elem.equals(blockChar) && belowElem.equals(birdChar)) {
             canApply = true;
             matrix.setPos(new EmptyElement(x, y, ' ', "#000000"));
             musicController.playDamageSound();
             bird.takeDamage();
 
-        } else if (e.getChar().equals(coinChar) && belowElem.equals(birdChar)) {
+        } else if (elem.equals(coinChar) && belowElem.equals(birdChar)) {
             canApply = true;
             if (matrix.getPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ') {
                 musicController.playCoinSound();
                 bird.pickCoin(1);
             }
 
-        } else if (e.getChar().equals(birdChar) && belowElem.equals(coinChar)) {
+        } else if (elem.equals(birdChar) && belowElem.equals(coinChar)) {
             canApply = true;
             e.setPos(new Position(x, y));
             matrix.setPos(e);
 
-        } else if (e.getChar().equals(birdChar) && belowElem.equals(lifeChar)) {
+        } else if (elem.equals(birdChar) && belowElem.equals(lifeChar)) {
             canApply = true;
             e.setPos(new Position(x, y));
             matrix.setPos(e);
