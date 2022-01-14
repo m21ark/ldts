@@ -6,6 +6,8 @@ import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
 
+@SuppressWarnings("CatchAndPrintStackTrace")
+
 public class InstructionsMenuState extends  MenuState {
 
 
@@ -22,7 +24,7 @@ public class InstructionsMenuState extends  MenuState {
             menuController.drawState(MenuController.MENU_STATE.INSTRUCTIONS);
             screen.refresh();
         } catch (IOException e) {
-         //   e.printStackTrace();
+           e.printStackTrace();
         }
 
 

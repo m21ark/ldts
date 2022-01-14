@@ -6,6 +6,8 @@ import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
 
+@SuppressWarnings("CatchAndPrintStackTrace")
+
 public class DeathMenuState extends MenuState {
 
 
@@ -26,7 +28,7 @@ public class DeathMenuState extends MenuState {
             screen.refresh();
 
         } catch (IOException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
         return waitForUserConfirmation(GameController.STATE.START);

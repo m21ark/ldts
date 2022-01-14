@@ -16,6 +16,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+@SuppressWarnings("CatchAndPrintStackTrace")
+
 public class GameController {
 
     private final ArenaController arena;
@@ -73,7 +75,7 @@ public class GameController {
                 runGame = arena.executeCommand(command);
 
             } catch (IOException e) {
-                // e.printStackTrace();
+                 e.printStackTrace();
             }
 
             if (!runGame) {
@@ -84,18 +86,18 @@ public class GameController {
 
             }
 
-            if (gameLoopInt % 25 == 0) {
-                arena.addRandomBlock(1);
+            if (gameLoopInt % 20 == 0) {
+                arena.addRandomElem(ArenaController.FallingElem.BLOCK, 1);
                 arena.applyGravity();
             }
             if (gameLoopInt == 250) {
-                arena.addRandomCoin(1);
+                arena.addRandomElem(ArenaController.FallingElem.COIN,1);
                 gameLoopInt = 0;
                 resetCountGameLoop++;
             }
 
             if (resetCountGameLoop % 25 == 0) {
-                arena.addRandomLife();
+                arena.addRandomElem(ArenaController.FallingElem.LIFE, 1);
                 gameLoopInt = 0;
                 resetCountGameLoop++;
             }
@@ -103,12 +105,12 @@ public class GameController {
 
             gameLoopInt++;
 
-            arena.update();
+            arena.updateArena();
 
             try {
                 Thread.sleep(2);
             } catch (InterruptedException e) {
-                // e.printStackTrace();
+                e.printStackTrace();
             }
 
             if (!arena.playerAlive()) return GameController.STATE.DEATH;
@@ -153,11 +155,7 @@ public class GameController {
         }
     }
 
-
     public enum STATE {START, INSTRUCTIONS, GAME, DEATH, PAUSE, NONE}
 
-
 }
-
-
 
