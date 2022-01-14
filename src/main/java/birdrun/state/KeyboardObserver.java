@@ -5,6 +5,8 @@ import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
 
+@SuppressWarnings("CatchAndPrintStackTrace")
+
 public class KeyboardObserver {
     private final Screen screen;
 
@@ -66,7 +68,7 @@ public class KeyboardObserver {
             return interpertKey(key);
 
         } catch (IOException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
         return null;
@@ -79,7 +81,7 @@ public class KeyboardObserver {
             KeyStroke key = this.screen.pollInput();
             return interpertKey(key);
         } catch (IOException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
 

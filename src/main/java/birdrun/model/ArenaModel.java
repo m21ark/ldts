@@ -14,6 +14,10 @@ public class ArenaModel {
         this.matrix = matrix;
     }
 
+    public Dimensions getDimensions(){
+        return new Dimensions(width,height);
+    }
+
 
     public int getPlayerScore() {
         return bird.getCoinCount();
@@ -37,5 +41,25 @@ public class ArenaModel {
 
     public void setBird(Bird bird) {
         this.bird = bird;
+    }
+
+    public void setBirdColor(String newColor) {
+        this.bird.updateColor(newColor);
+    }
+
+    public void removeMatrixBottomRow() {
+
+        for (int y = height - 2; y > 1; y--)
+            for (int x = width - 1; x > 1; x--)
+                matrix.getPos(x, y).gravityMove();
+
+    }
+
+    public void matrixSetPos(Element element){
+        matrix.setPos(element);
+    }
+
+    public void setBirdPos(Position pos) {
+        this.bird.setPos(pos);
     }
 }

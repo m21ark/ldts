@@ -6,6 +6,8 @@ import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
 
+@SuppressWarnings("CatchAndPrintStackTrace")
+
 public class PauseMenuState extends MenuState {
 
     public PauseMenuState(Screen screen, MenuController menuController) {
@@ -20,7 +22,7 @@ public class PauseMenuState extends MenuState {
             menuController.drawState(MenuController.MENU_STATE.PAUSE);
             screen.refresh();
         } catch (IOException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
         return waitForUserConfirmation(GameController.STATE.GAME);
