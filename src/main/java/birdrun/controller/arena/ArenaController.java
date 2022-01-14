@@ -330,10 +330,7 @@ public class ArenaController {
 
         switch (command) {
             case UP:
-                moveBird(bird.moveUp(1));
-                break;
-            case DOWN:
-                moveBird(bird.moveDown(1));
+                birdFly(bird);
                 break;
             case LEFT:
                 moveBird(bird.moveLeft(1));
