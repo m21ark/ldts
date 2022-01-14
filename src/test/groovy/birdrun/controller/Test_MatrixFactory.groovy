@@ -1,7 +1,6 @@
 package birdrun.controller
 
-import birdrun.controller.ArenaController
-import birdrun.controller.MatrixFactory
+import birdrun.controller.arena.ArenaController
 import birdrun.model.Dimensions
 import birdrun.model.Matrix
 import spock.lang.Specification

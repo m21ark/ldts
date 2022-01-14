@@ -1,6 +1,6 @@
 package birdrun.controller
 
-import birdrun.controller.ArenaController
+import birdrun.controller.arena.ArenaController
 import birdrun.model.Bird
 import birdrun.model.Dimensions
 import birdrun.model.Matrix

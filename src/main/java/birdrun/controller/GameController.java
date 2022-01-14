@@ -1,13 +1,15 @@
 package birdrun.controller;
 
+import birdrun.controller.arena.ArenaController;
 import birdrun.model.Dimensions;
+import birdrun.state.Command;
+import birdrun.state.KeyboardObserver;
 import birdrun.state.states.DeathMenuState;
 import birdrun.state.states.InstructionsMenuState;
 import birdrun.state.states.PauseMenuState;
 import birdrun.state.states.StartMenuState;
 import birdrun.viewer.GameViewer;
 import com.googlecode.lanterna.graphics.TextGraphics;
-import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.awt.*;
@@ -23,11 +25,11 @@ public class GameController {
     private final InstructionsMenuState instructionsMenuState;
     private final Screen screen;
     private final TextGraphics graphics;
+    private final KeyboardObserver keyboardObserver;
     private STATE state = STATE.START;
     private int gameLoopInt = 0;
     private int resetCountGameLoop = 1;
     private boolean runGame = true;
-
     private boolean isMusicPlaying = false;
 
 
@@ -43,6 +45,8 @@ public class GameController {
         this.startMenuState = new StartMenuState(screen, menuController);
         this.deathMenuState = new DeathMenuState(screen, menuController);
         this.instructionsMenuState = new InstructionsMenuState(screen, menuController);
+
+        this.keyboardObserver = new KeyboardObserver(screen);
     }
 
 
@@ -63,12 +67,13 @@ public class GameController {
                 new GameViewer().draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
                 screen.refresh();
 
-                KeyStroke key = screen.pollInput();
 
-                runGame = arena.processKey(key);
+                Command.COMMAND command = keyboardObserver.listenPoll();
+
+                runGame = arena.executeCommand(command);
 
             } catch (IOException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
 
             if (!runGame) {
@@ -103,7 +108,7 @@ public class GameController {
             try {
                 Thread.sleep(2);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
 
             if (!arena.playerAlive()) return GameController.STATE.DEATH;

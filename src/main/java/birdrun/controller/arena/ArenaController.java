@@ -1,10 +1,10 @@
-package birdrun.controller;
+package birdrun.controller.arena;
 
+import birdrun.controller.MatrixFactory;
+import birdrun.controller.MusicController;
 import birdrun.model.*;
+import birdrun.state.Command;
 import birdrun.viewer.ArenaViewer;
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
 import java.util.Random;
@@ -36,13 +36,13 @@ public class ArenaController {
     private ArenaModel arenaModel;
 
 
-    ArenaController(Dimensions dimensions) {
+    public ArenaController(Dimensions dimensions) {
 
         this.width = dimensions.getWidth();
         this.height = dimensions.getHeight();
 
 
-        Bird bird = new Bird(new Position(width / 2, height / 2), '&', birdColor);
+        Bird bird = new Bird(new Position(width / 2, height / 2), birdChar, birdColor);
         Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         matrix.setPos(bird);
         this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
@@ -51,6 +51,7 @@ public class ArenaController {
         this.musicController = new MusicController();
 
     }
+
 
     public void startBgMusic() {
         musicController.starBackGroundMusic();
@@ -67,7 +68,7 @@ public class ArenaController {
 
     public void reloadArena() {
         birdColor = "#FFFFFF";
-        Bird bird = new Bird(new Position(width / 2, height / 2), '&', birdColor);
+        Bird bird = new Bird(new Position(width / 2, height / 2), birdChar, birdColor);
         Matrix matrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);
         matrix.setPos(bird);
         this.arenaViewer = new ArenaViewer(new Dimensions(width, height), bgColor, textColor);
@@ -209,6 +210,7 @@ public class ArenaController {
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
         } else if (e.getChar().equals(blockChar) && belowElem.equals(birdChar)) {
             canApply = true;
+            matrix.setPos(new EmptyElement(x, y, ' ', "#000000"));
             musicController.playDamageSound();
             bird.takeDamage();
 
@@ -321,28 +323,27 @@ public class ArenaController {
     }
 
 
-    public boolean processKey(KeyStroke key) throws IOException {
+    public boolean executeCommand(Command.COMMAND command) throws IOException {
         Bird bird = arenaModel.getBird();
 
-        if (key == null) return true;
-        if (key.getKeyType() == KeyType.ArrowLeft) {
-            moveBird(bird.moveLeft(1));
-        } else if (key.getKeyType() == KeyType.ArrowRight) {
-            moveBird(bird.moveRight(1));
-        } else if (key.getKeyType() == KeyType.ArrowUp) {
-            birdFly(bird);
-        } else if (key.getKeyType() == KeyType.ArrowDown) {
-            moveBird(bird.moveDown(1));
-        } else if (key.getKeyType() == KeyType.EOF) {
-            System.exit(0);
-        }
+        if (command == null) return true;
 
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') {
-            System.exit(0);
-        }
-
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'p') {
-            return false;
+        switch (command) {
+            case UP:
+                birdFly(bird);
+                break;
+            case LEFT:
+                moveBird(bird.moveLeft(1));
+                break;
+            case RIGHT:
+                moveBird(bird.moveRight(1));
+                break;
+            case PAUSE:
+                return false;
+            case QUIT:
+                System.exit(0);
+            default:
+                return true;
         }
 
         arenaModel.setBird(bird);

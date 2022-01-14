@@ -2,24 +2,14 @@ package birdrun.state.states;
 
 import birdrun.controller.GameController;
 import birdrun.controller.MenuController;
-import birdrun.state.Command;
-import birdrun.state.KeyboardObserver;
 import com.googlecode.lanterna.screen.Screen;
 
 import java.io.IOException;
 
-public class PauseMenuState extends  MenuState {
-
-    private final MenuController menuController;
-    private final Screen screen;
-
+public class PauseMenuState extends MenuState {
 
     public PauseMenuState(Screen screen, MenuController menuController) {
         super(screen, menuController);
-
-        this.screen = screen;
-        this.menuController = menuController;
-
     }
 
     @Override
@@ -30,22 +20,13 @@ public class PauseMenuState extends  MenuState {
             menuController.drawState(MenuController.MENU_STATE.PAUSE);
             screen.refresh();
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
-
-        while (true) {
-            Command.COMMAND command = new KeyboardObserver(screen).listenRead();
-
-            if (command == null) continue;
-            if (command == Command.COMMAND.QUIT) System.exit(0);
-            else if (command == Command.COMMAND.SELECT) {
-                return GameController.STATE.GAME;
-            }
-
-        }
+        return waitForUserConfirmation(GameController.STATE.GAME);
 
     }
 
 
 }
+
