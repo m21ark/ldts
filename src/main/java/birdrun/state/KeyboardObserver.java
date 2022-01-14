@@ -31,27 +31,33 @@ public class KeyboardObserver {
             case Enter:
                 return Command.COMMAND.SELECT;
             case Character:
-                String ch = key.getCharacter().toString().toUpperCase();
-
-                switch (ch) {
-                    case "Q":
-                        return Command.COMMAND.QUIT;
-                    case "P":
-                        return Command.COMMAND.PAUSE;
-                    case "W":
-                        return Command.COMMAND.UP;
-                    case "A":
-                        return Command.COMMAND.LEFT;
-                    case "S":
-                        return Command.COMMAND.DOWN;
-                    case "D":
-                        return Command.COMMAND.RIGHT;
-                    default:
-                        return Command.COMMAND.NONE;
-                }
+                return interpertCharKey(key);
             default:
                 return Command.COMMAND.NONE;
         }
+    }
+
+    private Command.COMMAND interpertCharKey(KeyStroke key) {
+
+        String ch = key.getCharacter().toString().toUpperCase();
+
+        switch (ch) {
+            case "Q":
+                return Command.COMMAND.QUIT;
+            case "P":
+                return Command.COMMAND.PAUSE;
+            case "W":
+                return Command.COMMAND.UP;
+            case "A":
+                return Command.COMMAND.LEFT;
+            case "S":
+                return Command.COMMAND.DOWN;
+            case "D":
+                return Command.COMMAND.RIGHT;
+            default:
+                return Command.COMMAND.NONE;
+        }
+
     }
 
     public Command.COMMAND listenRead() {
@@ -60,7 +66,7 @@ public class KeyboardObserver {
             return interpertKey(key);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
         return null;
@@ -73,7 +79,7 @@ public class KeyboardObserver {
             KeyStroke key = this.screen.pollInput();
             return interpertKey(key);
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
 
 

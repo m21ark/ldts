@@ -73,7 +73,7 @@ public class GameController {
                 runGame = arena.executeCommand(command);
 
             } catch (IOException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
 
             if (!runGame) {
@@ -108,7 +108,7 @@ public class GameController {
             try {
                 Thread.sleep(2);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                // e.printStackTrace();
             }
 
             if (!arena.playerAlive()) return GameController.STATE.DEATH;

@@ -39,27 +39,15 @@ public class MenuController {
             case PAUSE:
                 pauseViewer.draw(graphics);
                 break;
+            default:
+                break;
         }
     }
 
     public void drawState(MENU_STATE state, int score) {
-
-        switch (state) {
-            case INITIAL:
-                initialViewer.draw(graphics);
-                break;
-            case INSTRUCTIONS:
-                instructionsViewer.draw(graphics);
-                break;
-            case PAUSE:
-                pauseViewer.draw(graphics);
-                break;
-            case DEATH:
-                deathViewer.draw(graphics, score);
-                break;
-        }
-
+        if (state == MENU_STATE.DEATH) deathViewer.draw(graphics, score);
     }
+
 
     public enum MENU_STATE {INITIAL, DEATH, INSTRUCTIONS, PAUSE, NONE}
 

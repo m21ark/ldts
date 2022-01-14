@@ -15,17 +15,6 @@ public class Extra_Life extends Collectable {
         super(pos, character, color);
     }
 
-    @Override
-    public void gravityMove() {
-        position.setY(position.getY() + 1);
-    }
 
-    @Override
-    public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString(this.color));
-        graphics.enableModifiers(SGR.BOLD);
-
-        graphics.putString(new TerminalPosition(this.position.getX(), this.position.getY()), this.character.toString());
-    }
 
 }

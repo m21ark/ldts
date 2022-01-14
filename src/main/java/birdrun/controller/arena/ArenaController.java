@@ -210,6 +210,7 @@ public class ArenaController {
             matrix.setPos(new Block(x, y + 1, blockChar, blockColor));
         } else if (e.getChar().equals(blockChar) && belowElem.equals(birdChar)) {
             canApply = true;
+            matrix.setPos(new EmptyElement(x, y, ' ', "#000000"));
             musicController.playDamageSound();
             bird.takeDamage();
 
@@ -327,7 +328,6 @@ public class ArenaController {
 
         if (command == null) return true;
 
-
         switch (command) {
             case UP:
                 birdFly(bird);
@@ -342,7 +342,7 @@ public class ArenaController {
                 return false;
             case QUIT:
                 System.exit(0);
-            case NONE:
+            default:
                 return true;
         }
 

@@ -10,15 +10,10 @@ import java.io.IOException;
 
 public class StartMenuState extends MenuState {
 
-    private final MenuController menuController;
-    private final Screen screen;
+
 
     public StartMenuState(Screen screen, MenuController menuController) {
         super(screen, menuController);
-
-        this.screen = screen;
-        this.menuController = menuController;
-
     }
 
     @Override
@@ -29,7 +24,7 @@ public class StartMenuState extends MenuState {
             menuController.drawState(MenuController.MENU_STATE.INITIAL);
             screen.refresh();
         } catch (IOException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
 
 
