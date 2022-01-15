@@ -53,7 +53,7 @@ public class GameController {
         this.keyboardObserver = new KeyboardObserver(screen);
     }
 
-    public GameController.STATE gameState() {
+    public GameController.STATE gameState() throws InterruptedException, IOException {
 
         if (!isMusicPlaying) {
             arena.startBgMusic();
@@ -67,81 +67,65 @@ public class GameController {
         while (arena.playerAlive()) {
             long startTime = System.currentTimeMillis();
 
-
-            try {
-
-                screen.clear();
-                new GameViewer().draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
-                screen.refresh();
-
-
-                Command.COMMAND command = keyboardObserver.listenPoll();
-
-                runGame = arena.executeCommand(command);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            drawGameView();
 
             if (!runGame) {
-                //Pause game
                 arena.pauseBgMusic();
                 return GameController.STATE.PAUSE;
-
             }
 
-            if (gameLoopInt % 8 == 0) {
-                arena.addRandomElem(ArenaController.FallingElem.BLOCK, 1);
-            }
-            if (gameLoopInt % 5 == 0) {
-                arena.applyGravity();
-            }
-
-            if (gameLoopInt == 170) {
-                arena.addRandomElem(ArenaController.FallingElem.COIN, 1);
-                gameLoopInt = 0;
-                resetCountGameLoop++;
-            }
-
-            if (resetCountGameLoop % 20 == 0) {
-                arena.addRandomElem(ArenaController.FallingElem.LIFE, 1);
-                gameLoopInt = 0;
-                resetCountGameLoop++;
-            }
-
-
-            gameLoopInt++;
+            gameTick();
 
             arena.updateArena();
             if (!arena.playerAlive()) return GameController.STATE.DEATH;
 
+            long sleepTime = frameTime - (System.currentTimeMillis() - startTime);
 
-            long elapsedTime = System.currentTimeMillis() - startTime;
-            long sleepTime = frameTime - elapsedTime;
+            if (sleepTime > 0) Thread.sleep(sleepTime);
 
-            try {
-                if (sleepTime > 0) Thread.sleep(sleepTime);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
-
-
         return null;
     }
 
-    public void run() throws IOException {
+    private void gameTick() {
+        if (gameLoopInt % 6== 0) {
+            arena.addRandomElem(ArenaController.FallingElem.BLOCK, 1);
+        }
+        if (gameLoopInt % 5 == 0) {
+            arena.applyGravity();
+        }
+        if (gameLoopInt == 170) {
+            arena.addRandomElem(ArenaController.FallingElem.COIN, 1);
+            gameLoopInt = 0;
+            resetCountGameLoop++;
+        }
+        if (resetCountGameLoop % 20 == 0) {
+            arena.addRandomElem(ArenaController.FallingElem.LIFE, 1);
+            gameLoopInt = 0;
+            resetCountGameLoop++;
+        }
 
+        gameLoopInt++;
+    }
+
+    private void drawGameView() throws IOException {
+        screen.clear();
+        new GameViewer().draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
+        screen.refresh();
+
+        Command.COMMAND command = keyboardObserver.listenPoll();
+        runGame = arena.executeCommand(command);
+    }
+
+    public void run() throws IOException, InterruptedException {
 
         while (true) {
 
             int score = arena.getPlayerScore();
-
             if (this.state == STATE.DEATH) {
                 arena.reloadArena();
                 arena.resetBgMusic();
             }
-
 
             switch (this.state) {
                 case START:

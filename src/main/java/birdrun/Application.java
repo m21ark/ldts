@@ -17,7 +17,7 @@ public class Application {
         try {
             GameController game = new GameController(new Dimensions(30, 28));
             game.run();
-        } catch (IOException | URISyntaxException | FontFormatException e) {
+        } catch (IOException | URISyntaxException | FontFormatException | InterruptedException e) {
             e.printStackTrace();
         }
 

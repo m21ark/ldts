@@ -106,41 +106,45 @@ public class ArenaController {
     }
 
     public void addRandomElem(FallingElem elem, int numberOfElem) {
-        int x, y;
-
-        y = 2;
-
-
-        int smallerBlockTowerIndex = 1 + arenaModel.getMatrix().getSmallerCol(blockChar);
-
+        int x, y = 2;
 
         for (int i = 0; i < numberOfElem; i++) {
 
-            List<Integer> list = new ArrayList<Integer>();
+            x = chooseMatrixCol(7);
 
-            list.add(smallerBlockTowerIndex);
-
-            for (int j = 0; j < 5; j++) {
-                list.add(randInt(1, width - 2));
+            if (arenaModel.matrixGetPos(new Position(x, y)).getChar().equals(' ')) {
+                switch (elem) {
+                    case COIN:
+                        arenaModel.matrixSetPos(new Coin(x, y, coinChar, coinColor));
+                        break;
+                    case BLOCK:
+                        arenaModel.matrixSetPos(new Block(x, y, blockChar, blockColor));
+                        break;
+                    case LIFE:
+                        arenaModel.matrixSetPos(new Coin(x, y, lifeChar, lifeColor));
+                        break;
+                    default:
+                        break;
+                }
             }
 
-            x = list.get(randInt(0, list.size() - 1));
-
-
-            switch (elem) {
-                case COIN:
-                    arenaModel.matrixSetPos(new Coin(x, y, coinChar, coinColor));
-                    break;
-                case BLOCK:
-                    arenaModel.matrixSetPos(new Block(x, y, blockChar, blockColor));
-                    break;
-                case LIFE:
-                    arenaModel.matrixSetPos(new Coin(x, y, lifeChar, lifeColor));
-                    break;
-                default:
-                    break;
-            }
         }
+    }
+
+    private int chooseMatrixCol(int bias) {
+
+        List<Integer> list = new ArrayList<Integer>();
+
+        int smallerBlockTowerIndex = 1 + arenaModel.getMatrix().getSmallerCol(blockChar);
+
+        list.add(smallerBlockTowerIndex);
+
+        for (int j = 0; j < bias; j++) {
+            list.add(randInt(1, width - 2));
+        }
+
+        return list.get(randInt(0, list.size() - 1));
+
     }
 
     public void updateArena() {
@@ -165,13 +169,9 @@ public class ArenaController {
 
         if ((lateralMove || notMidAir) && isCollectable(newElem)) {
             musicController.playCoinSound();
-
             if (NewPos.equals(coinChar)) arenaModel.birdPickCoins(1);
-
             else if (NewPos.equals(lifeChar)) arenaModel.addPlayerHp(1);
-
         }
-
         return true;
     }
 
@@ -230,43 +230,46 @@ public class ArenaController {
                 arenaModel.matrixSetPos(e);
             }
             return true;
+        } else if (elem.equals(blockChar)) return canApplyGravityBlock(belowPos, new Position(x, y));
 
-        } else if (elem.equals(blockChar)) {
-
-            if (isCollectable(belowPos)) {
-                arenaModel.matrixSetPos(new Block(x, y + 1, blockChar, blockColor));
-                return true;
-            } else if (belowElem.equals(blockChar)) return false;
-            else if (belowElem.equals(birdChar)) {
-                arenaModel.matrixSetPos(new EmptyElement(x, y, ' ', "#000000"));
-                musicController.playDamageSound();
-                arenaModel.birdTakeDamage(1);
-                return true;
-            }
-
-        } else if (isCollectable(e)) {
-
-            if (belowElem.equals(blockChar)) return false;
-
-            if (belowElem.equals(birdChar)) {
-
-                Bird bird = arenaModel.getBird();
-
-                if (arenaModel.matrixGetPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ') {
-                    musicController.playCoinSound();
-
-                    if (elem.equals(coinChar)) arenaModel.birdPickCoins(1);
-                    else if (elem.equals(lifeChar)) arenaModel.addPlayerHp(1);
-
-                }
-
-                return true;
-
-            }
-
-        }
+        else if (isCollectable(e)) return canApplyGravityCollectable(e, belowElem);
 
         return belowElem == ' ';
+    }
+
+    private boolean canApplyGravityBlock(Element belowPos, Position pos) {
+        if (isCollectable(belowPos)) {
+            arenaModel.matrixSetPos(new Block(pos.getX(), pos.getY() + 1, blockChar, blockColor));
+            return true;
+        } else if (belowPos.getChar().equals(blockChar)) return false;
+        else if (belowPos.getChar().equals(birdChar)) {
+            arenaModel.matrixSetPos(new EmptyElement(pos.getX(), pos.getY(), ' ', "#000000"));
+            musicController.playDamageSound();
+            arenaModel.birdTakeDamage(1);
+            return true;
+        }
+        return belowPos.getChar().equals(' ');
+    }
+
+    private boolean canApplyGravityCollectable(Element elem, Character belowElem) {
+        if (belowElem.equals(blockChar)) return false;
+
+        if (belowElem.equals(birdChar)) {
+
+            Bird bird = arenaModel.getBird();
+
+            if (arenaModel.matrixGetPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ') {
+                musicController.playCoinSound();
+
+                if (elem.equals(coinChar)) arenaModel.birdPickCoins(1);
+                else if (elem.equals(lifeChar)) arenaModel.addPlayerHp(1);
+
+            }
+
+            return true;
+
+        }
+        return belowElem.equals(' ');
     }
 
     public boolean executeCommand(Command.COMMAND command) throws IOException {
