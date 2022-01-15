@@ -2,22 +2,12 @@ plugins {
     id 'java'
     id 'groovy'
     id 'application'
-    id 'info.solidsoft.pitest' version '1.6.0'
-   id "org.kordamp.gradle.errorprone" version "0.47.0"
+    id 'info.solidsoft.pitest' version '1.7.0'
+   // id "org.kordamp.gradle.errorprone" version "0.47.0"
 }
 
 application {
     mainClass.set("birdrun.Application")
-}
-
-compileJava {
-    options.release = 16
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(16)
-    }
 }
 
 pitest {
@@ -31,6 +21,7 @@ repositories {
     mavenCentral()
 }
 
+
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
@@ -42,7 +33,5 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform {
-        includeEngines ('junit-jupiter', 'jqwik')
-    }
+    useJUnitPlatform()
 }

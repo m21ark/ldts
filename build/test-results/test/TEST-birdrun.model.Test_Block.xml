@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="birdrun.model.Test_Block" tests="48" skipped="0" failures="0" errors="0" timestamp="2022-01-15T15:25:20" hostname="zenbook" time="0.018">
+  <properties/>
+  <testcase name="Test move [x0: -10, y0: 10, deltaX: -6, deltaY: 4, #0]" classname="birdrun.model.Test_Block" time="0.002"/>
+  <testcase name="Test move [x0: 0, y0: 9, deltaX: 0, deltaY: 46, #1]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test move [x0: -1, y0: 1, deltaX: -1, deltaY: 7, #2]" classname="birdrun.model.Test_Block" time="0.001"/>
+  <testcase name="Test move [x0: 0, y0: -2, deltaX: -2, deltaY: 78, #3]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test move [x0: 1, y0: 3, deltaX: 3, deltaY: -15, #4]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test move [x0: 2, y0: 6, deltaX: 6, deltaY: -9999, #5]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test move [x0: 4, y0: 8, deltaX: 8, deltaY: 8, #6]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test move [x0: -46, y0: 0, deltaX: 0, deltaY: 0, #7]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test move [x0: 7, y0: 123, deltaX: -123, deltaY: 26, #8]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test move [x0: 78, y0: 34, deltaX: 4, deltaY: 34, #9]" classname="birdrun.model.Test_Block" time="0.001"/>
+  <testcase name="Test move [x0: -15, y0: -15, deltaX: 15, deltaY: 21, #10]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test move [x0: 9999, y0: 8, deltaX: 8, deltaY: 14, #11]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: -10, y0: 10, #0]" classname="birdrun.model.Test_Block" time="0.001"/>
+  <testcase name="Test get char [x0: 0, y0: 9, #1]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: -1, y0: 1, #2]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: 0, y0: -2, #3]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: 1, y0: 3, #4]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: 2, y0: 6, #5]" classname="birdrun.model.Test_Block" time="0.001"/>
+  <testcase name="Test get char [x0: 4, y0: 8, #6]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: -46, y0: 0, #7]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: 7, y0: 123, #8]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: 78, y0: 34, #9]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: -15, y0: -15, #10]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test get char [x0: 9999, y0: 8, #11]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: -10, y0: 10, #0]" classname="birdrun.model.Test_Block" time="0.001"/>
+  <testcase name="Test equality [x0: 0, y0: 9, #1]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: -1, y0: 1, #2]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: 0, y0: -2, #3]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: 1, y0: 3, #4]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: 2, y0: 6, #5]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: 4, y0: 8, #6]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: -46, y0: 0, #7]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: 7, y0: 123, #8]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: 78, y0: 34, #9]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: -15, y0: -15, #10]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test equality [x0: 9999, y0: 8, #11]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: -10, y0: 10, #0]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: 0, y0: 9, #1]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: -1, y0: 1, #2]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: 0, y0: -2, #3]" classname="birdrun.model.Test_Block" time="0.001"/>
+  <testcase name="Test gravityMoveDown [x0: 1, y0: 3, #4]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: 2, y0: 6, #5]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: 4, y0: 8, #6]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: -46, y0: 0, #7]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: 7, y0: 123, #8]" classname="birdrun.model.Test_Block" time="0.001"/>
+  <testcase name="Test gravityMoveDown [x0: 78, y0: 34, #9]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: -15, y0: -15, #10]" classname="birdrun.model.Test_Block" time="0.0"/>
+  <testcase name="Test gravityMoveDown [x0: 9999, y0: 8, #11]" classname="birdrun.model.Test_Block" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

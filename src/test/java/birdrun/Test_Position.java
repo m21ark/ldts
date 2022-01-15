@@ -1,6 +1,8 @@
 package birdrun;
 
 import birdrun.model.Position;
+import net.jqwik.api.ForAll;
+import net.jqwik.api.Property;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -20,6 +22,17 @@ public class Test_Position {
         Assertions.assertNotEquals(position, position2);
         position2.set(new Position(2, 4));
         Assertions.assertEquals(position, position2);
+    }
+
+    @Property
+    public void Test_EqualPosition(@ForAll Integer  x, @ForAll Integer  y){
+
+        Position p1= new Position(x, y);
+
+        Assertions.assertEquals(x,p1.getX());
+        Assertions.assertEquals(y,p1.getY());
+
+
     }
 
     @Test
