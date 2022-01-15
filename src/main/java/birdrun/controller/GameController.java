@@ -16,6 +16,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+
 @SuppressWarnings("CatchAndPrintStackTrace")
 
 public class GameController {
@@ -29,6 +30,7 @@ public class GameController {
     private final TextGraphics graphics;
     private final KeyboardObserver keyboardObserver;
     private STATE state = STATE.START;
+    private final long fps = 50;
     private int gameLoopInt = 0;
     private int resetCountGameLoop = 1;
     private boolean runGame = true;
@@ -37,7 +39,7 @@ public class GameController {
 
     public GameController(Dimensions dimensions) throws IOException, URISyntaxException, FontFormatException {
 
-        this.screen = new ScreenFactory().getScreen(dimensions, 26);
+        this.screen = new ScreenFactory().getScreen(dimensions, 35);
         this.graphics = screen.newTextGraphics();
         this.arena = new ArenaController(dimensions);
         MenuController menuController = new MenuController(dimensions, graphics, ArenaController.bgColor, ArenaController.textColor);
@@ -60,7 +62,11 @@ public class GameController {
             arena.resumeBgMusic();
         }
 
+        long frameTime = 1000/fps;
+
         while (arena.playerAlive()) {
+            long startTime = System.currentTimeMillis();
+
 
             try {
 
@@ -80,7 +86,6 @@ public class GameController {
             if (!runGame) {
                 //Pause game
                 arena.pauseBgMusic();
-
                 return GameController.STATE.PAUSE;
 
             }
@@ -105,14 +110,17 @@ public class GameController {
             gameLoopInt++;
 
             arena.updateArena();
+            if (!arena.playerAlive()) return GameController.STATE.DEATH;
+
+
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = frameTime - elapsedTime;
 
             try {
-                Thread.sleep(2);
+                if (sleepTime > 0) Thread.sleep(sleepTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            if (!arena.playerAlive()) return GameController.STATE.DEATH;
         }
 
 
