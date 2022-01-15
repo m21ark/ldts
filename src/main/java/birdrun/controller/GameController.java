@@ -40,7 +40,7 @@ public class GameController {
         this.screen = new ScreenFactory().getScreen(dimensions, 26);
         this.graphics = screen.newTextGraphics();
         this.arena = new ArenaController(dimensions);
-        MenuController menuController = new MenuController(dimensions, graphics, "#3A656C", "#FFFFFF");
+        MenuController menuController = new MenuController(dimensions, graphics, ArenaController.bgColor, "#FFFFFF");
 
 
         this.pauseMenuState = new PauseMenuState(screen, menuController);
@@ -96,7 +96,7 @@ public class GameController {
                 resetCountGameLoop++;
             }
 
-            if (resetCountGameLoop % 25 == 0) {
+            if (resetCountGameLoop % 20 == 0) {
                 arena.addRandomElem(ArenaController.FallingElem.LIFE, 1);
                 gameLoopInt = 0;
                 resetCountGameLoop++;

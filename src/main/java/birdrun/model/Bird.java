@@ -7,7 +7,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Bird extends Element {
 
-    private int hp = 3;
+    private int hp = 300;
     private int coinCount = 0;
     private int stamina = 200;
 
@@ -34,6 +34,11 @@ public class Bird extends Element {
 
     public int takeDamage() {
         return --hp;
+    }
+
+    public int takeDamage(int n) {
+        hp -= n;
+        return hp;
     }
 
     public int getHp() {
@@ -85,14 +90,13 @@ public class Bird extends Element {
         return stamina;
     }
 
-    public void updateColor(String newColor){
-        this.color =  newColor;
+    public void setStamina(int newStamina) {
+        if (newStamina > 200) this.stamina = 200;
+        else this.stamina = Math.max(newStamina, 0);
     }
 
-    public void setStamina(int newStamina) {
-        if(newStamina>200)
-            this.stamina = 200;
-        else this.stamina = Math.max(newStamina, 0);
+    public void updateColor(String newColor) {
+        this.color = newColor;
     }
 
 }
