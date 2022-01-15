@@ -40,7 +40,7 @@ public class GameController {
         this.screen = new ScreenFactory().getScreen(dimensions, 26);
         this.graphics = screen.newTextGraphics();
         this.arena = new ArenaController(dimensions);
-        MenuController menuController = new MenuController(dimensions, graphics, ArenaController.bgColor, "#FFFFFF");
+        MenuController menuController = new MenuController(dimensions, graphics, ArenaController.bgColor, ArenaController.textColor);
 
 
         this.pauseMenuState = new PauseMenuState(screen, menuController);
@@ -50,7 +50,6 @@ public class GameController {
 
         this.keyboardObserver = new KeyboardObserver(screen);
     }
-
 
     public GameController.STATE gameState() {
 
@@ -75,7 +74,7 @@ public class GameController {
                 runGame = arena.executeCommand(command);
 
             } catch (IOException e) {
-                 e.printStackTrace();
+                e.printStackTrace();
             }
 
             if (!runGame) {
@@ -91,7 +90,7 @@ public class GameController {
                 arena.applyGravity();
             }
             if (gameLoopInt == 250) {
-                arena.addRandomElem(ArenaController.FallingElem.COIN,1);
+                arena.addRandomElem(ArenaController.FallingElem.COIN, 1);
                 gameLoopInt = 0;
                 resetCountGameLoop++;
             }

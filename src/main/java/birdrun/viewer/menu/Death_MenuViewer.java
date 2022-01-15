@@ -19,14 +19,12 @@ public class Death_MenuViewer extends MenuViewer {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
         graphics.enableModifiers(SGR.BOLD);
 
-        String sms = "Your score was " + playerCoinCount;
-
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        graphics.putString(new TerminalPosition(width / 2 - "You died!".length() / 2, height / 2 - 3), "You died!");
+        writeSMS(graphics, " You died!", 5);
         graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 1), sms);
-        graphics.putString(new TerminalPosition(width / 2 - "Press ENTER  to play again".length() / 2, height / 2 + 3), "Press ENTER  to play again");
-        graphics.putString(new TerminalPosition(width / 2 - "Press Q to exit".length() / 2, height / 2 + 5), "Press Q to exit");
+        writeSMS(graphics, "Your score was " + playerCoinCount, 1);
+        writeSMS(graphics, "Press ENTER  to play again ", -3);
+        writeSMS(graphics, "Press Q to exit ", -5);
 
     }
 

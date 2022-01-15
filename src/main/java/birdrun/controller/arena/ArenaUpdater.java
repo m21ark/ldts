@@ -19,7 +19,6 @@ public class ArenaUpdater {
 
     }
 
-
     private boolean isMatrixBottomRowFull() {
         Matrix matrix = arenaModel.getMatrix();
 
@@ -69,7 +68,6 @@ public class ArenaUpdater {
         arenaModel.setMatrix(newMatrix);
 
     }
-
 
     public boolean updateArena() {
         updateBirdColor();

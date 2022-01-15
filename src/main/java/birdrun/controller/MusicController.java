@@ -31,7 +31,6 @@ public class MusicController {
         }
     }
 
-
     private Clip loadSound(String soundPath) {
         try {
             File musicFile = new File(Objects.requireNonNull(MusicController.class.getResource(soundPath)).getFile());
@@ -60,6 +59,16 @@ public class MusicController {
         backgroundMusic.stop();
     }
 
+    public void resumeBackGroundMusic() {
+        backgroundMusic.start();
+
+    }
+
+    public void resetBackGroundMusic() {
+        backgroundMusic.setMicrosecondPosition(0);
+
+    }
+
     public void playCoinSound() {
         if (coinSound == null) return;
         coinSound.setMicrosecondPosition(0);
@@ -78,13 +87,4 @@ public class MusicController {
         damageSound.start();
     }
 
-    public void resumeBackGroundMusic() {
-        backgroundMusic.start();
-
-    }
-
-    public void resetBackGroundMusic() {
-        backgroundMusic.setMicrosecondPosition(0);
-
-    }
 }

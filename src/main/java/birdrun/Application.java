@@ -1,4 +1,4 @@
-package  birdrun;
+package birdrun;
 
 import birdrun.controller.GameController;
 import birdrun.model.Dimensions;

@@ -22,7 +22,7 @@ public abstract class MenuState {
     public abstract GameController.STATE start();
 
 
-    public GameController.STATE waitForUserConfirmation(GameController.STATE confirmAction){
+    public GameController.STATE waitForUserConfirmation(GameController.STATE confirmAction) {
         while (true) {
             Command.COMMAND command = new KeyboardObserver(screen).listenRead();
 

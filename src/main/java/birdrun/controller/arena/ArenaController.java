@@ -5,7 +5,6 @@ import birdrun.controller.MusicController;
 import birdrun.model.*;
 import birdrun.state.Command;
 import birdrun.viewer.ArenaViewer;
-
 import java.io.IOException;
 import java.util.Random;
 
@@ -42,16 +41,13 @@ public class ArenaController {
         this.width = dimensions.getWidth();
         this.height = dimensions.getHeight();
 
-
         Bird bird = new Bird(new Position(width / 2, height / 2), birdChar, birdColor);
         Matrix matrix = new MatrixFactory().getMatrix(dimensions, borderChar, borderColor);
         matrix.setPos(bird);
         this.arenaViewer = new ArenaViewer(dimensions, bgColor, textColor);
         this.arenaModel = new ArenaModel(dimensions, matrix, birdColor);
-
-        this.musicController = new MusicController();
-
         this.arenaUpdater = new ArenaUpdater(arenaModel);
+        this.musicController = new MusicController();
 
     }
 
@@ -65,12 +61,10 @@ public class ArenaController {
         this.arenaUpdater = new ArenaUpdater(arenaModel);
     }
 
-
     private int randInt(int min, int max) {
         Random random = new Random();
         return random.nextInt(max - min + 1) + min;
     }
-
 
     public ArenaViewer getArenaViewer() {
         return this.arenaViewer;
@@ -80,7 +74,6 @@ public class ArenaController {
         return arenaModel;
     }
 
-
     public int getPlayerScore() {
         return arenaModel.getPlayerScore();
     }
@@ -88,7 +81,6 @@ public class ArenaController {
     public boolean playerAlive() {
         return arenaModel.getPlayerHp() > 0;
     }
-
 
     public void startBgMusic() {
         if (musicController != null) musicController.starBackGroundMusic();
@@ -98,21 +90,17 @@ public class ArenaController {
         if (musicController != null) musicController.stopBackGroundMusic();
     }
 
-
     public void resumeBgMusic() {
         if (musicController != null) musicController.resumeBackGroundMusic();
     }
-
 
     public void resetBgMusic() {
         if (musicController != null) musicController.resetBackGroundMusic();
     }
 
-
     public boolean isCollectable(Element e) {
         return (e.getClass().getSuperclass() == Collectable.class);
     }
-
 
     public void addRandomElem(FallingElem elem, int numberOfElem) {
         int x, y;
@@ -145,7 +133,6 @@ public class ArenaController {
         }
     }
 
-
     public boolean canBirdMove(Position pos) {
 
         boolean InBorder = !(pos.getX() < width - 1 && pos.getX() > 0 && pos.getY() < height - 1 && pos.getY() > 5);
@@ -161,17 +148,14 @@ public class ArenaController {
         if ((lateralMove || notMidAir) && isCollectable(newElem)) {
             musicController.playCoinSound();
 
-            if (NewPos.equals(coinChar))
-                arenaModel.birdPickCoins(1);
+            if (NewPos.equals(coinChar)) arenaModel.birdPickCoins(1);
 
-            else if (NewPos.equals(lifeChar))
-                arenaModel.addPlayerHp(1);
+            else if (NewPos.equals(lifeChar)) arenaModel.addPlayerHp(1);
 
         }
 
         return true;
     }
-
 
     public boolean moveBird(Position pos) {
 
@@ -182,7 +166,6 @@ public class ArenaController {
         return false;
 
     }
-
 
     private void birdFly(Bird bird) {
 
@@ -195,7 +178,6 @@ public class ArenaController {
         }
 
     }
-
 
     public void applyGravity() {
 
@@ -214,7 +196,6 @@ public class ArenaController {
         arenaModel.setBird(bird);
 
     }
-
 
     private boolean canApplyGravity(Element e) {
         int x = e.getPositionX();
@@ -237,8 +218,7 @@ public class ArenaController {
             if (isCollectable(belowPos)) {
                 arenaModel.matrixSetPos(new Block(x, y + 1, blockChar, blockColor));
                 return true;
-            } else if (belowElem.equals(blockChar))
-                return false;
+            } else if (belowElem.equals(blockChar)) return false;
             else if (belowElem.equals(birdChar)) {
                 arenaModel.matrixSetPos(new EmptyElement(x, y, ' ', "#000000"));
                 musicController.playDamageSound();
@@ -257,23 +237,19 @@ public class ArenaController {
                 if (arenaModel.matrixGetPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ') {
                     musicController.playCoinSound();
 
-                    if(elem.equals(coinChar))
-                        arenaModel.birdPickCoins(1);
-                    else if(elem.equals(lifeChar))
-                        arenaModel.addPlayerHp(1);
+                    if (elem.equals(coinChar)) arenaModel.birdPickCoins(1);
+                    else if (elem.equals(lifeChar)) arenaModel.addPlayerHp(1);
 
                 }
 
-            }
+                return true;
 
-            return true;
+            }
 
         }
 
-
         return belowElem == ' ';
     }
-
 
     public boolean executeCommand(Command.COMMAND command) throws IOException {
         Bird bird = arenaModel.getBird();
@@ -304,6 +280,5 @@ public class ArenaController {
     }
 
     public enum FallingElem {BLOCK, COIN, LIFE,}
-
 
 }

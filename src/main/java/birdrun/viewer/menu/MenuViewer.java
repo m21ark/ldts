@@ -1,6 +1,8 @@
 package birdrun.viewer.menu;
 
 import birdrun.model.Dimensions;
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.graphics.TextGraphics;
 
 public abstract class MenuViewer {
 
@@ -14,6 +16,12 @@ public abstract class MenuViewer {
         this.height = dimensions.getHeight();
         this.bgColor = bgColor;
         this.textColor = textColor;
+    }
+
+    protected void writeSMS(TextGraphics graphics, String sms, int y) {
+
+        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - y), sms);
+
     }
 
 }

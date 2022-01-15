@@ -48,7 +48,6 @@ public class MenuController {
         if (state == MENU_STATE.DEATH) deathViewer.draw(graphics, score);
     }
 
-
     public enum MENU_STATE {INITIAL, DEATH, INSTRUCTIONS, PAUSE, NONE}
 
 

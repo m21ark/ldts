@@ -13,7 +13,6 @@ import java.io.IOException;
 public class StartMenuState extends MenuState {
 
 
-
     public StartMenuState(Screen screen, MenuController menuController) {
         super(screen, menuController);
     }
@@ -26,7 +25,7 @@ public class StartMenuState extends MenuState {
             menuController.drawState(MenuController.MENU_STATE.INITIAL);
             screen.refresh();
         } catch (IOException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
 
 

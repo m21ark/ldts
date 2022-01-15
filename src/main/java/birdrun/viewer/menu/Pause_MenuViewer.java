@@ -20,12 +20,11 @@ public class Pause_MenuViewer extends MenuViewer {
         graphics.enableModifiers(SGR.BOLD);
 
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        String sms = "Paused ";
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 3), sms);
-
+        writeSMS(graphics, "Paused ", 3);
         graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(width / 2 - "Press ENTER to continue".length() / 2, height / 2), "Press ENTER to continue");
-        graphics.putString(new TerminalPosition(width / 2 - "Press Q to exit".length() / 2, height / 2 + 2), "Press Q to exit");
+        writeSMS(graphics, "Press ENTER to continue ", 0);
+        writeSMS(graphics, "Press Q to exit ", -2);
+
     }
 
 }

@@ -19,14 +19,17 @@ public class Instructions_MenuViewer extends MenuViewer {
         graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), ' ');
         graphics.enableModifiers(SGR.BOLD);
-
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        String sms = "Instructions... ";
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 3), sms);
+
+        writeSMS(graphics, "Instructions", 12);
 
         graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(width / 2 - "Press ENTER to go back".length() / 2, height / 2), "Press ENTER to go back");
-        graphics.putString(new TerminalPosition(width / 2 - "Press Q to exit".length() / 2, height / 2 + 2), "Press Q to exit");
+        writeSMS(graphics, "You can use either A W D  or", 8);
+        writeSMS(graphics, "the arrow keys to move", 6);
+        writeSMS(graphics, "Avoid the falling boxes ! ", 0);
+        writeSMS(graphics, "Catch all  coins you can !", -2);
+        writeSMS(graphics, "Press ENTER to go back", -8);
+        writeSMS(graphics, "Press Q to exit", -10);
     }
 
 

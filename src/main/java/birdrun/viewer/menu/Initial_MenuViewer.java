@@ -22,13 +22,12 @@ public class Initial_MenuViewer extends MenuViewer {
         graphics.enableModifiers(SGR.BOLD);
 
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        String sms = "Welcome to Run Bird run! ";
-        graphics.putString(new TerminalPosition(width / 2 - sms.length() / 2, height / 2 - 6), sms);
-
+        writeSMS(graphics, "Welcome to Run Bird run! ", 6);
         graphics.setForegroundColor(TextColor.Factory.fromString(textColor));
-        graphics.putString(new TerminalPosition(width / 2 - "Press ENTER to start".length() / 2, height / 2), "Press ENTER to start");
-        graphics.putString(new TerminalPosition(width / 2 - "Press W  to see Instructions".length() / 2, height / 2 + 2), "Press W  to see Instructions");
-        graphics.putString(new TerminalPosition(width / 2 - "Press Q to exit".length() / 2, height / 2 + 4), "Press Q to exit");
+        writeSMS(graphics, "Press ENTER to start ", 0);
+        writeSMS(graphics, "Press W  to see Instructions ", -2);
+        writeSMS(graphics, "Press Q to exit ", -4);
+
     }
 
 
