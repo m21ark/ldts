@@ -60,11 +60,13 @@ public class MusicController {
     }
 
     public void resumeBackGroundMusic() {
+        if (backgroundMusic == null) return;
         backgroundMusic.start();
 
     }
 
     public void resetBackGroundMusic() {
+        if (backgroundMusic == null) return;
         backgroundMusic.setMicrosecondPosition(0);
 
     }

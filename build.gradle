@@ -3,7 +3,7 @@ plugins {
     id 'groovy'
     id 'application'
     id 'info.solidsoft.pitest' version '1.7.0'
-   // id "org.kordamp.gradle.errorprone" version "0.47.0"
+    //id "org.kordamp.gradle.errorprone" version "0.47.0"
 }
 
 application {
@@ -25,7 +25,6 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
-    testImplementation 'net.jqwik:jqwik:1.6.2'
     testImplementation 'org.mockito:mockito-core:3.7.7'
     testImplementation 'org.spockframework:spock-core:2.0-groovy-3.0'
     testImplementation 'org.codehaus.groovy:groovy-all:3.0.8'

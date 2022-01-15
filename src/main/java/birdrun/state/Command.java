@@ -1,5 +1,6 @@
 package birdrun.state;
 
+
 public class Command {
     COMMAND command;
     Character key;
