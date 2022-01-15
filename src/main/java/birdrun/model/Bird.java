@@ -7,7 +7,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Bird extends Element {
 
-    private int hp = 300;
+    private int hp = 3;
     private int coinCount = 0;
     private int stamina = 200;
 

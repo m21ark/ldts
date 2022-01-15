@@ -53,7 +53,7 @@ public abstract class Element {
         if (o == null) return false;
         if (getClass() != o.getClass()) return false;
         Element p = (Element) o;
-        return   p.getChar().equals(character) && p.getPosition().equals(position);
+        return p.getChar().equals(character) && p.getPosition().equals(position);
     }
 
 

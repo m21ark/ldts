@@ -8,8 +8,7 @@ import java.io.IOException;
 
 @SuppressWarnings("CatchAndPrintStackTrace")
 
-public class InstructionsMenuState extends  MenuState {
-
+public class InstructionsMenuState extends MenuState {
 
 
     public InstructionsMenuState(Screen screen, MenuController menuController) {
@@ -24,11 +23,11 @@ public class InstructionsMenuState extends  MenuState {
             menuController.drawState(MenuController.MENU_STATE.INSTRUCTIONS);
             screen.refresh();
         } catch (IOException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
 
 
-    return waitForUserConfirmation(GameController.STATE.START);
+        return waitForUserConfirmation(GameController.STATE.START);
 
     }
 

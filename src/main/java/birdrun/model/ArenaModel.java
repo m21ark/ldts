@@ -76,6 +76,6 @@ public class ArenaModel {
     }
 
     public void birdTakeDamage(int n) {
-        this.bird.takeDamage(n );
+        this.bird.takeDamage(n);
     }
 }
