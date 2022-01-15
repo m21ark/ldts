@@ -3,11 +3,12 @@ package birdrun.model;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Matrix {
 
-    private final List<List<Element>> matrix = new ArrayList<>();
     private final int width;
     private final int height;
+    private final List<List<Element>> matrix = new ArrayList<>();
 
     public Matrix(Dimensions dimensions, Character defaultChar) {
         this.width = dimensions.getWidth();
@@ -19,6 +20,36 @@ public class Matrix {
                 aux.add(new EmptyElement(i, j, defaultChar, "#000000"));
             matrix.add(aux);
         }
+    }
+
+    public static int indexOfSmallest(List<Integer> array) {
+
+        if (array.size() == 0) return -1;
+
+        int index = 0;
+        int min = array.get(index);
+
+        for (int i = 1; i < array.size(); i++) {
+            if (array.get(i) < min) {
+                min = array.get(i);
+                index = i;
+            }
+        }
+        return index;
+
+    }
+
+    static <T> List<List<T>> transpose(List<List<T>> table) {
+        List<List<T>> ret = new ArrayList<List<T>>();
+        final int N = table.get(0).size();
+        for (int i = 0; i < N; i++) {
+            List<T> col = new ArrayList<T>();
+            for (List<T> row : table) {
+                col.add(row.get(i));
+            }
+            ret.add(col);
+        }
+        return ret;
     }
 
     public boolean setPos(Element c) {
@@ -48,6 +79,28 @@ public class Matrix {
                 System.out.print(matrix.get(i).get(j).getChar());
             System.out.println();
         }
+    }
+
+    public int countLine(Character ch, List<Element> list) {
+        int count = 0;
+
+        for (Element elem : list)
+            if (elem.getChar().equals(ch)) count++;
+
+        return count;
+    }
+
+    public int getSmallerCol(Character ch) {
+
+        List<Integer> arrCount = new ArrayList<Integer>();
+
+        List<List<Element>> transposed = transpose(matrix);
+
+        for (int i = 1; i < width - 1; i++)
+            arrCount.add(countLine(ch, transposed.get(i)));
+
+        return indexOfSmallest(arrCount);
+
     }
 
     public int getWidth() {

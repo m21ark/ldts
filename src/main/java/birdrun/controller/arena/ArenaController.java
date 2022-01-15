@@ -5,7 +5,10 @@ import birdrun.controller.MusicController;
 import birdrun.model.*;
 import birdrun.state.Command;
 import birdrun.viewer.ArenaViewer;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -105,9 +108,24 @@ public class ArenaController {
     public void addRandomElem(FallingElem elem, int numberOfElem) {
         int x, y;
 
+        y = 2;
+
+
+        int smallerBlockTowerIndex = 1 + arenaModel.getMatrix().getSmallerCol(blockChar);
+
+
         for (int i = 0; i < numberOfElem; i++) {
-            x = randInt(1, width - 2);
-            y = 2;
+
+            List<Integer> list = new ArrayList<Integer>();
+
+            list.add(smallerBlockTowerIndex);
+
+            for (int j = 0; j < 5; j++) {
+                list.add(randInt(1, width - 2));
+            }
+
+            x = list.get(randInt(0, list.size() - 1));
+
 
             switch (elem) {
                 case COIN:
@@ -170,9 +188,9 @@ public class ArenaController {
     private void birdFly(Bird bird) {
 
         int stamina = bird.getStamina();
-        if (stamina > 30) {
+        if (stamina > 20) {
             moveBird(bird.moveUp(1));
-            stamina -= 12;
+            stamina -= 11;
             bird.setStamina(stamina);
             arenaModel.setBird(bird);
         }

@@ -50,7 +50,7 @@ public class ArenaModel {
     public void removeMatrixBottomRow() {
 
         for (int y = height - 2; y > 1; y--)
-            for (int x = width - 1; x > 1; x--)
+            for (int x = width - 1; x > 0; x--)
                 matrix.getPos(x, y).gravityMove();
 
     }

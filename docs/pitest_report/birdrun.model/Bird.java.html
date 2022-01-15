@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Bird.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package birdrun.model;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.googlecode.lanterna.SGR;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.googlecode.lanterna.TerminalPosition;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.googlecode.lanterna.TextColor;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import com.googlecode.lanterna.graphics.TextGraphics;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Bird extends Element {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    private int hp = 3;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    private int coinCount = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    private int stamina = 200;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Bird(int x, int y, Character character, String color) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        super(x, y, character, color);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_16'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_18'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Bird(Position pos, Character character, String color) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        super(pos, character, color);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_21'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_23'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void gravityMove() {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        moveDown(1);</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_26'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    @Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void draw(TextGraphics graphics) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        graphics.setForegroundColor(TextColor.Factory.fromString(this.color));</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        graphics.enableModifiers(SGR.BOLD);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_31'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_32'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        graphics.putString(new TerminalPosition(this.position.getX(), this.position.getY()), this.character.toString());</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_33'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_34'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_35'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int takeDamage() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_36'/>
+36
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_36'>2</a>
+<span>
+1. takeDamage : replaced int return with 0 for birdrun/model/Bird::takeDamage &rarr; SURVIVED<br/>
+2. takeDamage : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return --hp;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_37'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_38'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_39'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int takeDamage(int n) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_40'/>
+40
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_40'>1</a>
+<span>
+1. takeDamage : Replaced integer subtraction with addition &rarr; NO_COVERAGE<br/>
+
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        hp -= n;</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_41'/>
+41
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_41'>1</a>
+<span>
+1. takeDamage : replaced int return with 0 for birdrun/model/Bird::takeDamage &rarr; NO_COVERAGE<br/>
+
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return hp;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_42'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_43'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_44'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getHp() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_45'/>
+45
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_45'>1</a>
+<span>
+1. getHp : replaced int return with 0 for birdrun/model/Bird::getHp &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return hp;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_46'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_47'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_48'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setHp(int newHp) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_49'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        hp = newHp;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_50'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_51'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_52'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void addHp(int newHp) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_53'/>
+53
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_53'>1</a>
+<span>
+1. addHp : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        hp += newHp;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_54'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_55'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_56'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public boolean isAlive() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_57'/>
+57
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_57'>3</a>
+<span>
+1. isAlive : changed conditional boundary &rarr; SURVIVED<br/>
+2. isAlive : replaced boolean return with true for birdrun/model/Bird::isAlive &rarr; SURVIVED<br/>
+3. isAlive : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return hp &#62; 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_58'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_59'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_60'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int pickCoin(int numCoins) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_61'/>
+61
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_61'>1</a>
+<span>
+1. pickCoin : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        coinCount += numCoins;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_62'/>
+62
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_62'>1</a>
+<span>
+1. pickCoin : replaced int return with 0 for birdrun/model/Bird::pickCoin &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return coinCount;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_63'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_64'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_65'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getCoinCount() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_66'/>
+66
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_66'>1</a>
+<span>
+1. getCoinCount : replaced int return with 0 for birdrun/model/Bird::getCoinCount &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return coinCount;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_67'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_68'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_69'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setCoinCount(int numCoins) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_70'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        coinCount = numCoins;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_71'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_72'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_73'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Position moveUp(int delta) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_74'/>
+74
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_74'>2</a>
+<span>
+1. moveUp : Replaced integer subtraction with addition &rarr; KILLED<br/>
+2. moveUp : replaced return value with null for birdrun/model/Bird::moveUp &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Position(position.getX(), position.getY() - delta);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_75'/>
+75
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_75'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_76'/>
+76
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_76'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_77'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Position moveDown(int delta) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_78'/>
+78
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_78'>2</a>
+<span>
+1. moveDown : Replaced integer addition with subtraction &rarr; KILLED<br/>
+2. moveDown : replaced return value with null for birdrun/model/Bird::moveDown &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Position(position.getX(), position.getY() + delta);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_79'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_80'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_81'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Position moveLeft(int delta) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_82'/>
+82
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_82'>2</a>
+<span>
+1. moveLeft : Replaced integer subtraction with addition &rarr; KILLED<br/>
+2. moveLeft : replaced return value with null for birdrun/model/Bird::moveLeft &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Position(position.getX() - delta, position.getY());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_83'/>
+83
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_83'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_84'/>
+84
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_84'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_85'/>
+85
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_85'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Position moveRight(int delta) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_86'/>
+86
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_86'>2</a>
+<span>
+1. moveRight : Replaced integer addition with subtraction &rarr; KILLED<br/>
+2. moveRight : replaced return value with null for birdrun/model/Bird::moveRight &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Position(position.getX() + delta, position.getY());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_87'/>
+87
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_87'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_88'/>
+88
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_88'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_89'/>
+89
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_89'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public int getStamina() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_90'/>
+90
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_90'>1</a>
+<span>
+1. getStamina : replaced int return with 0 for birdrun/model/Bird::getStamina &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return stamina;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_91'/>
+91
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_91'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_92'/>
+92
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_92'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_93'/>
+93
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_93'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void setStamina(int newStamina) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_94'/>
+94
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_94'>2</a>
+<span>
+1. setStamina : changed conditional boundary &rarr; SURVIVED<br/>
+2. setStamina : negated conditional &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        if (newStamina &#62; 200) this.stamina = 200;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_95'/>
+95
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_95'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        else this.stamina = Math.max(newStamina, 0);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_96'/>
+96
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_96'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_97'/>
+97
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_97'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_98'/>
+98
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_98'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public void updateColor(String newColor) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_99'/>
+99
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_99'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        this.color = newColor;</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_100'/>
+100
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_100'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_101'/>
+101
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_101'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@4491eaeb_102'/>
+102
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_102'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_36'>36</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_36'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>takeDamage<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:0]</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>takeDamage<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for birdrun/model/Bird::takeDamage &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_40'>40</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_40'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>takeDamage<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_41'>41</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_41'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>takeDamage<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for birdrun/model/Bird::takeDamage &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_45'>45</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_45'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getHp<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:0]</span></span> replaced int return with 0 for birdrun/model/Bird::getHp &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_53'>53</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_53'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>addHp<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:0]</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_57'>57</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_57'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isAlive<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>isAlive<br/><b>Killed by : </b>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_2]</span></span> negated conditional &rarr; KILLED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>isAlive<br/><b>Killed by : </b>none</span></span> replaced boolean return with true for birdrun/model/Bird::isAlive &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_61'>61</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_61'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>pickCoin<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:0]</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_62'>62</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_62'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>pickCoin<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for birdrun/model/Bird::pickCoin &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_66'>66</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_66'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getCoinCount<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:0]</span></span> replaced int return with 0 for birdrun/model/Bird::getCoinCount &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_74'>74</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_74'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveUp<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:0]</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>moveUp<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:0]</span></span> replaced return value with null for birdrun/model/Bird::moveUp &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_78'>78</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_78'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveDown<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:0]</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>moveDown<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:0]</span></span> replaced return value with null for birdrun/model/Bird::moveDown &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_82'>82</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_82'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveLeft<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:0]</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>moveLeft<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:0]</span></span> replaced return value with null for birdrun/model/Bird::moveLeft &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_86'>86</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_86'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>moveRight<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:0]</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>moveRight<br/><b>Killed by : </b>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:0]</span></span> replaced return value with null for birdrun/model/Bird::moveRight &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_90'>90</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_90'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getStamina<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for birdrun/model/Bird::getStamina &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@4491eaeb_94'>94</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@4491eaeb_94'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>setStamina<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>setStamina<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:0] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:4] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:8] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:4] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:0] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:11] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:0] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:7] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:4] (5 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:3] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:7] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:10] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:11] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:7] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:1] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:5] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:3] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:1] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:9] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:10] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:5] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:9] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:7] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:3] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:3] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:6] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:0] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:2] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:8] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:4] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:8] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:8] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:10] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:5] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:5] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:1] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:9] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:1] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:1] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:6] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:11] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:6] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:10] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:10] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:6] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:0] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:4] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:2] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:0] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:11] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:8] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:4] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:8] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:6] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:11] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:2] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:2] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:3] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:2] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:1] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:5] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:5] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:7] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:10] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:9] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:9] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:9] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:6] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:6] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:2] (1 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:2] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:9] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:2] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:5] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:10] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:9] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:9] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:9] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11] (5 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:5] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:3] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:3] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:1] (5 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:12] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:7] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:7] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:5] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:11] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:1] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:1] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:10] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:5] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:4] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:1] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:0] (3 ms)</li><li>birdrun.Test_Position.[engine:junit-jupiter]/[class:birdrun.Test_Position]/[method:Test_Equal_Positions()] (11 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:2] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:11] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:6] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:6] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:8] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:11] (3 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_2] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:7] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:7] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:3] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_4]/[iteration:3] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:10] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:8] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:3] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:4] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:8] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:8] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:6] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:4] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:2] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:2] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_11]/[iteration:0] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_12]/[iteration:11] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:0] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:6] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:10] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:8] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:0] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5]/[iteration:11] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_5] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_3]/[iteration:4] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_6]/[iteration:4] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:5] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9]/[iteration:0] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_9] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:1] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:3] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_7]/[iteration:7] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:10] (4 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_1]/[iteration:7] (3 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_8]/[iteration:11] (2 ms)</li><li>birdrun.model.Test_Bird.[engine:spock]/[spec:birdrun.model.Test_Bird]/[feature:$spock_feature_0_10]/[iteration:9] (4 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.0
+
+</body>
+</html>

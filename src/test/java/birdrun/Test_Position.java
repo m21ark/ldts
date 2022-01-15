@@ -32,7 +32,6 @@ public class Test_Position {
         Assertions.assertEquals(x,p1.getX());
         Assertions.assertEquals(y,p1.getY());
 
-
     }
 
     @Test

@@ -1,11 +1,6 @@
 package birdrun.model
 
-import birdrun.model.Bird
-import birdrun.model.Block
-import birdrun.model.Coin
-import birdrun.model.Dimensions
-import birdrun.model.Element
-import birdrun.model.Matrix
+
 import spock.lang.Specification
 
 class Test_Matrix extends Specification {
@@ -73,6 +68,56 @@ class Test_Matrix extends Specification {
         then:
         tempM.size() == height
         tempM.get(0).size() == width
+
+    }
+
+    def "Test indexOfSmallest"() {
+
+        given:
+        def arr = new int[5]
+
+        arr[0] = 3
+        arr[1] = 5
+        arr[2] = 7
+        arr[3] = 2
+        arr[4] = 9
+
+        when:
+
+        int index = matrix.indexOfSmallest(arr as ArrayList<Integer>)
+
+        then:
+
+        index == 3
+
+
+    }
+
+    def "Test  countLine"() {
+
+        given:
+
+        Character blockChar = 'X'
+        Character coinChar = 'C'
+
+        def block = new Block(1, 1, blockChar as Character, "#00FF00")
+        def coin = new Coin(1, 1, coinChar as Character, "#00FF00")
+
+        List<Element> list = new ArrayList<>()
+
+        int count = 10
+
+        when:
+
+        for (int i = 0; i < count; i++) list.add(block)
+
+        for (int i = 0; i < count / 2 + 1; i++) list.add(coin)
+
+        int result = matrix.countLine(blockChar, list)
+
+        then:
+
+        result == count
 
     }
 

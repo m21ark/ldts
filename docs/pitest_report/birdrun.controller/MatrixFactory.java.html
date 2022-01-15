@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>MatrixFactory.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package birdrun.controller;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import birdrun.model.Block;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import birdrun.model.Dimensions;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import birdrun.model.Matrix;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_6'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class MatrixFactory {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Matrix getMatrix(Dimensions dimensions, Character borderChar, String borderColor) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int width = dimensions.getWidth();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_12'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int height = dimensions.getHeight();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_14'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Matrix temp = new Matrix(dimensions, &#39; &#39;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_16'/>
+16
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_16'>3</a>
+<span>
+1. getMatrix : changed conditional boundary &rarr; SURVIVED<br/>
+2. getMatrix : Changed increment from 1 to -1 &rarr; TIMED_OUT<br/>
+3. getMatrix : negated conditional &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        for (int c = 0; c &#60; width; c++) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_17'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            temp.setPos(new Block(c, 0, borderChar, borderColor));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_18'/>
+18
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_18'>1</a>
+<span>
+1. getMatrix : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>            temp.setPos(new Block(c, height - 1, borderChar, borderColor));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_19'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_20'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_21'/>
+21
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_21'>4</a>
+<span>
+1. getMatrix : changed conditional boundary &rarr; SURVIVED<br/>
+2. getMatrix : Replaced integer subtraction with addition &rarr; SURVIVED<br/>
+3. getMatrix : negated conditional &rarr; SURVIVED<br/>
+4. getMatrix : Changed increment from 1 to -1 &rarr; TIMED_OUT<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        for (int r = 1; r &#60; height - 1; r++) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_22'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            temp.setPos(new Block(0, r, borderChar, borderColor));</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_23'/>
+23
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_23'>1</a>
+<span>
+1. getMatrix : Replaced integer subtraction with addition &rarr; SURVIVED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>            temp.setPos(new Block(width - 1, r, borderChar, borderColor));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_24'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_25'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_26'/>
+26
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_26'>1</a>
+<span>
+1. getMatrix : replaced return value with null for birdrun/controller/MatrixFactory::getMatrix &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return temp;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_27'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_28'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_29'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@37c87fcc_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_30'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@37c87fcc_16'>16</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_16'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; TIMED_OUT</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>birdrun.controller.Test_MatrixFactory.[engine:spock]/[spec:birdrun.controller.Test_MatrixFactory]/[feature:$spock_feature_0_0]</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@37c87fcc_18'>18</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_18'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>birdrun.controller.Test_MatrixFactory.[engine:spock]/[spec:birdrun.controller.Test_MatrixFactory]/[feature:$spock_feature_0_0]</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@37c87fcc_21'>21</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_21'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; SURVIVED</p> <p class='TIMED_OUT'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; TIMED_OUT</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@37c87fcc_23'>23</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_23'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@37c87fcc_26'>26</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@37c87fcc_26'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getMatrix<br/><b>Killed by : </b>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_2]</span></span> replaced return value with null for birdrun/controller/MatrixFactory::getMatrix &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_2] (3 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:0] (9 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1] (9 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0] (15 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:4] (8 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:3] (10 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:2] (9 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:1] (8 ms)</li><li>birdrun.controller.Test_MatrixFactory.[engine:spock]/[spec:birdrun.controller.Test_MatrixFactory]/[feature:$spock_feature_0_0] (2 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:0] (18 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:1] (7 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:2] (6 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:3] (6 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:9] (5 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:8] (5 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:5] (5 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:4] (7 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:10] (8 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:11] (8 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:7] (5 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:6] (6 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:10] (7 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_1]/[iteration:11] (7 ms)</li><li>birdrun.Test_Position.[engine:junit-jupiter]/[class:birdrun.Test_Position]/[method:Test_Equal_Positions()] (11 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:8] (12 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:7] (9 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:6] (9 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:5] (9 ms)</li><li>birdrun.controller.Test_ArenaController.[engine:spock]/[spec:birdrun.controller.Test_ArenaController]/[feature:$spock_feature_0_0]/[iteration:9] (7 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.7.0
+
+</body>
+</html>

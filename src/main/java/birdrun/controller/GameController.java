@@ -29,8 +29,8 @@ public class GameController {
     private final Screen screen;
     private final TextGraphics graphics;
     private final KeyboardObserver keyboardObserver;
+    private final long fps = 30;
     private STATE state = STATE.START;
-    private final long fps = 50;
     private int gameLoopInt = 0;
     private int resetCountGameLoop = 1;
     private boolean runGame = true;
@@ -62,7 +62,7 @@ public class GameController {
             arena.resumeBgMusic();
         }
 
-        long frameTime = 1000/fps;
+        long frameTime = 1000 / fps;
 
         while (arena.playerAlive()) {
             long startTime = System.currentTimeMillis();
@@ -90,11 +90,14 @@ public class GameController {
 
             }
 
-            if (gameLoopInt % 20 == 0) {
+            if (gameLoopInt % 8 == 0) {
                 arena.addRandomElem(ArenaController.FallingElem.BLOCK, 1);
+            }
+            if (gameLoopInt % 5 == 0) {
                 arena.applyGravity();
             }
-            if (gameLoopInt == 250) {
+
+            if (gameLoopInt == 170) {
                 arena.addRandomElem(ArenaController.FallingElem.COIN, 1);
                 gameLoopInt = 0;
                 resetCountGameLoop++;
