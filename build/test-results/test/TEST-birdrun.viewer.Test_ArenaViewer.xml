@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="birdrun.viewer.Test_ArenaViewer" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-15T15:25:19" hostname="zenbook" time="0.039">
-  <properties/>
-  <testcase name="Test drawMatrix" classname="birdrun.viewer.Test_ArenaViewer" time="0.033"/>
-  <testcase name="Test drawGame" classname="birdrun.viewer.Test_ArenaViewer" time="0.006"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

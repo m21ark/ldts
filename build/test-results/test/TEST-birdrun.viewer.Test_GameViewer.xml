@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="birdrun.viewer.Test_GameViewer" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-15T15:25:18" hostname="zenbook" time="0.495">
-  <properties/>
-  <testcase name="Test draw" classname="birdrun.viewer.Test_GameViewer" time="0.495"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

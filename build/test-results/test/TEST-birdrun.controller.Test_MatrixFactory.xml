@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="birdrun.controller.Test_MatrixFactory" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-15T15:25:19" hostname="zenbook" time="0.071">
-  <properties/>
-  <testcase name="Test getMatrix" classname="birdrun.controller.Test_MatrixFactory" time="0.071"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
