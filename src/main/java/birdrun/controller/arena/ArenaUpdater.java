@@ -21,14 +21,14 @@ public class ArenaUpdater {
 
 
     private boolean isMatrixBottomRowFull() {
-        boolean isLineFull = true;
         Matrix matrix = arenaModel.getMatrix();
 
-        for (int x = 0; x < width; x++) {
+        for (int x = 1; x < width - 1; x++) {
             Character c = matrix.getPos(x, height - 2).getChar();
-            if (c == ' ' || c.equals(birdChar)) isLineFull = false;
+            if (!c.equals(blockChar)) return false;
         }
-        return isLineFull;
+
+        return true;
     }
 
     private void updateBirdColor() {

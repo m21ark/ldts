@@ -14,8 +14,8 @@ public class ArenaModel {
         this.matrix = matrix;
     }
 
-    public Dimensions getDimensions(){
-        return new Dimensions(width,height);
+    public Dimensions getDimensions() {
+        return new Dimensions(width, height);
     }
 
 
@@ -55,7 +55,7 @@ public class ArenaModel {
 
     }
 
-    public void matrixSetPos(Element element){
+    public void matrixSetPos(Element element) {
         matrix.setPos(element);
     }
 
@@ -63,15 +63,19 @@ public class ArenaModel {
         this.bird.setPos(pos);
     }
 
-    public void birdPickCoins(int n){
+    public void birdPickCoins(int n) {
         this.bird.pickCoin(n);
     }
 
-    public Element matrixGetPos(Position pos){
-        return  matrix.getPos(pos);
+    public Element matrixGetPos(Position pos) {
+        return matrix.getPos(pos);
     }
 
-    public void addPlayerHp(int hp){
+    public void addPlayerHp(int hp) {
         this.bird.addHp(hp);
+    }
+
+    public void birdTakeDamage(int n) {
+        this.bird.takeDamage(n );
     }
 }

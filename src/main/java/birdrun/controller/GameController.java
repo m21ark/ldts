@@ -96,7 +96,7 @@ public class GameController {
                 resetCountGameLoop++;
             }
 
-            if (resetCountGameLoop % 25 == 0) {
+            if (resetCountGameLoop % 20 == 0) {
                 arena.addRandomElem(ArenaController.FallingElem.LIFE, 1);
                 gameLoopInt = 0;
                 resetCountGameLoop++;
