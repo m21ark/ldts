@@ -2,10 +2,7 @@ package birdrun.controller
 
 import birdrun.controller.arena.ArenaController
 import birdrun.controller.arena.ArenaUpdater
-import birdrun.model.ArenaModel
-import birdrun.model.Block
-import birdrun.model.Dimensions
-import birdrun.model.Matrix
+import birdrun.model.*
 import spock.lang.Specification
 
 class Test_ArenaUpdater extends Specification {
@@ -81,21 +78,24 @@ class Test_ArenaUpdater extends Specification {
     def "Test updateBirdColor"(int stamina) {
 
         given:
-        def arenaModel = Mock(ArenaModel)
-        def dimensions = new Dimensions(5, 8)
 
-        arenaModel.getDimensions() >> dimensions
-        arenaModel.getBirdStamina() >> stamina
+        Dimensions dimensions = new Dimensions(10, 15)
+        Matrix matrix = new MatrixFactory().getMatrix(dimensions, '#' as Character, "#00FF00")
+        ArenaModel arenaModel = new ArenaModel(dimensions, matrix, "#00FF00")
 
-        def arenaUpdater = new ArenaUpdater(arenaModel)
+        Bird bird = arenaModel.getBird()
+        bird.setStamina(stamina)
+        arenaModel.setBird(bird)
 
         when:
+
+        def arenaUpdater = new ArenaUpdater(arenaModel)
 
         def birdColor = arenaUpdater.updateBirdColor()
 
         then:
 
-        if (stamina > 100) birdColor == "#FFFFFF" else if (stamina < 50) birdColor = "#C51663" else if (stamina < 100) birdColor == "#BEC516"
+        if (stamina > 100) birdColor == "#FFFFFF" else if (stamina < 50) birdColor == "#C51663" else if (stamina < 100) birdColor == "#BEC516"
 
         where:
 

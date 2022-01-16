@@ -155,6 +155,26 @@ class Test_Matrix extends Specification {
 
     }
 
+    def "Test validPos"() {
+
+        given:
+        Position pos = new Position(x, y)
+
+        when:
+
+        boolean valid = matrix.validPos(pos)
+
+        then:
+
+        if (x >= 0 && y >= 0 && x < width && y < height) valid else !valid
+
+
+        where:
+        x << [-16, 0, -1, 0, 1, 2, 23, 46, 7, 78, 15, 99]
+        y << [-10, 8, 1, -2, 3, 6, 18, 0, 123, 34, 15, 8]
+
+    }
+
 
 }
 

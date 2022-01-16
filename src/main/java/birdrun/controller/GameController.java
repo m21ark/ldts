@@ -121,12 +121,12 @@ public class GameController {
         if (gameLoopInt % 5 == 0) {
             arena.applyGravity();
         }
-        if (gameLoopInt == 170) {
+        if (gameLoopInt == 120) {
             arena.addRandomElem(ArenaController.FallingElem.COIN, 1);
             gameLoopInt = 0;
             resetCountGameLoop++;
         }
-        if (resetCountGameLoop % 20 == 0) {
+        if (resetCountGameLoop % 10 == 0) {
             arena.addRandomElem(ArenaController.FallingElem.LIFE, 1);
             gameLoopInt = 0;
             resetCountGameLoop++;

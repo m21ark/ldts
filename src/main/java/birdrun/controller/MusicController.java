@@ -31,8 +31,7 @@ public class MusicController {
         }
     }
 
-    public Clip loadSound(String soundPath) {
-        if(soundPath ==null) return  null;
+    private Clip loadSound(String soundPath) {
         try {
             File musicFile = new File(Objects.requireNonNull(MusicController.class.getResource(soundPath)).getFile());
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
@@ -42,7 +41,7 @@ public class MusicController {
             gainControl.setValue(-25.0f);
             return musicClip;
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return null;
     }

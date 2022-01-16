@@ -52,27 +52,7 @@ public class Matrix {
         return ret;
     }
 
-    public boolean setPos(Element c) {
-        if (c == null) return false;
-        int x = c.getPosition().getX();
-        int y = c.getPosition().getY();
-
-        if (x < 0 || y < 0 || x >= width || y >= height) return false;
-
-        matrix.get(y).set(x, c);
-        return true;
-    }
-
-    public Element getPos(int x, int y) {
-        if (x < 0 || y < 0 || x >= width || y >= height) return null;
-        return matrix.get(y).get(x);
-    }
-
-    public Element getPos(Position pos) {
-        return getPos(pos.getX(), pos.getY());
-    }
-
-    public int countLine(Character ch, List<Element> list) {
+    public static int countLine(Character ch, List<Element> list) {
         int count = 0;
 
         for (Element elem : list)
@@ -81,6 +61,33 @@ public class Matrix {
         return count;
     }
 
+    public boolean setPos(Element c) {
+        if (c == null) return false;
+        int x = c.getPosition().getX();
+        int y = c.getPosition().getY();
+
+        if (!validPos(c.getPosition())) return false;
+
+        matrix.get(y).set(x, c);
+        return true;
+    }
+
+    public Element getPos(int x, int y) {
+        if (!validPos(new Position(x, y))) return null;
+        return matrix.get(y).get(x);
+    }
+
+    public boolean validPos(Position pos) {
+        int x = pos.getX();
+        int y = pos.getY();
+
+        return x >= 0 && y >= 0 && x < width && y < height;
+    }
+
+    public Element getPos(Position pos) {
+        if (!validPos(pos)) return null;
+        return getPos(pos.getX(), pos.getY());
+    }
 
     public int getSmallerCol(Character ch) {
 
