@@ -21,6 +21,7 @@ import java.net.URISyntaxException;
 
 public class GameController {
 
+    private static GameController instance;
     private final ArenaController arena;
     private final PauseMenuState pauseMenuState;
     private final StartMenuState startMenuState;
@@ -37,13 +38,12 @@ public class GameController {
     private boolean isMusicPlaying = false;
 
 
-    public GameController(Dimensions dimensions) throws IOException, URISyntaxException, FontFormatException {
+    private GameController(Dimensions dimensions, Screen screen) throws IOException, URISyntaxException, FontFormatException {
 
-        this.screen = new ScreenFactory().getScreen(dimensions, 35);
+        this.screen = screen;
         this.graphics = screen.newTextGraphics();
         this.arena = new ArenaController(dimensions);
         MenuController menuController = new MenuController(dimensions, graphics, ArenaController.bgColor, ArenaController.textColor);
-
 
         this.pauseMenuState = new PauseMenuState(screen, menuController);
         this.startMenuState = new StartMenuState(screen, menuController);
@@ -53,14 +53,30 @@ public class GameController {
         this.keyboardObserver = new KeyboardObserver(screen);
     }
 
+    public static GameController getInstance(Dimensions dimensions) throws IOException, URISyntaxException, FontFormatException {
+        Screen screen = new ScreenFactory().getScreen(dimensions, 35);
+
+        if (instance == null) instance = new GameController(dimensions, screen);
+        return instance;
+    }
+
+    public static GameController getInstance(Dimensions dimensions, Screen screen) throws IOException, URISyntaxException, FontFormatException {
+
+        if (instance == null) instance = new GameController(dimensions, screen);
+        return instance;
+    }
+
+    public boolean instantiated() {
+        return (instance != null);
+    }
+
+    public void removeInstance() {
+        instance = null;
+    }
+
     public GameController.STATE gameState() throws InterruptedException, IOException {
 
-        if (!isMusicPlaying) {
-            arena.startBgMusic();
-            isMusicPlaying = true;
-        } else {
-            arena.resumeBgMusic();
-        }
+        testMusicPlaying();
 
         long frameTime = 1000 / fps;
 
@@ -77,6 +93,7 @@ public class GameController {
             gameTick();
 
             arena.updateArena();
+
             if (!arena.playerAlive()) return GameController.STATE.DEATH;
 
             long sleepTime = frameTime - (System.currentTimeMillis() - startTime);
@@ -87,8 +104,18 @@ public class GameController {
         return null;
     }
 
-    private void gameTick() {
-        if (gameLoopInt % 6== 0) {
+    protected void testMusicPlaying() {
+        if (!isMusicPlaying) {
+            arena.startBgMusic();
+            isMusicPlaying = true;
+        } else {
+            arena.resumeBgMusic();
+        }
+    }
+
+
+    protected void gameTick() {
+        if (gameLoopInt % 6 == 0) {
             arena.addRandomElem(ArenaController.FallingElem.BLOCK, 1);
         }
         if (gameLoopInt % 5 == 0) {
@@ -108,10 +135,28 @@ public class GameController {
         gameLoopInt++;
     }
 
-    private void drawGameView() throws IOException {
-        screen.clear();
+    public int getGameLoopInt() {
+        return gameLoopInt;
+    }
+
+    public void setGameLoopInt(int gameLoopInt) {
+        this.gameLoopInt = gameLoopInt;
+    }
+
+    public ArenaController getArena() {
+        return arena;
+    }
+
+    public int getResetCountGameLoop() {
+        return resetCountGameLoop;
+    }
+
+    public void setResetCountGameLoop(int resetCountGameLoop) {
+        this.resetCountGameLoop = resetCountGameLoop;
+    }
+
+    protected void drawGameView() throws IOException {
         new GameViewer().draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
-        screen.refresh();
 
         Command.COMMAND command = keyboardObserver.listenPoll();
         runGame = arena.executeCommand(command);
@@ -147,6 +192,10 @@ public class GameController {
                     System.exit(0);
             }
         }
+    }
+
+    public boolean isMusicPlaying() {
+        return isMusicPlaying;
     }
 
     public enum STATE {START, INSTRUCTIONS, GAME, DEATH, PAUSE, NONE}

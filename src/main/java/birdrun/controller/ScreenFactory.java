@@ -17,6 +17,7 @@ import java.net.URL;
 public class ScreenFactory {
 
     public Font loadFont(int fontSize) throws IOException, FontFormatException, URISyntaxException {
+
         URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
         File fontFile = new File(resource.toURI());
         Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -28,26 +29,31 @@ public class ScreenFactory {
     }
 
 
+    public Screen createScreen(Terminal terminal) throws IOException {
+        Screen screen = new TerminalScreen(terminal);
+        screen.setCursorPosition(null);
+        screen.startScreen();
+        screen.doResizeIfNecessary();
+        return screen;
+    }
+
     public Screen getScreen(Dimensions dimensions, int fontSize) throws IOException, URISyntaxException, FontFormatException {
 
         int width = dimensions.getWidth();
         int height = dimensions.getHeight();
 
-
         TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
 
-        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(this.loadFont(fontSize));
+        Font loadedFont = loadFont(fontSize);
+
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
         terminalFactory.setTerminalEmulatorFontConfiguration(fontConfig);
         terminalFactory.setForceAWTOverSwing(true);
 
         Terminal terminal = terminalFactory.createTerminal();
-        Screen screen = new TerminalScreen(terminal);
-        screen.setCursorPosition(null);
-        screen.startScreen();
-        screen.doResizeIfNecessary();
 
-        return screen;
+        return createScreen(terminal);
 
     }
 

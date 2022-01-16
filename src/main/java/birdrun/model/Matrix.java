@@ -81,6 +81,7 @@ public class Matrix {
         return count;
     }
 
+
     public int getSmallerCol(Character ch) {
 
         List<Integer> arrCount = new ArrayList<Integer>();
