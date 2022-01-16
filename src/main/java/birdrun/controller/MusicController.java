@@ -16,7 +16,7 @@ public class MusicController {
     private Clip damageSound;
 
     public MusicController() {
-        loadMusicFiles();
+        // loadMusicFiles();
     }
 
     private void loadMusicFiles() {

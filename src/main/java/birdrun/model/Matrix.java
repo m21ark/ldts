@@ -69,16 +69,7 @@ public class Matrix {
     }
 
     public Element getPos(Position pos) {
-        if (pos.getX() < 0 || pos.getY() < 0 || pos.getX() >= width || pos.getY() >= height) return null;
-        return matrix.get(pos.getY()).get(pos.getX());
-    }
-
-    public void print() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++)
-                System.out.print(matrix.get(i).get(j).getChar());
-            System.out.println();
-        }
+        return getPos(pos.getX(), pos.getY());
     }
 
     public int countLine(Character ch, List<Element> list) {

@@ -13,14 +13,20 @@ public class MatrixFactory {
 
         Matrix temp = new Matrix(dimensions, ' ');
 
+        boolean setPos;
+
         for (int c = 0; c < width; c++) {
-            temp.setPos(new Block(c, 0, borderChar, borderColor));
-            temp.setPos(new Block(c, height - 1, borderChar, borderColor));
+            for (int i : new int[]{0, height - 1}) {
+                setPos = temp.setPos(new Block(c, i, borderChar, borderColor));
+                if (!setPos) return null;
+            }
         }
 
         for (int r = 1; r < height - 1; r++) {
-            temp.setPos(new Block(0, r, borderChar, borderColor));
-            temp.setPos(new Block(width - 1, r, borderChar, borderColor));
+            for (int i : new int[]{0, width - 1}) {
+                setPos = temp.setPos(new Block(i, r, borderChar, borderColor));
+                if (!setPos) return null;
+            }
         }
 
         return temp;

@@ -28,24 +28,28 @@ public class MenuController {
 
     }
 
-    public void drawState(MENU_STATE state) {
+    public int drawState(MENU_STATE state) {
         switch (state) {
             case INITIAL:
                 initialViewer.draw(graphics);
-                break;
+                return 0;
             case INSTRUCTIONS:
                 instructionsViewer.draw(graphics);
-                break;
+                return 1;
             case PAUSE:
                 pauseViewer.draw(graphics);
-                break;
+                return 2;
             default:
-                break;
+                return -1;
         }
     }
 
-    public void drawState(MENU_STATE state, int score) {
-        if (state == MENU_STATE.DEATH) deathViewer.draw(graphics, score);
+    public boolean drawState(MENU_STATE state, int score) {
+        if (state == MENU_STATE.DEATH) {
+            deathViewer.draw(graphics, score);
+            return true;
+        }
+        return false;
     }
 
     public enum MENU_STATE {INITIAL, DEATH, INSTRUCTIONS, PAUSE, NONE}
