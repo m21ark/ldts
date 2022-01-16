@@ -60,7 +60,7 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 </p>  
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/instructions.png"/>
+  <img src="docs/images/screenshots/instuctions.png"/>
 </p>
 <p align="center">
   <b><i>Fig 5. Instructions  </i></b>
