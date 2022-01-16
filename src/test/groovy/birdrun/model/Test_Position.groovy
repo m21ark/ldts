@@ -2,7 +2,7 @@ package birdrun.model
 
 import spock.lang.Specification
 
-class Test_Position extends Specification{
+class Test_Position extends Specification {
 
     Position posi
     int x0, y0
@@ -13,13 +13,13 @@ class Test_Position extends Specification{
         posi = new Position(x0, y0)
     }
 
-    def "Test set/get"(int x, int y){
+    def "Test set/get"(int x, int y) {
         given:
 
         int nX = 10
         int nY = 20
 
-        Position pos = new Position(x,y)
+        Position pos = new Position(x, y)
 
         when:
 
@@ -39,30 +39,30 @@ class Test_Position extends Specification{
 
         where:
 
-        x     | y
-        1     | 15
-        2     | 1
-        10    | 1
-        20    | 35
-        -1    | 20
-        0     | 90
-        100   | -10
+        x   | y
+        1   | 15
+        2   | 1
+        10  | 1
+        20  | 35
+        -1  | 20
+        0   | 90
+        100 | -10
     }
 
-    def "Test equals"(){
+    def "Test equals"() {
         when:
         Object o1 = new Object()
-        Position o2 = new Position(x0,y0)
-        Position o3 = new Position(20,30)
+        Position o2 = new Position(x0, y0)
+        Position o3 = new Position(20, 30)
         Object o4 = null
 
         then:
 
-        !posi.equals(o1)
-        posi.equals(o2)
-        !posi.equals(o3)
+        posi != o1
+        posi == o2
+        posi != o3
         posi.getY() == o2.getY() && posi.getX() == o2.getX()
-        !posi.equals(o4)
+        posi != o4
 
     }
 

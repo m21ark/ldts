@@ -111,8 +111,8 @@ class Test_Matrix extends Specification {
         index5 == -1
 
 
-
     }
+
     def "Test Transpose"() {
 
         given:
@@ -160,12 +160,27 @@ class Test_Matrix extends Specification {
 
     }
 
-/*
-    def "Test print"() {
-        when:
-        for (int i = 0; i < height; i++)
-            for (int j = 0; j < width; j++)
 
-    }*/
+    def "Test validPos"() {
+
+        given:
+        Position pos = new Position(x, y)
+
+        when:
+
+        boolean valid = matrix.validPos(pos)
+
+        then:
+
+        if (x >= 0 && y >= 0 && x < width && y < height) valid else !valid
+
+
+        where:
+        x << [-16, 0, -1, 0, 1, 2, 23, 46, 7, 78, 15, 99]
+        y << [-10, 8, 1, -2, 3, 6, 18, 0, 123, 34, 15, 8]
+
+    }
+
+
 }
 

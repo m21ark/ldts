@@ -7,15 +7,17 @@ import birdrun.model.Matrix
 import spock.lang.Specification
 
 class Test_ArenaModel extends Specification {
-    def matrix
-    def bird
-    def arenaModel
+    Matrix matrix
+    Bird bird
+    ArenaModel arenaModel
+    Dimensions dimensions
 
 
     def setup() throws Exception {
         matrix = Mock(Matrix)
         bird = Mock(Bird)
-        arenaModel = new ArenaModel(new Dimensions(20, 25), matrix, "#00FF00")
+        dimensions = new Dimensions(20, 25)
+        arenaModel = new ArenaModel(dimensions, matrix, "#00FF00")
         arenaModel.setBird(bird)
         arenaModel.setMatrix(matrix)
 
@@ -52,57 +54,43 @@ class Test_ArenaModel extends Specification {
     }
 
 
-
-
-/*
-    //NOT WORKING
     def "Test setBirdColor"(String newColor) {
-
-
-        when:
-        arenaModel.setBirdColor(newColor)
-
-        then:
-        newColor == bird.color
-
-        where:
-        newColor << ["#FFFFFF", "#FFFF00", "#000000"," ", ""]
-    }
-*/
-    /*
-    def "Test setBirdPos"(Position pos){
-
-        when:
-        arenaModel.setBirdPosition(pos)
-
-        then:
-
-        bird.getPosition().getX() == pos.getX() && bird.getPosition().getY() == pos.getY()
-
-    }
-     *//*
-    def "Test removeMatrixBottomRow"(int weight, int height){
 
         given:
 
-        matrix.getHeight() >> height
-        matrix.getWeight() >> weight
+        def am = new ArenaModel(dimensions, matrix, "#00FF00")
 
         when:
-
-        arenaModel.removeMatrixBottomRow()
+        am.setBirdColor(newColor)
 
         then:
-
-        matrix.getHeight() == y+1
+        newColor == am.getBird().color
 
         where:
+        newColor << ["#FFFFFF", "#FFFF00", "#000000", " ", ""]
+    }
 
-        weight| height
-        5     | 5
+    def "Test setBirdPos"(int x, int y) {
+
+        given:
+
+        Position pos = new Position(x, y)
+        Bird bird = new Bird(1, 1, 'B' as Character, "#00FF00")
+        def am = new ArenaModel(dimensions, matrix, "#00FF00")
+
+        when:
+        am.setBird(bird)
+        am.setBirdPos(pos)
+
+        then:
+        bird.getPosition().getX() == pos.getX() && bird.getPosition().getY() == pos.getY()
+
+        where:
+        x << [-16, 0, -1, 0, 1, 2, 23, 46, 7, 78, 15, 99]
+        y << [-10, 8, 1, -2, 3, 6, 18, 0, 123, 34, 15, 8]
 
     }
-    */
+
 
 }
 

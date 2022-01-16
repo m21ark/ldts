@@ -28,7 +28,6 @@ public class Bird extends Element {
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.Factory.fromString(this.color));
         graphics.enableModifiers(SGR.BOLD);
-
         graphics.putString(new TerminalPosition(this.position.getX(), this.position.getY()), this.character.toString());
     }
 

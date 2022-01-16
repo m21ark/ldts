@@ -18,27 +18,17 @@ class Test_Bird extends Specification {
         bird = new Bird(x0, y0, 'B' as Character, "#00FF00")
     }
 
-    def "Test draw"(){
+    def "Test draw"() {
         given:
         def graphics = Mock(TextGraphics)
         when:
         bird.draw(graphics)
 
         then:
-        /*
-        1 * graphics.setForegroundColor(_)
-        1 * TextColor.Factory.fromString(bird.color)
-        1 * graphics.enableModifiers(_)
-        1 * SGR.BOLD
-        1 * graphics.putString(_,_)
-        1 * new TerminalPosition(bird.position.getX(), bird.position.getY())
-        1 * bird.character.toString()*/
 
-        1*graphics.setForegroundColor(TextColor.Factory.fromString(bird.color))
-
-        1*graphics.enableModifiers(SGR.BOLD)
-
-        1*graphics.putString(new TerminalPosition(bird.position.getX(), bird.position.getY()), bird.character.toString())
+        1 * graphics.setForegroundColor(TextColor.Factory.fromString(bird.color))
+        1 * graphics.enableModifiers(SGR.BOLD)
+        1 * graphics.putString(new TerminalPosition(bird.position.getX(), bird.position.getY()), bird.character.toString())
 
     }
 
@@ -128,11 +118,11 @@ class Test_Bird extends Specification {
 
         if (stamina > 200) {
             bird.setStamina(200)
-            bird.getStamina() == 200}
-        else if (stamina < 0){
+            bird.getStamina() == 200
+        } else if (stamina < 0) {
             bird.setStamina(0)
-            bird.getStamina() == 0}
-        else stamina == bird.getStamina()
+            bird.getStamina() == 0
+        } else stamina == bird.getStamina()
 
 
         where:
@@ -148,8 +138,7 @@ class Test_Bird extends Specification {
         boolean alive = bird.isAlive()
         then:
 
-        if (alive) hp > 0
-        else hp <= 0
+        if (alive) hp > 0 else hp <= 0
 
         where:
         givenHp << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
@@ -216,13 +205,13 @@ class Test_Bird extends Specification {
         delta << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
-    def "Test updateColor"(String newColor){
+    def "Test updateColor"(String newColor) {
         when:
         bird.updateColor(newColor)
         then:
         newColor == bird.color
 
         where:
-        newColor << ["#FFFFFF", "#FFFF00", "#000000"," ", ""]
+        newColor << ["#FFFFFF", "#FFFF00", "#000000", " ", ""]
     }
 }
