@@ -54,7 +54,6 @@ public class MusicController {
     }
 
     public void stopBackGroundMusic() {
-
         if (backgroundMusic == null) return;
         backgroundMusic.stop();
     }
@@ -62,13 +61,11 @@ public class MusicController {
     public void resumeBackGroundMusic() {
         if (backgroundMusic == null) return;
         backgroundMusic.start();
-
     }
 
     public void resetBackGroundMusic() {
         if (backgroundMusic == null) return;
         backgroundMusic.setMicrosecondPosition(0);
-
     }
 
     public void playCoinSound() {

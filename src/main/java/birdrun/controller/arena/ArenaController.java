@@ -194,7 +194,7 @@ public class ArenaController {
         int stamina = bird.getStamina();
         if (stamina > 20) {
             moveBird(bird.moveUp(1));
-            stamina -= 1; //11
+            stamina -= 11;
             bird.setStamina(stamina);
             arenaModel.setBird(bird);
         }
@@ -241,7 +241,7 @@ public class ArenaController {
         return belowElem == ' ';
     }
 
-    private boolean canApplyGravityBlock(Element belowPos, Position pos) {
+    public boolean canApplyGravityBlock(Element belowPos, Position pos) {
         if (isCollectable(belowPos)) {
             arenaModel.matrixSetPos(new Block(pos.getX(), pos.getY() + 1, blockChar, blockColor));
             return true;
@@ -255,27 +255,17 @@ public class ArenaController {
         return belowPos.getChar().equals(' ');
     }
 
-    private boolean canApplyGravityCollectable(Element elem, Character belowElem) {
+    public boolean canApplyGravityCollectable(Element elem, Character belowElem) {
         if (belowElem.equals(blockChar)) return false;
 
         if (belowElem.equals(birdChar)) {
-
             Bird bird = arenaModel.getBird();
-
             if (arenaModel.matrixGetPos(new Position(bird.getPositionX(), bird.getPositionY() + 1)).getChar() != ' ') {
                 musicController.playCoinSound();
-
                 if (elem.getChar().equals(coinChar)) arenaModel.birdPickCoins(1);
                 else if (elem.getChar().equals(lifeChar)) arenaModel.addPlayerHp(1);
-
-                else{
-                    System.out.println("HERE");
-                }
-
             }
-
             return true;
-
         }
         return belowElem.equals(' ');
     }

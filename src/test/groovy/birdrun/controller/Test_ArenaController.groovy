@@ -102,7 +102,7 @@ class Test_ArenaController extends Specification {
         then:
         model != null
         viewer != null
-        if (alive) score > 0
+        if (alive) score > 0 else !alive && score == 0
     }
 
 
@@ -257,9 +257,17 @@ class Test_ArenaController extends Specification {
             newPos.getX() == birdPos.getX()
 
         } else if (command == Command.COMMAND.RIGHT) {
-            true
+
+            Position newPos = arena.getArenaModel().getBird().getPosition()
+            newPos.getY() == birdPos.getY()
+            newPos.getX() == birdPos.getX() + 1
+
         } else if (command == Command.COMMAND.LEFT) {
-            true
+
+            Position newPos = arena.getArenaModel().getBird().getPosition()
+            newPos.getY() == birdPos.getY()
+            newPos.getX() == birdPos.getX() - 1
+
         } else b
 
         where:
@@ -271,6 +279,82 @@ class Test_ArenaController extends Specification {
 
     }
 
+    def "Test applyGravity Stamina"() {
+
+        given:
+
+        Bird bird = arena.getArenaModel().getBird()
+        bird.setStamina(stamina)
+        arena.getArenaModel().setBird(bird)
+
+        when:
+        arena.applyGravity()
+        int newStam = arena.getArenaModel().getBird().getStamina()
+
+        then:
+        if (stamina < 0) newStam == 6 else newStam == stamina + 6
+
+        where:
+        stamina << [-16, 0, -1, 0, 1, 2, 23, 46, 7, 78, 15, 99]
+    }
+
+    def "Test canApplyGravityBlock"() {
+
+        given:
+        Position pos = new Position(8, 7)
+        Block block = new Block(3, 6, ArenaController.blockChar as Character, "#00FF00")
+        Coin coin = new Coin(3, 2, ArenaController.coinChar as Character, "#00FF00")
+        Extra_Life life = new Extra_Life(3, 2, ArenaController.lifeChar as Character, "#00FF00")
+        Bird bird = new Bird(3, 2, ArenaController.birdChar as Character, "#00FF00")
+
+        when:
+        boolean b1 = arena.canApplyGravityBlock(coin, pos)
+        boolean b2 = arena.canApplyGravityBlock(block, pos)
+        boolean b3 = arena.canApplyGravityBlock(life, pos)
+        boolean b4 = arena.canApplyGravityBlock(bird, pos)
+
+        then:
+        b1 && b3 && b4
+        !b2
+
+    }
+
+
+    def "Test canApplyGravityCollectable"() {
+
+        given:
+        Block block = new Block(3, 6, ArenaController.blockChar as Character, "#00FF00")
+        Coin coin = new Coin(3, 2, ArenaController.coinChar as Character, "#00FF00")
+        Extra_Life life = new Extra_Life(3, 2, ArenaController.lifeChar as Character, "#00FF00")
+        Bird bird = new Bird(3, 2, ArenaController.birdChar as Character, "#00FF00")
+
+        when:
+        boolean c1 = arena.canApplyGravityCollectable(coin, coin.getChar())
+        boolean c2 = arena.canApplyGravityCollectable(coin, block.getChar())
+        boolean c3 = arena.canApplyGravityCollectable(coin, life.getChar())
+        boolean c4 = arena.canApplyGravityCollectable(coin, bird.getChar())
+        boolean c5 = arena.canApplyGravityCollectable(coin, ' ' as Character)
+
+        boolean b1 = arena.canApplyGravityCollectable(life, coin.getChar())
+        boolean b2 = arena.canApplyGravityCollectable(life, block.getChar())
+        boolean b3 = arena.canApplyGravityCollectable(life, life.getChar())
+        boolean b4 = arena.canApplyGravityCollectable(life, bird.getChar())
+        boolean b5 = arena.canApplyGravityCollectable(life, ' ' as Character)
+
+        then:
+        !(c1 && c2 && c3)
+        c4 && c5
+
+        !(b1 && b2 && b3)
+        b4 && b5
+
+    }
+
 
 }
+
+
+
+
+
 
