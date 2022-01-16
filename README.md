@@ -51,11 +51,28 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
   <b><i>Fig 3. Game Over  </i></b>
 </p>  
 
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/pause.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 4. Pause  </i></b>
+</p>  
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/instructions.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 5. Instructions  </i></b>
+</p>  
+
+
+
 ### PLANNED FEATURES
 
 - **Shop** - With the coins collected in-game, the user can then buy different power-ups, to help him better perform at the game.
 - **Power-Ups** - These would be special powers, that the user does not have initially. They could vary from "Box Destruction" to "Super birdrun.model.Coin Addition".
-- **Hard Level Meter** - Players should have an option to choose if they want a harder level (with more and faster blocks for example)
+- **Hard Level Meter** - Players could have an option to choose if they want a harder level (with more and faster blocks for example)
 
 
 # Design pattens
@@ -117,7 +134,7 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
   <img src="docs/images/UML/UML.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 3. UML </i></b>  
+  <b><i>Fig 6. UML </i></b>  
 </p>  
 
 <br>
@@ -137,22 +154,24 @@ These classes can be found in the following folder:
   <img src="docs/images/test/coverage.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 4. Coverage Report </i></b>  
+  <b><i>Fig 7. Coverage Report </i></b>  
 </p>  
 
 <br>
-<br />
+
 
 
 <p align="center" justify="center">
   <img src="docs/images/test/pitest.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 5. Pitest Report </i></b>  
+  <b><i>Fig 8. Pitest Report </i></b>  
 </p>  
 
-<br>
-<br />
+
+See  full mutation report here- [Pit Test Report ](docs/pitest_report/index.html)
+
+
 
 
 
