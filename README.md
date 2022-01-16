@@ -150,6 +150,8 @@ These classes can be found in the following folder:
 
 ### TESTING
 
+[![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-G0900?branch=main&token=c37e0a511313f827d4117162ff4c614ba7c4366d)](https://bettercodehub.com/)
+
 <p align="center" justify="center">
   <img src="docs/images/test/coverage.png"/>
 </p>
