@@ -19,7 +19,7 @@ public class ArenaUpdater {
 
     }
 
-    private boolean isMatrixBottomRowFull() {
+    public boolean isMatrixBottomRowFull() {
         Matrix matrix = arenaModel.getMatrix();
 
         for (int x = 1; x < width - 1; x++) {
@@ -30,9 +30,9 @@ public class ArenaUpdater {
         return true;
     }
 
-    private void updateBirdColor() {
+    public String updateBirdColor() {
 
-        int stamina = arenaModel.getBird().getStamina();
+        int stamina = arenaModel.getBirdStamina();
 
         if (stamina < 50) {
             birdColor = "#C51663";
@@ -43,9 +43,11 @@ public class ArenaUpdater {
         }
 
         arenaModel.setBirdColor(birdColor);
+
+        return birdColor;
     }
 
-    private void matrixUpdate() {
+    public void matrixUpdate() {
 
         Matrix matrix = arenaModel.getMatrix();
         Bird bird = arenaModel.getBird();

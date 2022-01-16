@@ -33,11 +33,19 @@ class Test_Matrix extends Specification {
         boolean b4 = matrix.setPos(block2)
         boolean b5 = matrix.setPos(block3)
         boolean b6 = matrix.setPos(bird)
+        boolean b7 = matrix.setPos(null)
 
+        Coin coin = new Coin(x, y, 'C' as Character, "#00FF11")
+        boolean b8 = matrix.setPos(coin)
+
+        boolean inBorder = x < 0 || y < 0 || x >= width || y >= height
 
         then:
-        false == (b2 || b5)
-        true == (b1 && b3 && b4 && b6)
+        !(b2 || b5)
+        (b1 && b3 && b4 && b6)
+        !b7
+
+        if (inBorder) b8 else matrix.getPos(x, y) == null
 
         Element elem1 = matrix.getPos(1, 2)
         Element elem3 = matrix.getPos(7, 10)
@@ -48,6 +56,10 @@ class Test_Matrix extends Specification {
         elem3.getChar() == 'X'
         elem4.getChar() == 'X'
         elem6.getChar() == 'B'
+
+        where:
+        x << [50, 100, 500, -1, -10, -200, 0, 3]
+        y << [-1, -10, -200, 0, 3, 50, 100, 500]
     }
 
     def "Test getDimensions"() {
@@ -74,21 +86,43 @@ class Test_Matrix extends Specification {
     def "Test indexOfSmallest"() {
 
         given:
-        def arr = new int[5]
-
-        arr[0] = 3
-        arr[1] = 5
-        arr[2] = 7
-        arr[3] = 2
-        arr[4] = 9
+        List<Integer> arr1 = [4, 5, 1, 6, 7, 8]
+        List<Integer> arr2 = [4, -1, 0, 6, 10, 8]
+        List<Integer> arr3 = [0, 5, 1, 6, -7, 1]
+        List<Integer> arr4 = [0, 5, 1, 6, -7, -10]
 
         when:
 
-        int index = matrix.indexOfSmallest(arr as ArrayList<Integer>)
+        int index1 = matrix.indexOfSmallest(arr1)
+        int index2 = matrix.indexOfSmallest(arr2)
+        int index3 = matrix.indexOfSmallest(arr3)
+        int index4 = matrix.indexOfSmallest(arr4)
 
         then:
 
-        index == 3
+        index1 == 2
+        index2 == 1
+        index3 == 4
+        index4 == 5
+
+
+    }
+
+    def "Test Transpose"() {
+
+        given:
+        List<List<Integer>> m = [[1, 2, 3],
+                                 [4, 5, 6]]
+
+        when:
+
+        m = matrix.transpose(m)
+
+        then:
+
+        m == [[1, 4],
+              [2, 5],
+              [3, 6]]
 
 
     }

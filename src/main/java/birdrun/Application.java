@@ -15,12 +15,11 @@ public class Application {
     public static void main(String[] args) {
 
         try {
-            GameController game = new GameController(new Dimensions(30, 28));
+            GameController game = GameController.getInstance(new Dimensions(30, 28));
             game.run();
         } catch (IOException | URISyntaxException | FontFormatException | InterruptedException e) {
             e.printStackTrace();
         }
-
 
     }
 
