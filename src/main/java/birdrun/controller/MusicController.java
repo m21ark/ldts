@@ -1,11 +1,6 @@
 package birdrun.controller;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import java.io.File;
-import java.util.Objects;
 
 @SuppressWarnings("CatchAndPrintStackTrace")
 
@@ -16,11 +11,11 @@ public class MusicController {
     private Clip damageSound;
 
     public MusicController() {
-        loadMusicFiles();
+        //loadMusicFiles();
     }
 
     private void loadMusicFiles() {
-        try {
+/*        try {
             this.backgroundMusic = loadSound("/sounds/bg_music.wav");
             this.coinSound = loadSound("/sounds/coin_sound.wav");
             this.deadSound = loadSound("/sounds/dead_sound.wav");
@@ -28,11 +23,11 @@ public class MusicController {
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     private Clip loadSound(String soundPath) {
-        try {
+/*        try {
             File musicFile = new File(Objects.requireNonNull(MusicController.class.getResource(soundPath)).getFile());
             AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicFile);
             Clip musicClip = AudioSystem.getClip();
@@ -42,48 +37,48 @@ public class MusicController {
             return musicClip;
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         return null;
     }
 
     public void starBackGroundMusic() {
-        if (backgroundMusic == null) return;
+/*        if (backgroundMusic == null) return;
         backgroundMusic.setMicrosecondPosition(0);
         backgroundMusic.start();
-        backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);
+        backgroundMusic.loop(Clip.LOOP_CONTINUOUSLY);*/
     }
 
     public void stopBackGroundMusic() {
-        if (backgroundMusic == null) return;
-        backgroundMusic.stop();
+/*        if (backgroundMusic == null) return;
+        backgroundMusic.stop();*/
     }
 
     public void resumeBackGroundMusic() {
-        if (backgroundMusic == null) return;
-        backgroundMusic.start();
+/*        if (backgroundMusic == null) return;
+        backgroundMusic.start();*/
     }
 
     public void resetBackGroundMusic() {
-        if (backgroundMusic == null) return;
-        backgroundMusic.setMicrosecondPosition(0);
+/*        if (backgroundMusic == null) return;
+        backgroundMusic.setMicrosecondPosition(0);*/
     }
 
     public void playCoinSound() {
-        if (coinSound == null) return;
+/*        if (coinSound == null) return;
         coinSound.setMicrosecondPosition(0);
-        coinSound.start();
+        coinSound.start();*/
     }
 
     public void playDeadSound() {
-        if (deadSound == null) return;
+/*        if (deadSound == null) return;
         deadSound.setMicrosecondPosition(0);
-        deadSound.start();
+        deadSound.start();*/
     }
 
     public void playDamageSound() {
-        if (damageSound == null) return;
+/*        if (damageSound == null) return;
         damageSound.setMicrosecondPosition(0);
-        damageSound.start();
+        damageSound.start();*/
     }
 
 }
