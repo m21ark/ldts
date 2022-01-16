@@ -18,6 +18,7 @@ class Test_ArenaModel extends Specification {
         arenaModel = new ArenaModel(new Dimensions(20, 25), matrix, "#00FF00")
         arenaModel.setBird(bird)
         arenaModel.setMatrix(matrix)
+
     }
 
 
@@ -50,6 +51,58 @@ class Test_ArenaModel extends Specification {
         expectedHp << [-10, 0, -1, 0, 1, 2, 4, 46, 7, 78, 15, 9999]
     }
 
+
+
+
+/*
+    //NOT WORKING
+    def "Test setBirdColor"(String newColor) {
+
+
+        when:
+        arenaModel.setBirdColor(newColor)
+
+        then:
+        newColor == bird.color
+
+        where:
+        newColor << ["#FFFFFF", "#FFFF00", "#000000"," ", ""]
+    }
+*/
+    /*
+    def "Test setBirdPos"(Position pos){
+
+        when:
+        arenaModel.setBirdPosition(pos)
+
+        then:
+
+        bird.getPosition().getX() == pos.getX() && bird.getPosition().getY() == pos.getY()
+
+    }
+     *//*
+    def "Test removeMatrixBottomRow"(int weight, int height){
+
+        given:
+
+        matrix.getHeight() >> height
+        matrix.getWeight() >> weight
+
+        when:
+
+        arenaModel.removeMatrixBottomRow()
+
+        then:
+
+        matrix.getHeight() == y+1
+
+        where:
+
+        weight| height
+        5     | 5
+
+    }
+    */
 
 }
 

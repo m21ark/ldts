@@ -2,6 +2,10 @@ package birdrun.model
 
 import birdrun.model.Bird
 import birdrun.model.Position
+import com.googlecode.lanterna.SGR
+import com.googlecode.lanterna.TerminalPosition
+import com.googlecode.lanterna.TextColor
+import com.googlecode.lanterna.graphics.TextGraphics
 import spock.lang.Specification
 
 class Test_Bird extends Specification {
@@ -14,6 +18,30 @@ class Test_Bird extends Specification {
         bird = new Bird(x0, y0, 'B' as Character, "#00FF00")
     }
 
+    def "Test draw"(){
+        given:
+        def graphics = Mock(TextGraphics)
+        when:
+        bird.draw(graphics)
+
+        then:
+        /*
+        1 * graphics.setForegroundColor(_)
+        1 * TextColor.Factory.fromString(bird.color)
+        1 * graphics.enableModifiers(_)
+        1 * SGR.BOLD
+        1 * graphics.putString(_,_)
+        1 * new TerminalPosition(bird.position.getX(), bird.position.getY())
+        1 * bird.character.toString()*/
+
+        1*graphics.setForegroundColor(TextColor.Factory.fromString(bird.color))
+
+        1*graphics.enableModifiers(SGR.BOLD)
+
+        1*graphics.putString(new TerminalPosition(bird.position.getX(), bird.position.getY()), bird.character.toString())
+
+    }
+
     def "Test get char"() {
         when:
         Character c1 = bird.getChar()
@@ -22,25 +50,38 @@ class Test_Bird extends Specification {
         c1 == 'B'
     }
 
-    def "Test takeDamage"(int givenHp) {
+    def "Test takeDamage"(int n) {
         given:
-        bird.setHp(givenHp)
+        int hp = bird.getHp()
+
+        when:
+        bird.takeDamage(n)
+        then:
+
+        bird.getHp() == hp - n
+
+        where:
+        n << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
+    }
+
+    def "Test takeDamage"() {
+        given:
         int hp = bird.getHp()
 
         when:
         bird.takeDamage()
         then:
-        hp - 1 == bird.getHp()
+        bird.getHp() == hp - 1
 
-        where:
-        givenHp << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
     def "Test equality"() {
         when:
         Bird bird2 = new Bird(new Position(x0, y0), 'B' as Character, "#00FF00")
+        Bird bird3 = new Bird(new Position(20, 30), 'B' as Character, "#00FF00")
         then:
         bird2 == bird
+        bird3 != bird
 
     }
 
@@ -80,13 +121,19 @@ class Test_Bird extends Specification {
 
     }
 
-    def "Test stamina"() {
+    def "Test setStamina"(int stamina) {
         when:
         bird.setStamina(stamina)
         then:
-        if (stamina < 0) 0 == bird.getStamina()
-        else if (stamina > 200) 200 == bird.getStamina()
+
+        if (stamina > 200) {
+            bird.setStamina(200)
+            bird.getStamina() == 200}
+        else if (stamina < 0){
+            bird.setStamina(0)
+            bird.getStamina() == 0}
         else stamina == bird.getStamina()
+
 
         where:
         stamina << [-10, -67, 0, -1, -2, 3, 0, 123, 503, 199, 200, 201, 8]
@@ -96,12 +143,13 @@ class Test_Bird extends Specification {
     def "Test isAlive"(int givenHp) {
         given:
         bird.setHp(givenHp)
-        int hp = bird.getHp()
         when:
+        int hp = bird.getHp()
         boolean alive = bird.isAlive()
         then:
 
-        if (!alive) hp > 0 else hp == 0
+        if (alive) hp > 0
+        else hp <= 0
 
         where:
         givenHp << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
@@ -112,7 +160,8 @@ class Test_Bird extends Specification {
         given:
         int coinCount = bird.getCoinCount()
         when:
-        bird.pickCoin(numCoins)
+        int newCoinCount = bird.pickCoin(numCoins)
+        bird.setCoinCount(newCoinCount)
         then:
         bird.getCoinCount() == coinCount + numCoins
 
@@ -167,4 +216,13 @@ class Test_Bird extends Specification {
         delta << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
     }
 
+    def "Test updateColor"(String newColor){
+        when:
+        bird.updateColor(newColor)
+        then:
+        newColor == bird.color
+
+        where:
+        newColor << ["#FFFFFF", "#FFFF00", "#000000"," ", ""]
+    }
 }
