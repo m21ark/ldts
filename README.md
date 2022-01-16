@@ -25,7 +25,7 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
  
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/initMenu.png"/>
+  <img src="docs/images/screenshots/initMenu.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 1. Starting Menu </i></b>
@@ -35,7 +35,7 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 <br />
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/game.png"/>
+  <img src="docs/images/screenshots/game.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 2. Game </i></b>  
@@ -45,7 +45,7 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 <br />
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/endMenu.png"/>
+  <img src="docs/images/screenshots/endMenu.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 3. Game Over  </i></b>
@@ -53,14 +53,14 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/pause.png"/>
+  <img src="docs/images/screenshots/pause.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 4. Pause  </i></b>
 </p>  
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/instuctions.png"/>
+  <img src="docs/images/screenshots/instuctions.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 5. Instructions  </i></b>
