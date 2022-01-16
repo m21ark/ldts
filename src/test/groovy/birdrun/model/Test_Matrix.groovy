@@ -40,10 +40,11 @@ class Test_Matrix extends Specification {
 
         boolean inBorder = x < 0 || y < 0 || x >= width || y >= height
 
+
         then:
+        !b7
         !(b2 || b5)
         (b1 && b3 && b4 && b6)
-        !b7
 
         if (inBorder) b8 else matrix.getPos(x, y) == null
 
@@ -86,10 +87,12 @@ class Test_Matrix extends Specification {
     def "Test indexOfSmallest"() {
 
         given:
+
         List<Integer> arr1 = [4, 5, 1, 6, 7, 8]
         List<Integer> arr2 = [4, -1, 0, 6, 10, 8]
         List<Integer> arr3 = [0, 5, 1, 6, -7, 1]
         List<Integer> arr4 = [0, 5, 1, 6, -7, -10]
+        List<Integer> arr5 = []
 
         when:
 
@@ -97,6 +100,7 @@ class Test_Matrix extends Specification {
         int index2 = matrix.indexOfSmallest(arr2)
         int index3 = matrix.indexOfSmallest(arr3)
         int index4 = matrix.indexOfSmallest(arr4)
+        int index5 = matrix.indexOfSmallest(arr5)
 
         then:
 
@@ -104,10 +108,11 @@ class Test_Matrix extends Specification {
         index2 == 1
         index3 == 4
         index4 == 5
+        index5 == -1
+
 
 
     }
-
     def "Test Transpose"() {
 
         given:
@@ -155,6 +160,12 @@ class Test_Matrix extends Specification {
 
     }
 
+/*
+    def "Test print"() {
+        when:
+        for (int i = 0; i < height; i++)
+            for (int j = 0; j < width; j++)
 
+    }*/
 }
 
