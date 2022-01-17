@@ -8,6 +8,15 @@ lose!
 
 > This project was developed by Marco André (up202004891@fe.up.pt), João Silva (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
 
+###GAME DEMO
+
+<p align="center" justify="center">
+  <img src="docs/gifs/RunBirdRun.gif" width=60% height=90%/>
+</p>
+
+<br>
+<br />
+
 ## IMPLEMENTED FEATURES
 
 - **Start Screen** - When the game starts a simple initial screen is presented
