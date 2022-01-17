@@ -8,7 +8,7 @@ lose!
 
 > This project was developed by Marco André (up202004891@fe.up.pt), João Silva (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
 
-## GAME DEMO
+## Game Demo
 
 <p align="center" justify="center">
   <img src="gifs/RunBirdRun.gif" width=60% height=90%/>
@@ -17,7 +17,7 @@ lose!
 <br>
 <br />
 
-## IMPLEMENTED FEATURES
+## Implemented Features
 
 - **Start Screen** - When the game starts a simple initial screen is presented
 - **End Screen** - When the player dies, a screen is shown with their score
@@ -83,7 +83,7 @@ lose!
   <b><i>Fig 5. Instructions  </i></b>
 </p>  
 
-## PLANNED FEATURES
+## Planned Features
 
 - **Shop** - With the coins collected in-game, the user can then buy different power-ups, to help him better perform at
   the game.
@@ -164,9 +164,9 @@ This is a simplified version of the project's diagram.
 
 See Java Classes here - [Java Classes](src/main/java/birdrun)
 
-## CODE SMELLS
+## Code Smells
 
-## TESTING
+## Testing
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-G0900?branch=main&token=c37e0a511313f827d4117162ff4c614ba7c4366d)](https://bettercodehub.com/)
 
