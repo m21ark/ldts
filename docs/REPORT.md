@@ -94,6 +94,50 @@ lose!
 
 ## Design pattens
 
+### Update
+
+>....
+>
+
+### State
+
+>....
+>
+
+### Singleton
+
+>.....
+>
+
+### Strategy
+
+>....
+>
+
+### Observer
+
+>.....
+>
+
+### MVC - Model View Controller (Architectural Pattern)
+
+> **Problem in Context**
+>
+>  With the increasing code size, classes should be organized to facilitate their communication and usage.
+>
+>  **The Pattern**
+>
+>  Classes should be divided into 3 types : Model (Simply exists), Controller (manages the interactions) and Viewer (draws the model)
+>
+>  **Implementation**
+>
+>  We are still developing this design pattern but some classes already have this structure complete (Arena)
+>
+>  **Consequences**
+>
+> This code structure is more versatile and every class is organized based on the actions they perform.
+
+
 ### Factory method
 
 > **Problem in Context**
@@ -130,24 +174,6 @@ lose!
 >
 > We achieve a game that updates whenever we want.
 
-### MVC - Model View Controller (Architectural Pattern)
-
-> **Problem in Context**
->
->  With the increasing code size, classes should be organized to facilitate their communication and usage.
->
->  **The Pattern**
->
->  Classes should be divided into 3 types : Model (Simply exists), Controller (manages the interactions) and Viewer (draws the model)
->
->  **Implementation**
->
->  We are still developing this design pattern but some classes already have this structure complete (Arena)
->
->  **Consequences**
->
-> This code structure is more versatile and every class is organized based on the actions they perform.
-
 ## UML
 
 <p align="center" justify="center">
@@ -165,6 +191,19 @@ This is a simplified version of the project's diagram.
 See Java Classes here - [Java Classes](src/main/java/birdrun)
 
 ## Code Smells
+
+### Message Chains
+...
+
+### Shotgun Surgery
+...
+
+### Switch Statements
+...
+
+### Long Method
+...
+
 
 ## Testing
 
