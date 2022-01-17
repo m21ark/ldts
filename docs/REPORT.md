@@ -96,15 +96,6 @@ lose!
 
 ### Update
 
-<p align="center" justify="center">
-  <img src="images/UML/UML1.png" width=60% height=90%/>
-</p>
-<p align="center">
-  <b><i>Fig. UML1 </i></b>  
-</p>  
-
-<br>
-<br />
 
 >....
 >
@@ -194,8 +185,28 @@ lose!
 >
 > We achieve a game that updates whenever we want.
 
+<p align="center" justify="center">
+  <img src="images/UML/UML1.png" width=60% height=90%/>
+</p>
+<p align="center">
+  <b><i>Fig. UML1 </i></b>  
+</p>  
+
+<br>
+<br />
+
+
 ## UML
 
+<p align="center" justify="center">
+  <img src="images/UML/UML.png" width=60% height=90%/>
+</p>
+<p align="center">
+  <b><i>Fig. Main UML </i></b>  
+</p>  
+
+<br>
+<br />
 
 This is a simplified version of the project's diagram.
 
