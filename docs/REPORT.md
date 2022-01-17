@@ -6,7 +6,7 @@ bird that can't fly much without getting tired. The main objective is to stay al
 collecting the occasional falling coins. You must avoid the neverending boxes that fall from the sky, otherwise you
 lose!
 
-> This project was developed by Marco André (up202004891@fe.up.pt), João Silva (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
+> This project was developed by Marco André (up202004891@fe.up.pt), João Alves (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
 
 ## Game Demo
 
@@ -198,5 +198,5 @@ See full mutation report here - [Pit Test Report ](pitest_report/index.html)
 ## SELF-EVALUATION
 
 - Marco André 40%
-- João Silva 30%
+- João Alves 30%
 - José Sousa 30%
