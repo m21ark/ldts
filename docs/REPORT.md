@@ -177,10 +177,30 @@ lose!
 ## UML
 
 <p align="center" justify="center">
-  <img src="images/UML/UML.png"/>
+  <img src="images/UML/UML1.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 6. UML </i></b>  
+  <b><i>Fig 6. UML1 </i></b>  
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="images/UML/UML2.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 7. UML2 </i></b>  
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="images/UML/UML3.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 8. UML3</i></b>  
 </p>  
 
 <br>
@@ -214,7 +234,7 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
   <img src="images/test/coverage.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 7. Coverage Report </i></b>  
+  <b><i>Fig 9. Coverage Report </i></b>  
 </p>  
 
 <br>
@@ -225,7 +245,7 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
   <img src="images/test/pittest.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 8. Pitest Report </i></b>  
+  <b><i>Fig 10. Pitest Report </i></b>  
 </p>  
 
 </br>
