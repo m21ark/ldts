@@ -65,17 +65,15 @@ class Test_GameController extends Specification {
     def "Test new instance"() {
 
         given:
-
         Screen screen = Mock(Screen)
         GameController gc = GameController.getInstance(new Dimensions(3, 3), screen)
 
         when:
-
+        gc != null
         gc.instantiated()
         gc.removeInstance()
 
         then:
-
         !gc.instantiated()
 
     }

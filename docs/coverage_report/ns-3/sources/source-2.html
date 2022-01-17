@@ -1,0 +1,190 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ArenaUpdater</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">birdrun.controller.arena</a>
+</div>
+
+<h1>Coverage Summary for Class: ArenaUpdater (birdrun.controller.arena)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ArenaUpdater</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (34/34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package birdrun.controller.arena;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import birdrun.controller.MatrixFactory;
+<i class="no-highlight">4</i>&nbsp;import birdrun.model.*;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;import static birdrun.controller.arena.ArenaController.*;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;public class ArenaUpdater {
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;    private final ArenaModel arenaModel;
+<i class="no-highlight">11</i>&nbsp;    private final int width;
+<i class="no-highlight">12</i>&nbsp;    private final int height;
+<i class="no-highlight">13</i>&nbsp;
+<b class="fc"><i class="no-highlight">14</i>&nbsp;    public ArenaUpdater(ArenaModel arenaModel) {</b>
+<i class="no-highlight">15</i>&nbsp;
+<b class="fc"><i class="no-highlight">16</i>&nbsp;        this.arenaModel = arenaModel;</b>
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        this.width = arenaModel.getDimensions().getWidth();</b>
+<b class="fc"><i class="no-highlight">18</i>&nbsp;        this.height = arenaModel.getDimensions().getHeight();</b>
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;    }
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    public boolean isMatrixBottomRowFull() {
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        Matrix matrix = arenaModel.getMatrix();</b>
+<i class="no-highlight">24</i>&nbsp;
+<b class="fc"><i class="no-highlight">25</i>&nbsp;        for (int x = 1; x &lt; width - 1; x++) {</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;            Character c = matrix.getPos(x, height - 2).getChar();</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;            if (!c.equals(blockChar)) return false;</b>
+<i class="no-highlight">28</i>&nbsp;        }
+<i class="no-highlight">29</i>&nbsp;
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        return true;</b>
+<i class="no-highlight">31</i>&nbsp;    }
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;    public String updateBirdColor() {
+<i class="no-highlight">34</i>&nbsp;
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        int stamina = arenaModel.getBirdStamina();</b>
+<i class="no-highlight">36</i>&nbsp;
+<b class="fc"><i class="no-highlight">37</i>&nbsp;        if (stamina &lt; 50) {</b>
+<b class="fc"><i class="no-highlight">38</i>&nbsp;            birdColor = &quot;#C51663&quot;;</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        } else if (stamina &lt; 100) {</b>
+<b class="fc"><i class="no-highlight">40</i>&nbsp;            birdColor = &quot;#BEC516&quot;;</b>
+<i class="no-highlight">41</i>&nbsp;        } else {
+<b class="fc"><i class="no-highlight">42</i>&nbsp;            birdColor = &quot;#FFFFFF&quot;;</b>
+<i class="no-highlight">43</i>&nbsp;        }
+<i class="no-highlight">44</i>&nbsp;
+<b class="fc"><i class="no-highlight">45</i>&nbsp;        arenaModel.setBirdColor(birdColor);</b>
+<i class="no-highlight">46</i>&nbsp;
+<b class="fc"><i class="no-highlight">47</i>&nbsp;        return birdColor;</b>
+<i class="no-highlight">48</i>&nbsp;    }
+<i class="no-highlight">49</i>&nbsp;
+<i class="no-highlight">50</i>&nbsp;    public void matrixUpdate() {
+<i class="no-highlight">51</i>&nbsp;
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        Matrix matrix = arenaModel.getMatrix();</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        Bird bird = arenaModel.getBird();</b>
+<i class="no-highlight">54</i>&nbsp;
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        Matrix newMatrix = new MatrixFactory().getMatrix(new Dimensions(width, height), borderChar, borderColor);</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        newMatrix.setPos(bird);</b>
+<i class="no-highlight">57</i>&nbsp;
+<b class="fc"><i class="no-highlight">58</i>&nbsp;        Element b = null;</b>
+<i class="no-highlight">59</i>&nbsp;
+<b class="fc"><i class="no-highlight">60</i>&nbsp;        for (int x = 0; x &lt; width; x++)</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;            for (int y = 0; y &lt; height; y++) {</b>
+<b class="fc"><i class="no-highlight">62</i>&nbsp;                Element e = matrix.getPos(x, y);</b>
+<b class="fc"><i class="no-highlight">63</i>&nbsp;                if (e.getChar().equals(birdChar)) b = e;</b>
+<b class="fc"><i class="no-highlight">64</i>&nbsp;                else if (e.getChar() != &#39; &#39;) newMatrix.setPos(e);</b>
+<i class="no-highlight">65</i>&nbsp;            }
+<i class="no-highlight">66</i>&nbsp;
+<b class="fc"><i class="no-highlight">67</i>&nbsp;        newMatrix.setPos(b);</b>
+<i class="no-highlight">68</i>&nbsp;
+<b class="fc"><i class="no-highlight">69</i>&nbsp;        arenaModel.setBird(bird);</b>
+<b class="fc"><i class="no-highlight">70</i>&nbsp;        arenaModel.setMatrix(newMatrix);</b>
+<i class="no-highlight">71</i>&nbsp;
+<i class="no-highlight">72</i>&nbsp;    }
+<i class="no-highlight">73</i>&nbsp;
+<i class="no-highlight">74</i>&nbsp;    public boolean updateArena() {
+<b class="fc"><i class="no-highlight">75</i>&nbsp;        updateBirdColor();</b>
+<b class="fc"><i class="no-highlight">76</i>&nbsp;        matrixUpdate();</b>
+<i class="no-highlight">77</i>&nbsp;
+<b class="fc"><i class="no-highlight">78</i>&nbsp;        if (isMatrixBottomRowFull()) arenaModel.removeMatrixBottomRow();</b>
+<i class="no-highlight">79</i>&nbsp;
+<b class="fc"><i class="no-highlight">80</i>&nbsp;        return arenaModel.getPlayerHp() &gt; 0;</b>
+<i class="no-highlight">81</i>&nbsp;    }
+<i class="no-highlight">82</i>&nbsp;
+<i class="no-highlight">83</i>&nbsp;
+<i class="no-highlight">84</i>&nbsp;}
+<i class="no-highlight">85</i>&nbsp;
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-01-17 10:56</div>
+</div>
+</body>
+</html>

@@ -15,7 +15,9 @@ class Test_InstructionsMenuState extends Specification {
         menuController = Mock(MenuController.class)
         instructionsMenuState = new InstructionsMenuState(screen, menuController) {
             @Override
-            public GameController.STATE waitForUserConfirmation(GameController.STATE confirmAction) {return GameController.STATE.NONE}
+            GameController.STATE waitForUserConfirmation(GameController.STATE confirmAction) {
+                return GameController.STATE.NONE
+            }
         }
     }
 

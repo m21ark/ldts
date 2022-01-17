@@ -7,7 +7,7 @@ import com.googlecode.lanterna.screen.Screen
 import spock.lang.Specification
 
 
-class Test_StartMenuState extends Specification  {
+class Test_StartMenuState extends Specification {
     KeyboardObserver keyboardObserver
     Screen screen
     MenuController menuController

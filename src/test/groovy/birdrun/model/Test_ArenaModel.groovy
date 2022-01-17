@@ -92,6 +92,38 @@ class Test_ArenaModel extends Specification {
     }
 
 
+    def "Test getBirdStamina"() {
+
+        given:
+        Bird newBird = new Bird(1, 1, 'B' as Character, "#00FF00")
+        arenaModel.setBird(newBird)
+
+        when:
+        int stamina1 = arenaModel.getBirdStamina()
+        int stamina2 = arenaModel.getBird().getStamina()
+
+        then:
+        stamina1 == stamina2
+    }
+
+    def "Test addPlayerHp(int hp)"() {
+
+        given:
+        Bird newBird = new Bird(1, 1, 'B' as Character, "#00FF00")
+        arenaModel.setBird(newBird)
+        int hp0 = arenaModel.getBird().getHp()
+
+        when:
+        arenaModel.addPlayerHp(deltaHp)
+
+        then:
+        hp0 + deltaHp == arenaModel.getBird().getHp()
+
+        where:
+        deltaHp << [-10, 0, -1, -2, 3, 6, 8, 0, 123, 34, 15, 8]
+
+    }
+
 }
 
 

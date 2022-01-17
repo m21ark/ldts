@@ -15,7 +15,9 @@ class Test_DeathMenuState extends Specification {
         menuController = Mock(MenuController.class)
         deathState = new DeathMenuState(screen, menuController) {
             @Override
-            public GameController.STATE waitForUserConfirmation(GameController.STATE confirmAction) {return GameController.STATE.NONE}
+            GameController.STATE waitForUserConfirmation(GameController.STATE confirmAction) {
+                return GameController.STATE.NONE
+            }
         }
     }
 
@@ -27,7 +29,7 @@ class Test_DeathMenuState extends Specification {
         deathState.start(score)
 
         then:
-        1 * menuController.drawState(_,score)
+        1 * menuController.drawState(_, score)
         1 * screen.clear()
         1 * screen.refresh()
     }

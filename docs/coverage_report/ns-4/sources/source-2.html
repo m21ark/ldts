@@ -1,0 +1,206 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Bird</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">birdrun.model</a>
+</div>
+
+<h1>Coverage Summary for Class: Bird (birdrun.model)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Bird</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (16/20)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    82.1%
+  </span>
+  <span class="absValue">
+    (23/28)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package birdrun.model;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.googlecode.lanterna.SGR;
+<i class="no-highlight">4</i>&nbsp;import com.googlecode.lanterna.TerminalPosition;
+<i class="no-highlight">5</i>&nbsp;import com.googlecode.lanterna.TextColor;
+<i class="no-highlight">6</i>&nbsp;import com.googlecode.lanterna.graphics.TextGraphics;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;public class Bird extends Element {
+<i class="no-highlight">9</i>&nbsp;
+<b class="fc"><i class="no-highlight">10</i>&nbsp;    private int hp = 3;</b>
+<b class="fc"><i class="no-highlight">11</i>&nbsp;    private int coinCount = 0;</b>
+<b class="fc"><i class="no-highlight">12</i>&nbsp;    private int stamina = 200;</b>
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;    public Bird(int x, int y, Character character, String color) {
+<b class="nc"><i class="no-highlight">15</i>&nbsp;        super(x, y, character, color);</b>
+<i class="no-highlight">16</i>&nbsp;    }
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    public Bird(Position pos, Character character, String color) {
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        super(pos, character, color);</b>
+<i class="no-highlight">20</i>&nbsp;    }
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;    @Override
+<i class="no-highlight">23</i>&nbsp;    public void gravityMove() {
+<b class="fc"><i class="no-highlight">24</i>&nbsp;        moveDown(1);</b>
+<i class="no-highlight">25</i>&nbsp;    }
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;    @Override
+<i class="no-highlight">28</i>&nbsp;    public void draw(TextGraphics graphics) {
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        graphics.setForegroundColor(TextColor.Factory.fromString(this.color));</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        graphics.enableModifiers(SGR.BOLD);</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        graphics.putString(new TerminalPosition(this.position.getX(), this.position.getY()), this.character.toString());</b>
+<i class="no-highlight">32</i>&nbsp;    }
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;    public int takeDamage() {
+<b class="nc"><i class="no-highlight">35</i>&nbsp;        return --hp;</b>
+<i class="no-highlight">36</i>&nbsp;    }
+<i class="no-highlight">37</i>&nbsp;
+<i class="no-highlight">38</i>&nbsp;    public int takeDamage(int n) {
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        hp -= n;</b>
+<b class="fc"><i class="no-highlight">40</i>&nbsp;        return hp;</b>
+<i class="no-highlight">41</i>&nbsp;    }
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    public int getHp() {
+<b class="fc"><i class="no-highlight">44</i>&nbsp;        return hp;</b>
+<i class="no-highlight">45</i>&nbsp;    }
+<i class="no-highlight">46</i>&nbsp;
+<i class="no-highlight">47</i>&nbsp;    public void setHp(int newHp) {
+<b class="nc"><i class="no-highlight">48</i>&nbsp;        hp = newHp;</b>
+<i class="no-highlight">49</i>&nbsp;    }
+<i class="no-highlight">50</i>&nbsp;
+<i class="no-highlight">51</i>&nbsp;    public void addHp(int newHp) {
+<b class="fc"><i class="no-highlight">52</i>&nbsp;        hp += newHp;</b>
+<i class="no-highlight">53</i>&nbsp;    }
+<i class="no-highlight">54</i>&nbsp;
+<i class="no-highlight">55</i>&nbsp;    public boolean isAlive() {
+<b class="nc"><i class="no-highlight">56</i>&nbsp;        return hp &gt; 0;</b>
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;    public int pickCoin(int numCoins) {
+<b class="fc"><i class="no-highlight">60</i>&nbsp;        coinCount += numCoins;</b>
+<b class="fc"><i class="no-highlight">61</i>&nbsp;        return coinCount;</b>
+<i class="no-highlight">62</i>&nbsp;    }
+<i class="no-highlight">63</i>&nbsp;
+<i class="no-highlight">64</i>&nbsp;    public int getCoinCount() {
+<b class="fc"><i class="no-highlight">65</i>&nbsp;        return coinCount;</b>
+<i class="no-highlight">66</i>&nbsp;    }
+<i class="no-highlight">67</i>&nbsp;
+<i class="no-highlight">68</i>&nbsp;    public void setCoinCount(int numCoins) {
+<b class="nc"><i class="no-highlight">69</i>&nbsp;        coinCount = numCoins;</b>
+<i class="no-highlight">70</i>&nbsp;    }
+<i class="no-highlight">71</i>&nbsp;
+<i class="no-highlight">72</i>&nbsp;    public Position moveUp(int delta) {
+<b class="fc"><i class="no-highlight">73</i>&nbsp;        return new Position(position.getX(), position.getY() - delta);</b>
+<i class="no-highlight">74</i>&nbsp;    }
+<i class="no-highlight">75</i>&nbsp;
+<i class="no-highlight">76</i>&nbsp;    public Position moveDown(int delta) {
+<b class="fc"><i class="no-highlight">77</i>&nbsp;        return new Position(position.getX(), position.getY() + delta);</b>
+<i class="no-highlight">78</i>&nbsp;    }
+<i class="no-highlight">79</i>&nbsp;
+<i class="no-highlight">80</i>&nbsp;    public Position moveLeft(int delta) {
+<b class="fc"><i class="no-highlight">81</i>&nbsp;        return new Position(position.getX() - delta, position.getY());</b>
+<i class="no-highlight">82</i>&nbsp;    }
+<i class="no-highlight">83</i>&nbsp;
+<i class="no-highlight">84</i>&nbsp;    public Position moveRight(int delta) {
+<b class="fc"><i class="no-highlight">85</i>&nbsp;        return new Position(position.getX() + delta, position.getY());</b>
+<i class="no-highlight">86</i>&nbsp;    }
+<i class="no-highlight">87</i>&nbsp;
+<i class="no-highlight">88</i>&nbsp;    public int getStamina() {
+<b class="fc"><i class="no-highlight">89</i>&nbsp;        return stamina;</b>
+<i class="no-highlight">90</i>&nbsp;    }
+<i class="no-highlight">91</i>&nbsp;
+<i class="no-highlight">92</i>&nbsp;    public void setStamina(int newStamina) {
+<b class="fc"><i class="no-highlight">93</i>&nbsp;        if (newStamina &gt; 200) this.stamina = 200;</b>
+<b class="fc"><i class="no-highlight">94</i>&nbsp;        else this.stamina = Math.max(newStamina, 0);</b>
+<i class="no-highlight">95</i>&nbsp;    }
+<i class="no-highlight">96</i>&nbsp;
+<i class="no-highlight">97</i>&nbsp;    public void updateColor(String newColor) {
+<b class="fc"><i class="no-highlight">98</i>&nbsp;        this.color = newColor;</b>
+<i class="no-highlight">99</i>&nbsp;    }
+<i class="no-highlight">100</i>&nbsp;
+<i class="no-highlight">101</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-01-17 10:56</div>
+</div>
+</body>
+</html>

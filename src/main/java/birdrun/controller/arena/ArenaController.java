@@ -121,7 +121,7 @@ public class ArenaController {
                         arenaModel.matrixSetPos(new Block(x, y, blockChar, blockColor));
                         break;
                     case LIFE:
-                        arenaModel.matrixSetPos(new Coin(x, y, lifeChar, lifeColor));
+                        arenaModel.matrixSetPos(new Extra_Life(x, y, lifeChar, lifeColor));
                         break;
                     default:
                         break;
