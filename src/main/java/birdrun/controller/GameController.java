@@ -80,7 +80,8 @@ public class GameController {
         while (arena.playerAlive()) {
             long startTime = System.currentTimeMillis();
 
-            drawGameView();
+            Command.COMMAND command = keyboardObserver.listenPoll();
+            runGame = arena.executeCommand(command);
 
             if (!runGame) {
                 arena.pauseBgMusic();
@@ -94,6 +95,8 @@ public class GameController {
             if (!arena.playerAlive()) return GameController.STATE.DEATH;
 
             long sleepTime = frameTime - (System.currentTimeMillis() - startTime);
+
+            drawGameView();
 
             if (sleepTime > 0) Thread.sleep(sleepTime);
 
@@ -154,9 +157,6 @@ public class GameController {
 
     protected void drawGameView() throws IOException {
         new GameViewer().draw(screen, graphics, arena.getArenaModel(), arena.getArenaViewer());
-
-        Command.COMMAND command = keyboardObserver.listenPoll();
-        runGame = arena.executeCommand(command);
     }
 
     public void run() throws IOException, InterruptedException {
