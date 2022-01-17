@@ -50,7 +50,7 @@ public class GameController {
     }
 
     public static GameController getInstance(Dimensions dimensions) throws IOException, URISyntaxException, FontFormatException {
-        Screen screen = new ScreenFactory().getScreen(dimensions, 35);
+        Screen screen = new ScreenFactory().getScreen(dimensions, 28);
 
         if (instance == null) instance = new GameController(dimensions, screen);
         return instance;
