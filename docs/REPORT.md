@@ -141,9 +141,6 @@ lose!
 <p align="center" justify="center">
   <img src="images/UML/UML2.png" width=60% height=90%/>
 </p>
-<p align="center">
-  <b><i>Fig. UML2 </i></b>  
-</p>  
 
 <br>
 <br />
@@ -188,9 +185,6 @@ lose!
 <p align="center" justify="center">
   <img src="images/UML/UML1.png" width=60% height=90%/>
 </p>
-<p align="center">
-  <b><i>Fig. UML1 </i></b>  
-</p>  
 
 <br>
 <br />
@@ -201,9 +195,7 @@ lose!
 <p align="center" justify="center">
   <img src="images/UML/UML.png" width=60% height=90%/>
 </p>
-<p align="center">
-  <b><i>Fig. Main UML </i></b>  
-</p>  
+
 
 <br>
 <br />
