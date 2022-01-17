@@ -96,6 +96,16 @@ lose!
 
 ### Update
 
+<p align="center" justify="center">
+  <img src="images/UML/UML1.png" width=60% height=90%/>
+</p>
+<p align="center">
+  <b><i>Fig. UML1 </i></b>  
+</p>  
+
+<br>
+<br />
+
 >....
 >
 
@@ -137,6 +147,16 @@ lose!
 >
 > This code structure is more versatile and every class is organized based on the actions they perform.
 
+<p align="center" justify="center">
+  <img src="images/UML/UML2.png" width=60% height=90%/>
+</p>
+<p align="center">
+  <b><i>Fig. UML2 </i></b>  
+</p>  
+
+<br>
+<br />
+
 
 ### Factory method
 
@@ -176,35 +196,6 @@ lose!
 
 ## UML
 
-<p align="center" justify="center">
-  <img src="images/UML/UML1.png"/>
-</p>
-<p align="center">
-  <b><i>Fig 6. UML1 </i></b>  
-</p>  
-
-<br>
-<br />
-
-<p align="center" justify="center">
-  <img src="images/UML/UML2.png"/>
-</p>
-<p align="center">
-  <b><i>Fig 7. UML2 </i></b>  
-</p>  
-
-<br>
-<br />
-
-<p align="center" justify="center">
-  <img src="images/UML/UML3.png"/>
-</p>
-<p align="center">
-  <b><i>Fig 8. UML3</i></b>  
-</p>  
-
-<br>
-<br />
 
 This is a simplified version of the project's diagram.
 
