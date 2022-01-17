@@ -11,7 +11,7 @@ lose!
 ## GAME DEMO
 
 <p align="center" justify="center">
-  <img src="docs/gifs/RunBirdRun.gif" width=60% height=90%/>
+  <img src="gifs/RunBirdRun.gif" width=60% height=90%/>
 </p>
 
 <br>
@@ -42,7 +42,7 @@ lose!
 ## Gameplay images
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/initMenu.png" width=60% height=90%/>
+  <img src="images/screenshots/initMenu.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 1. Starting Menu </i></b>
@@ -52,7 +52,7 @@ lose!
 <br />
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/game.png" width=60% height=90%/>
+  <img src="images/screenshots/game.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 2. Game </i></b>  
@@ -62,7 +62,7 @@ lose!
 <br />
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/endMenu.png" width=60% height=90%/>
+  <img src="images/screenshots/endMenu.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 3. Game Over  </i></b>
@@ -70,14 +70,14 @@ lose!
 
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/pause.png" width=60% height=90%/>
+  <img src="images/screenshots/pause.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 4. Pause  </i></b>
 </p>  
 
 <p align="center" justify="center">
-  <img src="docs/images/screenshots/instuctions.png" width=60% height=90%/>
+  <img src="images/screenshots/instuctions.png" width=60% height=90%/>
 </p>
 <p align="center">
   <b><i>Fig 5. Instructions  </i></b>
@@ -151,7 +151,7 @@ lose!
 ## UML
 
 <p align="center" justify="center">
-  <img src="docs/images/UML/UML.png"/>
+  <img src="images/UML/UML.png"/>
 </p>
 <p align="center">
   <b><i>Fig 6. UML </i></b>  
@@ -170,7 +170,7 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
 
 </br>
 <p align="center" justify="center">
-  <img src="docs/images/test/coverage.png"/>
+  <img src="images/test/coverage.png"/>
 </p>
 <p align="center">
   <b><i>Fig 7. Coverage Report </i></b>  
@@ -181,7 +181,7 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
 
 
 <p align="center" justify="center">
-  <img src="docs/images/test/pittest.png"/>
+  <img src="images/test/pittest.png"/>
 </p>
 <p align="center">
   <b><i>Fig 8. Pitest Report </i></b>  
@@ -189,9 +189,9 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
 
 </br>
 
-See full coverage report here - [Coverage Report ](docs/coverage_report/index.html)
+See full coverage report here - [Coverage Report ](coverage_report/index.html)
 
-See full mutation report here - [Pit Test Report ](docs/pitest_report/index.html)
+See full mutation report here - [Pit Test Report ](pitest_report/index.html)
 
 ## SELF-EVALUATION
 
