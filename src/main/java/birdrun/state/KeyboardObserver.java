@@ -15,7 +15,7 @@ public class KeyboardObserver {
     }
 
 
-    private Command.COMMAND interpertKey(KeyStroke key) {
+    public Command.COMMAND interpertKey(KeyStroke key) {
 
         if (key == null) return Command.COMMAND.NONE;
 
@@ -33,13 +33,13 @@ public class KeyboardObserver {
             case Enter:
                 return Command.COMMAND.SELECT;
             case Character:
-                return interpertCharKey(key);
+                return this.interpertCharKey(key);
             default:
                 return Command.COMMAND.NONE;
         }
     }
 
-    private Command.COMMAND interpertCharKey(KeyStroke key) {
+    public Command.COMMAND interpertCharKey(KeyStroke key) {
 
         String ch = key.getCharacter().toString().toUpperCase();
 
