@@ -6,6 +6,13 @@ bird that can't fly much without getting tired. The main objective is to stay al
 collecting the occasional falling coins. You must avoid the neverending boxes that fall from the sky, otherwise you
 lose!
 
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/game.png" width=60% height=90%/>
+</p>
+<p align="center">
+  <b><i>Fig 2. Game </i></b>  
+</p>  
+
 [F**ull report**](docs/REPORT.md)
 
 ##
