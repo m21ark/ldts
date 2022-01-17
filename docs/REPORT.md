@@ -164,6 +164,8 @@ This is a simplified version of the project's diagram.
 
 See Java Classes here - [Java Classes](src/main/java/birdrun)
 
+## CODE SMELLS
+
 ## TESTING
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-G0900?branch=main&token=c37e0a511313f827d4117162ff4c614ba7c4366d)](https://bettercodehub.com/)
