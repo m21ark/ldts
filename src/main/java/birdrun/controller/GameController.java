@@ -4,10 +4,7 @@ import birdrun.controller.arena.ArenaController;
 import birdrun.model.Dimensions;
 import birdrun.state.Command;
 import birdrun.state.KeyboardObserver;
-import birdrun.state.states.DeathMenuState;
-import birdrun.state.states.InstructionsMenuState;
-import birdrun.state.states.PauseMenuState;
-import birdrun.state.states.StartMenuState;
+import birdrun.state.states.*;
 import birdrun.viewer.GameViewer;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
@@ -23,14 +20,13 @@ public class GameController {
 
     private static GameController instance;
     private final ArenaController arena;
-    private final PauseMenuState pauseMenuState;
-    private final StartMenuState startMenuState;
+    private final MenuState pauseMenuState;
+    private final MenuState startMenuState;
     private final DeathMenuState deathMenuState;
     private final InstructionsMenuState instructionsMenuState;
     private final Screen screen;
     private final TextGraphics graphics;
     private final KeyboardObserver keyboardObserver;
-    private final long fps = 30;
     private STATE state = STATE.START;
     private int gameLoopInt = 0;
     private int resetCountGameLoop = 1;
@@ -47,8 +43,8 @@ public class GameController {
 
         this.pauseMenuState = new PauseMenuState(screen, menuController);
         this.startMenuState = new StartMenuState(screen, menuController);
-        this.deathMenuState = new DeathMenuState(screen, menuController);
         this.instructionsMenuState = new InstructionsMenuState(screen, menuController);
+        this.deathMenuState = new DeathMenuState(screen, menuController);
 
         this.keyboardObserver = new KeyboardObserver(screen);
     }
@@ -78,6 +74,7 @@ public class GameController {
 
         testMusicPlaying();
 
+        long fps = 30;
         long frameTime = 1000 / fps;
 
         while (arena.playerAlive()) {

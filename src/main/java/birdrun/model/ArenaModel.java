@@ -79,7 +79,7 @@ public class ArenaModel {
         this.bird.takeDamage(n);
     }
 
-    public int getBirdStamina(){
+    public int getBirdStamina() {
         return this.bird.getStamina();
     }
 }

@@ -1,0 +1,222 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > KeyboardObserver</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">birdrun.state</a>
+</div>
+
+<h1>Coverage Summary for Class: KeyboardObserver (birdrun.state)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">KeyboardObserver</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    74.2%
+  </span>
+  <span class="absValue">
+    (23/31)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">KeyboardObserver$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75%
+  </span>
+  <span class="absValue">
+    (24/32)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package birdrun.state;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.googlecode.lanterna.input.KeyStroke;
+<i class="no-highlight">4</i>&nbsp;import com.googlecode.lanterna.screen.Screen;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;@SuppressWarnings(&quot;CatchAndPrintStackTrace&quot;)
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;public class KeyboardObserver {
+<i class="no-highlight">11</i>&nbsp;    private final Screen screen;
+<i class="no-highlight">12</i>&nbsp;
+<b class="fc"><i class="no-highlight">13</i>&nbsp;    public KeyboardObserver(Screen screen) {</b>
+<b class="fc"><i class="no-highlight">14</i>&nbsp;        this.screen = screen;</b>
+<i class="no-highlight">15</i>&nbsp;    }
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;
+<i class="no-highlight">18</i>&nbsp;    public Command.COMMAND interpertKey(KeyStroke key) {
+<i class="no-highlight">19</i>&nbsp;
+<b class="fc"><i class="no-highlight">20</i>&nbsp;        if (key == null) return Command.COMMAND.NONE;</b>
+<i class="no-highlight">21</i>&nbsp;
+<b class="fc"><i class="no-highlight">22</i>&nbsp;        switch (key.getKeyType()) {</b>
+<i class="no-highlight">23</i>&nbsp;            case EOF:
+<b class="nc"><i class="no-highlight">24</i>&nbsp;                return Command.COMMAND.QUIT;</b>
+<i class="no-highlight">25</i>&nbsp;            case ArrowUp:
+<b class="fc"><i class="no-highlight">26</i>&nbsp;                return Command.COMMAND.UP;</b>
+<i class="no-highlight">27</i>&nbsp;            case ArrowDown:
+<b class="fc"><i class="no-highlight">28</i>&nbsp;                return Command.COMMAND.DOWN;</b>
+<i class="no-highlight">29</i>&nbsp;            case ArrowRight:
+<b class="fc"><i class="no-highlight">30</i>&nbsp;                return Command.COMMAND.RIGHT;</b>
+<i class="no-highlight">31</i>&nbsp;            case ArrowLeft:
+<b class="fc"><i class="no-highlight">32</i>&nbsp;                return Command.COMMAND.LEFT;</b>
+<i class="no-highlight">33</i>&nbsp;            case Enter:
+<b class="fc"><i class="no-highlight">34</i>&nbsp;                return Command.COMMAND.SELECT;</b>
+<i class="no-highlight">35</i>&nbsp;            case Character:
+<b class="fc"><i class="no-highlight">36</i>&nbsp;                return this.interpertCharKey(key);</b>
+<i class="no-highlight">37</i>&nbsp;            default:
+<b class="nc"><i class="no-highlight">38</i>&nbsp;                return Command.COMMAND.NONE;</b>
+<i class="no-highlight">39</i>&nbsp;        }
+<i class="no-highlight">40</i>&nbsp;    }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;    public Command.COMMAND interpertCharKey(KeyStroke key) {
+<i class="no-highlight">43</i>&nbsp;
+<b class="fc"><i class="no-highlight">44</i>&nbsp;        String ch = key.getCharacter().toString().toUpperCase();</b>
+<i class="no-highlight">45</i>&nbsp;
+<b class="fc"><i class="no-highlight">46</i>&nbsp;        switch (ch) {</b>
+<i class="no-highlight">47</i>&nbsp;            case &quot;Q&quot;:
+<b class="fc"><i class="no-highlight">48</i>&nbsp;                return Command.COMMAND.QUIT;</b>
+<i class="no-highlight">49</i>&nbsp;            case &quot;P&quot;:
+<b class="fc"><i class="no-highlight">50</i>&nbsp;                return Command.COMMAND.PAUSE;</b>
+<i class="no-highlight">51</i>&nbsp;            case &quot;W&quot;:
+<b class="fc"><i class="no-highlight">52</i>&nbsp;                return Command.COMMAND.UP;</b>
+<i class="no-highlight">53</i>&nbsp;            case &quot;A&quot;:
+<b class="fc"><i class="no-highlight">54</i>&nbsp;                return Command.COMMAND.LEFT;</b>
+<i class="no-highlight">55</i>&nbsp;            case &quot;S&quot;:
+<b class="fc"><i class="no-highlight">56</i>&nbsp;                return Command.COMMAND.DOWN;</b>
+<i class="no-highlight">57</i>&nbsp;            case &quot;D&quot;:
+<b class="fc"><i class="no-highlight">58</i>&nbsp;                return Command.COMMAND.RIGHT;</b>
+<i class="no-highlight">59</i>&nbsp;            default:
+<b class="fc"><i class="no-highlight">60</i>&nbsp;                return Command.COMMAND.NONE;</b>
+<i class="no-highlight">61</i>&nbsp;        }
+<i class="no-highlight">62</i>&nbsp;
+<i class="no-highlight">63</i>&nbsp;    }
+<i class="no-highlight">64</i>&nbsp;
+<i class="no-highlight">65</i>&nbsp;    public Command.COMMAND listenRead() {
+<i class="no-highlight">66</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">67</i>&nbsp;            KeyStroke key = this.screen.readInput();</b>
+<b class="fc"><i class="no-highlight">68</i>&nbsp;            return interpertKey(key);</b>
+<i class="no-highlight">69</i>&nbsp;
+<b class="nc"><i class="no-highlight">70</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">71</i>&nbsp;            e.printStackTrace();</b>
+<i class="no-highlight">72</i>&nbsp;        }
+<i class="no-highlight">73</i>&nbsp;
+<b class="nc"><i class="no-highlight">74</i>&nbsp;        return null;</b>
+<i class="no-highlight">75</i>&nbsp;
+<i class="no-highlight">76</i>&nbsp;    }
+<i class="no-highlight">77</i>&nbsp;
+<i class="no-highlight">78</i>&nbsp;
+<i class="no-highlight">79</i>&nbsp;    public Command.COMMAND listenPoll() {
+<i class="no-highlight">80</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">81</i>&nbsp;            KeyStroke key = this.screen.pollInput();</b>
+<b class="fc"><i class="no-highlight">82</i>&nbsp;            return interpertKey(key);</b>
+<b class="nc"><i class="no-highlight">83</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i class="no-highlight">84</i>&nbsp;            e.printStackTrace();</b>
+<i class="no-highlight">85</i>&nbsp;        }
+<i class="no-highlight">86</i>&nbsp;
+<i class="no-highlight">87</i>&nbsp;
+<b class="nc"><i class="no-highlight">88</i>&nbsp;        return null;</b>
+<i class="no-highlight">89</i>&nbsp;    }
+<i class="no-highlight">90</i>&nbsp;
+<i class="no-highlight">91</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-01-17 10:56</div>
+</div>
+</body>
+</html>

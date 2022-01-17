@@ -1,12 +1,14 @@
-## LDTS_G0900 - Run Bird Run!
+# LDTS_G0900 - Run Bird Run!
 
-Run Bird Run is a platformer game and a mock version of the mobile phone game with the same name (https://play.google.com/store/apps/details?id=com.ketchapp.runbirdrun&hl=en_US&gl=US). The player controlls a lazy bird that can't fly much without getting tired. The main objective is to stay alive for as long as you can, while collecting the occasional falling coins. You must avoid the neverending boxes that fall from the sky, otherwise you lose!
+Run Bird Run is a platformer game and a mock version of the mobile phone game with the same
+name (https://play.google.com/store/apps/details?id=com.ketchapp.runbirdrun&hl=en_US&gl=US). The player controls a lazy
+bird that can't fly much without getting tired. The main objective is to stay alive for as long as you can, while
+collecting the occasional falling coins. You must avoid the neverending boxes that fall from the sky, otherwise you
+lose!
 
->This project was developed by Marco André (up202004891@fe.up.pt), João Silva (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
+> This project was developed by Marco André (up202004891@fe.up.pt), João Silva (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
 
-
-
-### IMPLEMENTED FEATURES
+## IMPLEMENTED FEATURES
 
 - **Start Screen** - When the game starts a simple initial screen is presented
 - **End Screen** - When the player dies, a screen is shown with their score
@@ -15,14 +17,20 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 - **Gravity** - All in-game entities are affected by gravity, thus they fall a small amount per second
 - **Catch Coins** - When the bird touches a coin or vice-versa, the player wins a point
 - **Take Damage** - When a bird is hit on the head by a block, it takes damage, loosing one of its 3 initial lives
-- **Full Bottom Row** - Like in tetriz, when the last row is fully occupied by blocks, it vanishes, preventing the window from filling up
-- **Collisions** - Right now, the bird can move through blocks and coins laterally without a probleam. Therefore, more collision detection needs to be implemmented
-- **Bg Music & Sound Effects** - The game has background music and sound effects when player catches something, dies, takes damage...
-- **Pausing Game** - Pressing P mid game pauses the game when needed
+- **Full Bottom Row** - Like in tetriz, when the last row is fully occupied by blocks, it vanishes, preventing the
+  window from filling up
+- **Collisions** - Right now, the bird can move through blocks and coins laterally without a problem. Therefore, more
+  collision detection needs to be implemented
+- **Bg Music & Sound Effects** - The game has background music and sound effects when player catches something, dies,
+  takes damage...
+- **Pausing Game** - Pressing P mid-game pauses the game when needed
 - **Play again Option** - In the end screen, the player has the option to play again
-- **Bird Stamina** - The player controlled bird now changes color to reflect its stamina. Without stamina, the bird can't fly
-- **Extra Lives** - Randomly through out the game, collectable lives drop from the sky. If the player gets them, it gains a hp point back.
- 
+- **Bird Stamina** - The player controlled bird now changes color to reflect its stamina. Without stamina, the bird
+  can't fly
+- **Extra Lives** - Randomly throughout the game, collectable lives drop from the sky. If the player gets them, it
+  gains a hp point back.
+
+## Gameplay images
 
 <p align="center" justify="center">
   <img src="docs/images/screenshots/initMenu.png" width=60% height=90%/>
@@ -66,25 +74,26 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
   <b><i>Fig 5. Instructions  </i></b>
 </p>  
 
+## PLANNED FEATURES
 
+- **Shop** - With the coins collected in-game, the user can then buy different power-ups, to help him better perform at
+  the game.
+- **Power-Ups** - These would be special powers, that the user does not have initially. They could vary from "Box
+  Destruction" to "Super birdrun.model.Coin Addition".
+- **Hard Level Meter** - Players could have an option to choose if they want a harder level (with more and faster blocks
+  for example)
 
-### PLANNED FEATURES
+## Design pattens
 
-- **Shop** - With the coins collected in-game, the user can then buy different power-ups, to help him better perform at the game.
-- **Power-Ups** - These would be special powers, that the user does not have initially. They could vary from "Box Destruction" to "Super birdrun.model.Coin Addition".
-- **Hard Level Meter** - Players could have an option to choose if they want a harder level (with more and faster blocks for example)
+### Factory method
 
-
-# Design pattens
-
-## Factory method
 > **Problem in Context**
 >
 >  In the arena Class, we need to be able to create a matrix with specific contents each game loop.
 >
 >  **The Pattern**
 >
->  We have applied the **Fatory Method** pattern. This pattern allows us to get the exact matrix we need each game loop.
+>  We have applied the **Factory Method** pattern. This pattern allows us to get the exact matrix we need each game loop.
 >
 >  **Implementation**
 >
@@ -94,7 +103,8 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 >
 > We can always have a matrix that fits our needs.
 
-## Game Loop
+### Game Loop
+
 > **Problem in Context**
 >
 >  Each second we need the game to take user input, update all Elements positions and draw them all.
@@ -105,13 +115,14 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 >
 >  **Implementation**
 >
->  Added a while(gameRun) in the game class. 
+>  Added a while(gameRun) in the game class.
 >
 >  **Consequences**
 >
 > We achieve a game that updates whenever we want.
 
-## MVC - Model View Controller (Architectural Pattern)
+### MVC - Model View Controller (Architectural Pattern)
+
 > **Problem in Context**
 >
 >  With the increasing code size, classes should be organized to facilitate their communication and usage.
@@ -126,9 +137,9 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 >
 >  **Consequences**
 >
-> This code structure is more versatile and every class is organized based on the actions they perform. 
+> This code structure is more versatile and every class is organized based on the actions they perform.
 
-### Simplified UML
+## UML
 
 <p align="center" justify="center">
   <img src="docs/images/UML/UML.png"/>
@@ -142,16 +153,13 @@ Run Bird Run is a platformer game and a mock version of the mobile phone game wi
 
 This is a simplified version of the project's diagram.
 
-These classes can be found in the following folder:
+See Java Classes here - [Java Classes](src/main/java/birdrun)
 
-- [Java Classes](src/main/java/birdrun)
-
-
-
-### TESTING
+## TESTING
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-G0900?branch=main&token=c37e0a511313f827d4117162ff4c614ba7c4366d)](https://bettercodehub.com/)
 
+</br>
 <p align="center" justify="center">
   <img src="docs/images/test/coverage.png"/>
 </p>
@@ -164,20 +172,19 @@ These classes can be found in the following folder:
 
 
 <p align="center" justify="center">
-  <img src="docs/images/test/pitest.png"/>
+  <img src="docs/images/test/pittest.png"/>
 </p>
 <p align="center">
   <b><i>Fig 8. Pitest Report </i></b>  
 </p>  
 
+</br>
 
-See  full mutation report here- [Pit Test Report ](docs/pitest_report/index.html)
+See full coverage report here - [Coverage Report ](docs/coverage_report/index.html)
 
+See full mutation report here - [Pit Test Report ](docs/pitest_report/index.html)
 
-
-
-
-### SELF-EVALUATION
+## SELF-EVALUATION
 
 - Marco André 40%
 - João Silva 30%

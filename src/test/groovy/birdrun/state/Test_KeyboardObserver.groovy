@@ -1,10 +1,9 @@
 package birdrun.state
 
+import com.googlecode.lanterna.input.KeyStroke
 import com.googlecode.lanterna.input.KeyType
 import com.googlecode.lanterna.screen.Screen
-import com.googlecode.lanterna.input.KeyStroke
 import spock.lang.Specification
-
 
 class Test_KeyboardObserver extends Specification {
     Screen screen
@@ -43,6 +42,7 @@ class Test_KeyboardObserver extends Specification {
         KeyStroke key6 = Stub(KeyStroke); key6.getKeyType() >> KeyType.ArrowLeft
         KeyStroke key7 = Stub(KeyStroke); key7.getKeyType() >> KeyType.Enter
         KeyStroke key8 = Stub(KeyStroke); key8.getKeyType() >> KeyType.Tab
+        KeyStroke key9 = Stub(KeyStroke); key9.getKeyType() >> KeyType.Character
 
 
         then:
@@ -54,6 +54,7 @@ class Test_KeyboardObserver extends Specification {
         Command.COMMAND.LEFT == keyboardObserver.interpertKey(key6)
         Command.COMMAND.SELECT == keyboardObserver.interpertKey(key7)
         Command.COMMAND.NONE == keyboardObserver.interpertKey(key8)
+        keyboardObserver.interpertKey(key9) != null
 
     }
 

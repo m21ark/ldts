@@ -10,5 +10,4 @@ public class Extra_Life extends Collectable {
         super(pos, character, color);
     }
 
-
 }

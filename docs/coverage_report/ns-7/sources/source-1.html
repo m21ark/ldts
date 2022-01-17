@@ -1,0 +1,160 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ArenaViewer</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">birdrun.viewer</a>
+</div>
+
+<h1>Coverage Summary for Class: ArenaViewer (birdrun.viewer)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ArenaViewer</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (17/17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package birdrun.viewer;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import birdrun.model.Dimensions;
+<i class="no-highlight">4</i>&nbsp;import birdrun.model.Element;
+<i class="no-highlight">5</i>&nbsp;import birdrun.model.Matrix;
+<i class="no-highlight">6</i>&nbsp;import com.googlecode.lanterna.TerminalPosition;
+<i class="no-highlight">7</i>&nbsp;import com.googlecode.lanterna.TerminalSize;
+<i class="no-highlight">8</i>&nbsp;import com.googlecode.lanterna.TextColor;
+<i class="no-highlight">9</i>&nbsp;import com.googlecode.lanterna.graphics.TextGraphics;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;public class ArenaViewer {
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;    private final int width;
+<i class="no-highlight">14</i>&nbsp;    private final int height;
+<i class="no-highlight">15</i>&nbsp;    private final String bgColor;
+<i class="no-highlight">16</i>&nbsp;    private final String textColor;
+<i class="no-highlight">17</i>&nbsp;
+<b class="fc"><i class="no-highlight">18</i>&nbsp;    public ArenaViewer(Dimensions dimensions, String bgColor, String textColor) {</b>
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        this.width = dimensions.getWidth();</b>
+<b class="fc"><i class="no-highlight">20</i>&nbsp;        this.height = dimensions.getHeight();</b>
+<b class="fc"><i class="no-highlight">21</i>&nbsp;        this.bgColor = bgColor;</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;        this.textColor = textColor;</b>
+<i class="no-highlight">23</i>&nbsp;    }
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;    public void drawMatrix(TextGraphics graphics, Matrix matrix) {
+<b class="fc"><i class="no-highlight">26</i>&nbsp;        for (int y = 0; y &lt; height; y++)</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;            for (int x = 0; x &lt; width; x++) {</b>
+<b class="fc"><i class="no-highlight">28</i>&nbsp;                Element e = matrix.getPos(x, y);</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;                if (e != null) if (e.getChar() != &#39; &#39;) e.draw(graphics);</b>
+<i class="no-highlight">30</i>&nbsp;            }
+<i class="no-highlight">31</i>&nbsp;    }
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;
+<i class="no-highlight">34</i>&nbsp;    public void draw(TextGraphics graphics, int playerCoinCount, int playerHP, Matrix matrix) {
+<i class="no-highlight">35</i>&nbsp;
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        if (graphics == null) return;</b>
+<i class="no-highlight">37</i>&nbsp;
+<i class="no-highlight">38</i>&nbsp;        //Set screen
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        graphics.setBackgroundColor(TextColor.Factory.fromString(bgColor));</b>
+<b class="fc"><i class="no-highlight">40</i>&nbsp;        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(this.width, this.height), &#39; &#39;);</b>
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;        //Draw updated matrix
+<b class="fc"><i class="no-highlight">43</i>&nbsp;        drawMatrix(graphics, matrix);</b>
+<i class="no-highlight">44</i>&nbsp;
+<i class="no-highlight">45</i>&nbsp;        //draw picked up coins
+<b class="fc"><i class="no-highlight">46</i>&nbsp;        graphics.setForegroundColor(TextColor.Factory.fromString(textColor));</b>
+<b class="fc"><i class="no-highlight">47</i>&nbsp;        graphics.putString(new TerminalPosition(width - 12, 1), &quot;Score: &quot; + playerCoinCount);</b>
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;        //draw lifePoints
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        graphics.setForegroundColor(TextColor.Factory.fromString(textColor));</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;        graphics.putString(new TerminalPosition(2, 1), &quot;HP: &quot; + playerHP);</b>
+<i class="no-highlight">52</i>&nbsp;    }
+<i class="no-highlight">53</i>&nbsp;
+<i class="no-highlight">54</i>&nbsp;
+<i class="no-highlight">55</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-01-17 10:56</div>
+</div>
+</body>
+</html>
