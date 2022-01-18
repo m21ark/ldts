@@ -36,8 +36,8 @@ lose!
 - **Play again Option** - In the end screen, the player has the option to play again
 - **Bird Stamina** - The player controlled bird now changes color to reflect its stamina. Without stamina, the bird
   can't fly
-- **Extra Lives** - Randomly throughout the game, collectable lives drop from the sky. If the player gets them, it
-  gains a hp point back.
+- **Extra Lives** - Randomly throughout the game, collectable lives drop from the sky. If the player gets them, it gains
+  a hp point back.
 
 ## Gameplay images
 
@@ -94,33 +94,7 @@ lose!
 
 ## Design pattens
 
-### Update
-
-
->....
->
-
-### State
-
->....
->
-
-### Singleton
-
->.....
->
-
-### Strategy
-
->....
->
-
-### Observer
-
->.....
->
-
-### MVC - Model View Controller (Architectural Pattern)
+### MVC - Model View Controller Pattern
 
 > **Problem in Context**
 >
@@ -138,32 +112,15 @@ lose!
 >
 > This code structure is more versatile and every class is organized based on the actions they perform.
 
+</br>
+
 <p align="center" justify="center">
-  <img src="images/UML/UML2.png" width=60% height=90%/>
+  <img src="images/patterns/mvc.png">
 </p>
 
-<br>
-<br />
+</br>
 
-
-### Factory method
-
-> **Problem in Context**
->
->  In the arena Class, we need to be able to create a matrix with specific contents each game loop.
->
->  **The Pattern**
->
->  We have applied the **Factory Method** pattern. This pattern allows us to get the exact matrix we need each game loop.
->
->  **Implementation**
->
->  Creation of birdrun.controller.MatrixFactory() class with getMatrix() method to gives us the desired matrix.
->
->  **Consequences**
->
-> We can always have a matrix that fits our needs.
-
+___
 ### Game Loop
 
 > **Problem in Context**
@@ -182,42 +139,156 @@ lose!
 >
 > We achieve a game that updates whenever we want.
 
+</br>
+
 <p align="center" justify="center">
-  <img src="images/UML/UML1.png" width=60% height=90%/>
+  <img src="images/patterns/gameloop.png" />
 </p>
 
-<br>
+</br>
+
+___
+### State
+
+> **Problem in Context**
+>
+>  Each second we need the game to take user input, update all Elements positions and draw them all.
+>
+>  **The Pattern**
+>
+>  We have applied the **Game Loop** pattern. This pattern allows us to have a loop that calls the right methods to do the above mencioned action.
+>
+>  **Implementation**
+>
+>  Added a while(gameRun) in the game class.
+>
+>  **Consequences**
+>
+> We achieve a game that updates whenever we want.
+
 <br />
 
+<p align="center" justify="center">
+  <img src="images/patterns/state.png"/>
+</p>
 
+<br />
+
+___
+### Singleton
+
+> **Problem in Context**
+>
+>  Each second we need the game to take user input, update all Elements positions and draw them all.
+>
+>  **The Pattern**
+>
+>  We have applied the **Game Loop** pattern. This pattern allows us to have a loop that calls the right methods to do the above mencioned action.
+>
+>  **Implementation**
+>
+>  Added a while(gameRun) in the game class.
+>
+>  **Consequences**
+>
+> We achieve a game that updates whenever we want.
+
+</br>
+
+<p align="center" justify="center">
+  <img src="images/patterns/singleton.png"/>
+</p>
+
+</br>
+
+___
+
+### Observer
+
+> **Problem in Context**
+>
+>  Each second we need the game to take user input, update all Elements positions and draw them all.
+>
+>  **The Pattern**
+>
+>  We have applied the **Game Loop** pattern. This pattern allows us to have a loop that calls the right methods to do the above mencioned action.
+>
+>  **Implementation**
+>
+>  Added a while(gameRun) in the game class.
+>
+>  **Consequences**
+>
+> We achieve a game that updates whenever we want.
+
+</br>
+
+<p align="center" justify="center">
+  <img src="images/patterns/observer.png"/>
+</p>
+
+</br>
+
+___
+###Update
+
+> **Problem in Context**
+>
+>  Each second we need the game to take user input, update all Elements positions and draw them all.
+>
+>  **The Pattern**
+>
+>  We have applied the **Game Loop** pattern. This pattern allows us to have a loop that calls the right methods to do the above mencioned action.
+>
+>  **Implementation**
+>
+>  Added a while(gameRun) in the game class.
+>
+>  **Consequences**
+>
+> We achieve a game that updates whenever we want.
+
+</br>
+
+<p align="center" justify="center">
+  <img src="images/patterns/update.png" />
+</p>
+
+</br>
+
+___
 ## UML
 
 <p align="center" justify="center">
-  <img src="images/UML/UML.png" width=60% height=90%/>
+  <img src="images/UML/UML.png" />
 </p>
 
 
-<br>
-<br />
 
-This is a simplified version of the project's diagram.
+
+This is the complete project's UML diagram.
 
 See Java Classes here - [Java Classes](src/main/java/birdrun)
+
+</br>
 
 ## Code Smells
 
 ### Message Chains
+
 ...
 
 ### Shotgun Surgery
+
 ...
 
 ### Switch Statements
+
 ...
 
 ### Long Method
-...
 
+...
 
 ## Testing
 
