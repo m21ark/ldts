@@ -11,7 +11,7 @@ lose!
 </p>
 
 
-[F**ull report**](docs/REPORT.md)
+[**Full report**](docs/REPORT.md)
 
 ##
 
