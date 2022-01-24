@@ -74,7 +74,7 @@ public class GameController {
 
         testMusicPlaying();
 
-        long fps = 30;
+        long fps = 40;
         long frameTime = 1000 / fps;
 
         while (arena.playerAlive()) {
