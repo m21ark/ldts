@@ -91,7 +91,7 @@ lose!
 - **Shop** - With the coins collected in-game, the user can then buy different power-ups, to help him better perform at
   the game.
 - **Power-Ups** - These would be special powers, that the user does not have initially. They could vary from "Box
-  Destruction" to "Super birdrun.model.Coin Addition".
+  Destruction" to "Super Coin Addition".
 - **Hard Level Meter** - Players could have an option to choose if they want a harder level (with more and faster blocks
   for example)
 
@@ -100,14 +100,14 @@ lose!
 ### MVC - Model View Controller Pattern
 
 > **Problem in Context**
->The architecture of the project is one of the most important parts of a project like this.
-It's the foundation in which the game will be built, so, it's crutial to choose the most correct approach early on, as it can be extremely difficult to change it later in development.
+>
+>The project's architecture is the foundation in which the game is built, making it crutial to choose the most correct approach early on, as it can be very demanding to change it deeper in development.
 >  With the increasing code size, classes should be organized to facilitate their communication and usage.
 >
 >
 >  **The Pattern**
 >
->  Classes should be divided into 3 types : Model (stores data), Controller (coordenates processes and interactions) and Viewer (draws the model into the GUI). The Model does not have dependences, the View depends on the Model, and the Controller depends on both the Viewer and Model.
+>  Classes should be divided into 3 types : Model (stores data), Controller (coordenates processes and interactions) and Viewer (draws the model into the GUI). The Model does not have dependencies, the View depends on the Model, and the Controller depends on both the Viewer and Model.
 >
 >  **Implementation**
 >
@@ -115,7 +115,7 @@ It's the foundation in which the game will be built, so, it's crutial to choose 
 >
 >  **Consequences**
 >
-> This code structure is more versatile and every class is organized based on the actions they perform. More classes, which means the program is easy to modify and to test because the three elements are isolated from each other.
+> This code structure is more versatile and every class is organized based on the actions they perform. This means the program is easy to modify and to test because the three elements are separated from each other.
 
 </br>
 
@@ -282,7 +282,8 @@ ___
 
 <br>
 
-> #### Problem
+> **Problem**
+> 
 > In our code we have multiple successive calls to different objects. One example of this is when we call the *gameState()*
 > inside the GameController. Then, successive calls are made to the ArenaController, which then calls the ArenaUpdater 
 > when it updates the Arena. After, this object needs the ArenaModel to implement the changes. As a consequence, the Matrix and 
@@ -297,7 +298,7 @@ ___
   <b><i>Fig 12. Message Chain UML </i></b>  
 </p>  
 
-> #### Solution
+> **Solution**
 > 
 > It's possible to solve this code smell. However, that takes away the purpose of creating the Controller, Model, Viewer
 > and Updater classes. As such, we believe that this code smell is a consequence of having the MVC design patter, making
@@ -308,33 +309,39 @@ ___
 ### Shotgun Surgery
 <br>
 
-> #### Problem
+> **Problem**
+> 
 > Dispite our atempts to make the code as modular as we could, some features are being delt by more that one class (mainly the two principle controllers: Arena and Game).
 >
 >For example, if we wanted to add a new *Collectable* (like it is on our *planned features* list), multiple small changes would have to be done to the GameController and the ArenaController in a couple methods to allow this new feature.
 >
->  #### Solution
+>   **Solution**
+>   
 > Therefore, we are facing a *shotgun surgeon* code smell which fix requires us to move the features into a single class, however, we weren't able to make it work without creating other smells in its place.
 
 ### Switch Statements
 <br>
 
-> #### Problem
+>  **Problem**
+>  
 > In the *KeyboardObserver* class, to get the user's key presses, we used switch statment of considerable dimensions.
 > We attempted to fix the issue but other problems arose: the code became very messy due to the fact that a single responsibility had been split up among multiple classes, making changes hard (reminiscent of *shotgun surgeon*).
 >
-> #### Solution
+>  **Solution**
+>  
 >Thus, we opted to keep the switch in detriment of the proposed solution. A simple fix that improved somewhat the code legibility was breaking the great switch into two minor ones: one responsible by arrows and enter keys and another for character keys. 
 
 ### Long Method
 <br>
 
-> #### Problem
+> **Problem**
+> 
 > Throughout the code, some long class methods can be found. The main examples of this are the methods in the ArenaController responsible for the bird movement and the gravity. 
 >
 > This large chunks of code are difficult to read and made them harder to test. In an atempt to fix the issue, those methods were broken down into smaller ones but the probleam still remains because the smaller blocks of code are still 20-30 lines each. 
 >
-> #### Solution
+>  **Solution**
+>  
 >The solution would be to use the extract refactoring and fragment the code even more. That would allow for easier testing and make it more legible, however the fragmentation could be too severe.
 
 ## Testing
@@ -366,7 +373,7 @@ See full coverage report here - [Coverage Report ](coverage_report/index.html)
 
 See full mutation report here - [Pit Test Report ](pitest_report/index.html)
 
-## SELF-EVALUATION
+## Self-Evaluation
 
 - Marco André 40%
 - João Alves 30%
