@@ -171,7 +171,7 @@ ___
 >
 >  **Implementation**
 >
->  Based on the concepts that guides finite automata (FA), we define some states and the possible transitions between them. On the GameController class we have a state variable that keeps track of the current game state. To implement the FA, the class has a switch statement inside a while loop. Each switch leads the game to another state and when exiting the current state, the variable is updated to the new state the game should go to.
+>  Based on the concepts that guides finite automata (FA), we define some states and the possible transitions between them. On the GameController class we have a state variable that keeps track of the current game state. To implement the FA, the class has a switch statement inside a while loop. Each switch case leads the game to another state and when exiting the current state, the variable is updated to the new state the game should go to.
 >
 >  **Consequences**
 >
@@ -209,7 +209,7 @@ ___
 >
 > Because we have a single instance for a class, we save CPU time and memory by not having many useless instances. Furthermore, the pattern makes it simple to handle the instance due to the fact we can call the *getInstance()* method and be sure the one and only class we want is called, avoiding a messy code with many class instances scattered throughout the code.
 >
->However, being considered an antipattern, singleton isn't all good. Since a single instance exists, coupling is encouraged, therefore making the class harder to test and debug. Changes to the singleton can also be destructive if done incorrectly because all classes that need the instance are affected.
+>However, being considered an antipattern, singleton isn't all good. Since a single instance exists, coupling is encouraged, therefore making the class harder to test and debug (as we later experienced). Changes to the singleton can also be destructive if done incorrectly because all classes that need/use the instance are affected.
 
 </br>
 
@@ -227,22 +227,22 @@ ___
 
 > **Problem in Context**
 >
->  We need each element in the game to update its position
+>  We need a effective way to update the position of each element in the arena every game tick
 >
 >  **The Pattern**
 >
 >  We have applied the **Update Method** pattern. This pattern allows us to update the position of each of the elements without much complexity.
->  In the arena, we have multiple diferent elements that might change their position in each game cycle, so for each element we call the update method, in this case *setPos()*.
+>  In the arena, we have multiple distinct elements that might change their position in each game cycle, so for each element we call the update method (in this case *setPos()* )
 >
 >  **Implementation**
 >
 >  The ArenaUpdater handles the update of all elements. Inside this class, we have the arenaModel that has the game matrix inside it, that checks the interactions
-> among the elements, and for each of the elements, calls the update method. 
+> among the elements, and for each one of them, calls the update method. 
 > Since the update method only needs to alter the position, it can be implemented in the abstract class Element.
 >
 >  **Consequences**
 >
-> We achieve a game that updates whenever we want without much complexity.
+> We achieve a game that updates its element's position whenever we want without much complexity.
 
 </br>
 
