@@ -13,6 +13,9 @@ lose!
 <p align="center" justify="center">
   <img src="gifs/RunBirdRun.gif" width=60% height=90%/>
 </p>
+<p align="center">
+  <b><i>Gif 1. Gameplay </i></b>  
+</p>  
 
 <br>
 <br />
@@ -119,6 +122,9 @@ It's the foundation in which the game will be built, so, it's crutial to choose 
 <p align="center" justify="center">
   <img src="images/patterns/mvc.png">
 </p>
+<p align="center">
+  <b><i>Fig 6. MVC UML </i></b>  
+</p>  
 
 </br>
 
@@ -146,6 +152,9 @@ ___
 <p align="center" justify="center">
   <img src="images/patterns/gameloop.png" />
 </p>
+<p align="center">
+  <b><i>Fig 7. Game Loop UML </i></b>  
+</p>  
 
 </br>
 
@@ -175,6 +184,9 @@ ___
 <p align="center" justify="center">
   <img src="images/patterns/state.png"/>
 </p>
+<p align="center">
+  <b><i>Fig 8. State UML </i></b>  
+</p>  
 
 <br />
 
@@ -204,6 +216,9 @@ ___
 <p align="center" justify="center">
   <img src="images/patterns/singleton.png"/>
 </p>
+<p align="center">
+  <b><i>Fig 9. Singleton UML </i></b>  
+</p>  
 
 </br>
 
@@ -234,6 +249,9 @@ ___
 <p align="center" justify="center">
   <img src="images/patterns/update.png" />
 </p>
+<p align="center">
+  <b><i>Fig 10. Update UML </i></b>  
+</p>  
 
 </br>
 
@@ -243,6 +261,9 @@ ___
 <p align="center" justify="center">
   <img src="images/UML/UML.png" />
 </p>
+<p align="center">
+  <b><i>Fig 11. Complete UML </i></b>  
+</p>  
 
 
 
@@ -253,6 +274,7 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
 
 </br>
 
+___
 ## Code Smells
 
 ### Message Chains
@@ -260,7 +282,7 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
 
 <br>
 
-> ####Problem
+> #### Problem
 > In our code we have multiple successive calls to different objects. One example of this is when we call the *gameState()*
 > inside the GameController. Then, successive calls are made to the ArenaController, which then calls the ArenaUpdater 
 > when it updates the Arena. After, this object needs the ArenaModel to implement the changes. As a consequence, the Matrix and 
@@ -271,8 +293,11 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
 <p align="center" justify="center">
   <img src="images/patterns/MessageChains.png" />
 </p>
+<p align="center">
+  <b><i>Fig 12. Message Chain UML </i></b>  
+</p>  
 
-> ####Solution
+> #### Solution
 > 
 > It's possible to solve this code smell. However, that takes away the purpose of creating the Controller, Model, Viewer
 > and Updater classes. As such, we believe that this code smell is a consequence of having the MVC design patter, making
@@ -281,29 +306,35 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
 </br>
 
 ### Shotgun Surgery
+<br>
 
+> #### Problem
 > Dispite our atempts to make the code as modular as we could, some features are being delt by more that one class (mainly the two principle controllers: Arena and Game).
 >
 >For example, if we wanted to add a new *Collectable* (like it is on our *planned features* list), multiple small changes would have to be done to the GameController and the ArenaController in a couple methods to allow this new feature.
 >
->  ####Solution
+>  #### Solution
 > Therefore, we are facing a *shotgun surgeon* code smell which fix requires us to move the features into a single class, however, we weren't able to make it work without creating other smells in its place.
 
 ### Switch Statements
+<br>
 
+> #### Problem
 > In the *KeyboardObserver* class, to get the user's key presses, we used switch statment of considerable dimensions.
 > We attempted to fix the issue but other problems arose: the code became very messy due to the fact that a single responsibility had been split up among multiple classes, making changes hard (reminiscent of *shotgun surgeon*).
 >
-> ####Solution
+> #### Solution
 >Thus, we opted to keep the switch in detriment of the proposed solution. A simple fix that improved somewhat the code legibility was breaking the great switch into two minor ones: one responsible by arrows and enter keys and another for character keys. 
 
 ### Long Method
+<br>
 
+> #### Problem
 > Throughout the code, some long class methods can be found. The main examples of this are the methods in the ArenaController responsible for the bird movement and the gravity. 
 >
 > This large chunks of code are difficult to read and made them harder to test. In an atempt to fix the issue, those methods were broken down into smaller ones but the probleam still remains because the smaller blocks of code are still 20-30 lines each. 
 >
-> ####Solution
+> #### Solution
 >The solution would be to use the extract refactoring and fragment the code even more. That would allow for easier testing and make it more legible, however the fragmentation could be too severe.
 
 ## Testing
@@ -315,7 +346,7 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
   <img src="images/test/coverage.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 9. Coverage Report </i></b>  
+  <b><i>Fig 13. Coverage Report </i></b>  
 </p>  
 
 <br>
@@ -326,7 +357,7 @@ See Java Classes here - [Java Classes](src/main/java/birdrun)
   <img src="images/test/pittest.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 10. Pitest Report </i></b>  
+  <b><i>Fig 14. Pitest Report </i></b>  
 </p>  
 
 </br>
