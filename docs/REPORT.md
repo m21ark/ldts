@@ -31,8 +31,7 @@ lose!
 - **Take Damage** - When a bird is hit on the head by a block, it takes damage, loosing one of its 3 initial lives
 - **Full Bottom Row** - Like in tetriz, when the last row is fully occupied by blocks, it vanishes, preventing the
   window from filling up
-- **Collisions** - Right now, the bird can move through blocks and coins laterally without a problem. Therefore, more
-  collision detection needs to be implemented
+- **Collisions** - The bird can't move through blocks or the arena borders. Taking a falling block from above deals damage .If a bird collides with a collectable (lives or coins) they're picked up.
 - **Bg Music & Sound Effects** - The game has background music and sound effects when player catches something, dies,
   takes damage...
 - **Pausing Game** - Pressing P mid-game pauses the game when needed
