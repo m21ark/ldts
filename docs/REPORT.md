@@ -226,7 +226,7 @@ ___
 
 > **Problem in Context**
 >
->  We need a effective way to update the position of each element in the arena every game tick
+>  We need an effective way to update the position of each element in the arena every game tick
 >
 >  **The Pattern**
 >
