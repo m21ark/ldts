@@ -13,14 +13,14 @@ lose!
 
 [**Full report**](docs/REPORT.md)
 
-## Jar File
+## Start playing with the .jar file
 
 To play the game in seconds just download this [jar file](RunBird.jar).
 
-Note: The .jar doesn't support:
-	- background music
-	- sound effects
-	- custom font
+Note: The .jar doesn't support some code features:
+ - background music
+ - sound effects
+ - custom font
 
 ##
 
