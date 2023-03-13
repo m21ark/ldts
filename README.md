@@ -13,6 +13,15 @@ lose!
 
 [**Full report**](docs/REPORT.md)
 
+## Jar File
+
+To play the game in seconds just download this [jar file](RunBird.jar).
+
+Note: The .jar doesn't support:
+	- background music
+	- sound effects
+	- custom font
+
 ##
 
 > This project was developed by Marco André (up202004891@fe.up.pt), João Alves (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
