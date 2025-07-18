@@ -10,21 +10,21 @@ name. The player controls a lazy bird that can't fly much without getting tired.
 <table>
   <tr>
     <td >
-      <img src="docs/images/screenshots/initMenu.png" width="50%" /><br/>
+      <img src="docs/images/screenshots/initMenu.png"  /><br/>
       <p>Fig 1. Starting Menu</p>
     </td>
     <td >
-      <img src="docs/images/screenshots/game.png" width="50%" /><br/>
+      <img src="docs/images/screenshots/game.png"  /><br/>
       <p>Fig 2. Game</p>
     </td>
   </tr>
   <tr>
     <td >
-      <img src="docs/images/screenshots/endMenu.png" width="50%" /><br/>
+      <img src="docs/images/screenshots/endMenu.png"  /><br/>
       <p>Fig 3. Game Over</p>
     </td>
     <td >
-      <img src="docs/images/screenshots/instuctions.png" width="50%" /><br/>
+      <img src="docs/images/screenshots/instuctions.png" /><br/>
       <p>Fig 5. Instructions</p>
     </td>
   </tr>
@@ -43,7 +43,7 @@ Note: The .jar doesn't support some code features:
 
 ## Team
 
-This project was developed by at LDTS 2021/2022 by:
+This project was developed at LDTS 2021/2022 by:
 
 | Name     | Email        | 
 |----------------|----------------------------|
