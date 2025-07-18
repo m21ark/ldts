@@ -25,7 +25,7 @@ name. The player controls a lazy bird that can't fly much without getting tired.
     </td>
     <td >
       <img src="docs/images/screenshots/instuctions.png" /><br/>
-      <p>Fig 5. Instructions</p>
+      <p>Fig 4. Instructions</p>
     </td>
   </tr>
 </table>
