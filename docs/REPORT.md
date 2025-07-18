@@ -8,17 +8,6 @@ lose!
 
 > This project was developed by Marco André (up202004891@fe.up.pt), João Alves (up202007614@fe.up.pt) and José Sousa (up202006141@fe.up.pt) for LDTS 2021/2022.
 
-## Game Demo
-
-<p align="center" justify="center">
-  <img src="gifs/RunBirdRun.gif" width=60% height=90%/>
-</p>
-<p align="center">
-  <b><i>Gif 1. Gameplay </i></b>  
-</p>  
-
-<br>
-<br />
 
 ## Implemented Features
 
@@ -40,50 +29,6 @@ lose!
   can't fly
 - **Extra Lives** - Randomly throughout the game, collectable lives drop from the sky. If the player gets them, it gains
   a hp point back.
-
-## Gameplay images
-
-<p align="center" justify="center">
-  <img src="images/screenshots/initMenu.png" width=60% height=90%/>
-</p>
-<p align="center">
-  <b><i>Fig 1. Starting Menu </i></b>
-</p>  
-
-<br>
-<br />
-
-<p align="center" justify="center">
-  <img src="images/screenshots/game.png" width=60% height=90%/>
-</p>
-<p align="center">
-  <b><i>Fig 2. Game </i></b>  
-</p>  
-
-<br>
-<br />
-
-<p align="center" justify="center">
-  <img src="images/screenshots/endMenu.png" width=60% height=90%/>
-</p>
-<p align="center">
-  <b><i>Fig 3. Game Over  </i></b>
-</p>  
-
-
-<p align="center" justify="center">
-  <img src="images/screenshots/pause.png" width=60% height=90%/>
-</p>
-<p align="center">
-  <b><i>Fig 4. Pause  </i></b>
-</p>  
-
-<p align="center" justify="center">
-  <img src="images/screenshots/instuctions.png" width=60% height=90%/>
-</p>
-<p align="center">
-  <b><i>Fig 5. Instructions  </i></b>
-</p>  
 
 ## Planned Features
 
